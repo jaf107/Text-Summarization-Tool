@@ -19,15 +19,19 @@ public class Main {
         5. Generate Summary
         */
 
-        summary.createWordFrequencyTable();
-        summary.tokenizeSentences();
-        summary.scoreSentences();
-        summary.findThreshold();
-        summary.generateSummary();
+        summary.mainProcess();
+//        summary.createWordFrequencyTable();
+//        summary.tokenizeSentences();
+//        summary.scoreSentences();
+//        summary.findThreshold();
+//        summary.generateSummary();
 
 
 //        Output
+
         summary.showSentences();
+
+
 //        summary.showTextTable();          // Show Text Table
 //        summary.showFrequencyTable();       // Show the Word Frequency Table
     }
