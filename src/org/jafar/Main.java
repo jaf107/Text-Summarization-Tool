@@ -7,6 +7,8 @@ public class Main {
 
         //Input
 
+        //PreProcess
+        summary.preProcessing();
 
         //Process - ALGORITHM
         /*5 steps
@@ -22,6 +24,7 @@ public class Main {
         summary.scoreSentences();
         summary.findThreshold();
         summary.generateSummary();
+
 
         //Output
         summary.showFrequencyTable();
