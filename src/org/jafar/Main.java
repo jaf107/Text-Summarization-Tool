@@ -26,7 +26,9 @@ public class Main {
         summary.generateSummary();
 
 
-        //Output
-        summary.showFrequencyTable();
+//        Output
+        summary.showSentences();
+//        summary.showTextTable();          // Show Text Table
+//        summary.showFrequencyTable();       // Show the Word Frequency Table
     }
 }

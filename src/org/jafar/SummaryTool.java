@@ -7,7 +7,10 @@ public class SummaryTool {
 
     String text = "I know one thing for certain: don’t settle for less than what you’re capable of, but strive for something bigger. Some of you reading this might identify with this message because it resonates with you on a deeper level. For others, at the end of their tether the message might be nothing more than a trivial pep talk. What I wish to convey irrespective of where you are in your journey is: NEVER settle for less. If you settle for less, you will receive less than you deserve and convince yourself you are justified to receive it.";
 
-    String textTable[] = new String[10000];
+    String textTable[];
+    String sentences[] = new String[100];
+
+
     String textTable1[] = {"i", "know" ,"one" ,"thing", "for", "certain", "don’t", "settle" ,"for", "less", "than","what" ,"you’re"
             ,"capable", "of", "but", "strive", "for" ,"something", "bigger", "Some" ,"of","you", "reading", "this", "might",
             "identify", "with" ,"this" ,"message" ,"because" ,"it" ,"resonates" ,"with", "you", "on" ,"a" ,"deeper", "level"
@@ -31,6 +34,19 @@ public class SummaryTool {
     }
     void tokenizeSentences()
     {
+        /*String s = text.toLowerCase();
+        //s = punctuationRemover(s);
+        System.out.println(s);
+        String[] sen = s.split("\\.");
+        for (String t:sen) {
+            System.out.println(t);
+
+        }*/
+        sentences = text.toLowerCase().split("\\.");
+        for(int i = 0 ;i<sentences.length;i++){
+            sentences[i] += ".";
+
+        }
 
 
     }
@@ -76,7 +92,7 @@ public class SummaryTool {
         String noPunctuation = punctuationRemover(text);
         String[] word = noPunctuation.toLowerCase().split(" ");
 
-
+        textTable = new String[word.length];
         boolean temp = true;
 
         int j=0;
@@ -117,6 +133,13 @@ public class SummaryTool {
 
 
     //Output Methods
+    void showSentences()
+    {
+        for (String s:sentences) {
+            System.out.println(s);
+
+        }
+    }
     void showFrequencyTable()
     {
         for (Map.Entry<String, Integer> entry : frequencyCounter.entrySet()) {
@@ -124,6 +147,13 @@ public class SummaryTool {
             Integer value = entry.getValue();
 
             System.out.println(key + "=" + value);
+        }
+    }
+
+    void showTextTable()
+    {
+        for (String s:textTable ) {
+            System.out.println(s);
         }
     }
 }
