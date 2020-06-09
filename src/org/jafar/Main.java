@@ -16,6 +16,7 @@ public class Main {
         4. Find Threshold
         5. Generate Summary
         */
+
         summary.createWordFrequencyTable();
         summary.tokenizeSentences();
         summary.scoreSentences();
