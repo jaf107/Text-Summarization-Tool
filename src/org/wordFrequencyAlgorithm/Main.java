@@ -1,4 +1,4 @@
-package org.jafar;
+package org.wordFrequencyAlgorithm;
 
 public class Main {
 
@@ -24,8 +24,10 @@ public class Main {
 
 //        Output
 
+        summary.showComparison();
+
 //        summary.showSentences();              //show Sentence and it's scores
-        summary.showSummary();                  //show Summary
+//        summary.showSummary();                  //show Summary
 
 //        summary.showTextTable();              // Show Text Table
 //        summary.showFrequencyTable();         // Show the Word Frequency Table
