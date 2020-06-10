@@ -1,5 +1,6 @@
 package org.jafar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class SummaryTool {
 
     HashMap<String,Integer> frequencyCounter = new HashMap<>();
     HashMap<String,Double> sentencesScore = new HashMap<>();
+    ArrayList<String> summary = new ArrayList<>();
 
     //Main Algorithm
     void mainProcess()
@@ -57,7 +59,7 @@ public class SummaryTool {
             System.out.println(t);
 
         }*/
-        sentences = text.toLowerCase().split("\\.");
+        sentences = text.split("\\.");
         for(int i = 0 ;i<sentences.length;i++){
             sentences[i] += ".";
 
@@ -81,7 +83,7 @@ public class SummaryTool {
         }
 
     }
-    void findThreshold()
+    double findThreshold()
     {
         double threshold = 0;
         for (Map.Entry<String, Double> entry : sentencesScore.entrySet()) {
@@ -94,11 +96,19 @@ public class SummaryTool {
         threshold /= (double)sentences.length;
 //        System.out.println(threshold + " = Threshold" );
 
-
+        return threshold;
     }
     void generateSummary()
     {
+        double threshold = findThreshold();
+        for (Map.Entry<String, Double> entry : sentencesScore.entrySet()) {
+            String key = (String) entry.getKey();
+            Double value = entry.getValue();
 
+            if(value > threshold)
+                summary.add(key);
+
+        }
 
 
     }
@@ -221,6 +231,14 @@ public class SummaryTool {
 
 
     //Output Methods
+    void showSummary()
+    {
+        System.out.println("\n\n Summary:" );
+        for (String s: summary) {
+            System.out.println(s);
+
+        }
+    }
     void showSentences()
     {
         for (Map.Entry<String, Double> entry : sentencesScore.entrySet()) {

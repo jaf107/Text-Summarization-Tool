@@ -20,19 +20,14 @@ public class Main {
         */
 
         summary.mainProcess();
-//        summary.createWordFrequencyTable();
-//        summary.tokenizeSentences();
-//        summary.scoreSentences();
-//        summary.findThreshold();
-//        summary.generateSummary();
 
 
 //        Output
 
-        summary.showSentences();
+//        summary.showSentences();              //show Sentence and it's scores
+        summary.showSummary();                  //show Summary
 
-
-//        summary.showTextTable();          // Show Text Table
-//        summary.showFrequencyTable();       // Show the Word Frequency Table
+//        summary.showTextTable();              // Show Text Table
+//        summary.showFrequencyTable();         // Show the Word Frequency Table
     }
 }
