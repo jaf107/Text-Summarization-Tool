@@ -19,5 +19,6 @@ public class Main {
 
         SummaryTool mytool = new SummaryTool();
 
+        mytool.mainProcess();
     }
 }
