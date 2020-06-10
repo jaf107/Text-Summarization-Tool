@@ -84,11 +84,22 @@ public class SummaryTool {
     void findThreshold()
     {
         double threshold = 0;
+        for (Map.Entry<String, Double> entry : sentencesScore.entrySet()) {
+            String key = (String) entry.getKey();
+            Double value = entry.getValue();
+
+            threshold += value;
+            //System.out.println(key + "=" + value);
+        }
+        threshold /= (double)sentences.length;
+//        System.out.println(threshold + " = Threshold" );
 
 
     }
     void generateSummary()
     {
+
+
 
     }
 
