@@ -20,5 +20,7 @@ public class Main {
         SummaryTool mytool = new SummaryTool();
 
         mytool.mainProcess();
+//        mytool.showSentences();
+//        mytool.showProcessedSentences();
     }
 }

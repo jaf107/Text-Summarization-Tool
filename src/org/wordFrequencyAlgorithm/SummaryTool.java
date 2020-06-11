@@ -23,7 +23,7 @@ public class SummaryTool {
         "So become intentional on what you want out of life. Commit to it. Nurture your dreams. Focus on your development and if you want to give up, know what’s involved before you take the plunge. Because I assure you, someone out there right now is working harder than you, reading more books, sleeping less and sacrificing all they have to realise their dreams and it may contest with yours. Don’t leave your dreams to chance.";
 
     String textTable[];
-    String sentences[] = new String[100];
+    String sentences[];
 
 
     String textTable1[] = {"i", "know" ,"one" ,"thing", "for", "certain", "don’t", "settle" ,"for", "less", "than","what" ,"you’re"
@@ -71,6 +71,7 @@ public class SummaryTool {
             System.out.println(t);
 
         }*/
+        sentences = new String[fullstopCounter(text)];
         sentences = text.split("\\.");
         for(int i = 0 ;i<sentences.length;i++){
             sentences[i] += ".";
@@ -126,6 +127,16 @@ public class SummaryTool {
     }
 
     //Functions
+    int fullstopCounter(String sample)
+    {
+        int fullstop = 0;
+        for(int i=0;i<sample.length();i++)
+        {
+            if(sample.charAt(i) == '.')
+                fullstop++;
+        }
+        return fullstop;
+    }
     int noOfNonStopWords(String sample) {
 //        System.out.println(sample);
         String[] stop_words = {"a", "able", "about", "after", "all", "also", "am", " ", "The", "\r", "\n",
