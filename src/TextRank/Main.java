@@ -20,6 +20,14 @@ public class Main {
         SummaryTool mytool = new SummaryTool();
 
         mytool.mainProcess();
+
+
+
+//        Sentence TESTING
+//        Sentence mySentence = new Sentence("This is Mahin",2);
+//        System.out.println(mySentence.toString());
+
+
 //        mytool.showSentences();
 //        mytool.showProcessedSentences();
     }

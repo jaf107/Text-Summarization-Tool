@@ -15,6 +15,10 @@ public class Sentence {
     Sentence()
     {
 
+        this.sentenencePosition = 0;
+        this.sentenceLength = text.length();
+        this.numberOfWords = getNumberOfWords(text);
+
     }
     Sentence(String sample,int sentenencePosition)
     {
@@ -86,5 +90,19 @@ public class Sentence {
 
     public void setNumberOfProperNoun(int numberOfProperNoun) {
         this.numberOfProperNoun = numberOfProperNoun;
+    }
+
+//    ToString
+
+    @Override
+    public String toString() {
+        return "Sentence{" +
+                "text='" + text + '\'' +
+                ", sentenencePosition=" + sentenencePosition +
+                ", frequency=" + frequency +
+                ", numberOfWords=" + numberOfWords +
+                ", sentenceLength=" + sentenceLength +
+                ", numberOfProperNoun=" + numberOfProperNoun +
+                '}';
     }
 }
