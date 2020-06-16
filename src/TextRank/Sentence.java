@@ -1,9 +1,14 @@
 package TextRank;
 
+import javafx.geometry.HPos;
+
+import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sentence {
-    String text = "The name of my University is Dhaka University.";
+    String text = "The name of my University is Dhaka University";
     private int score ;
 
     // PARAMETERS
@@ -14,6 +19,7 @@ public class Sentence {
     private int numberOfProperNoun;         // Implementation later
 
     private String[] words;                 // Words of the Sentence
+        HashMap<String, Integer > wordScore  = new HashMap<>();
 //    CONSTRUCTOR
 
     Sentence()
@@ -23,6 +29,7 @@ public class Sentence {
         this.sentenceLength = text.length();
         this.numberOfWords = getNumberOfWords(text);
         this.words = text.split(" ");
+        wordScore = generateWordScore(words);
     }
 
 
@@ -35,15 +42,26 @@ public class Sentence {
         this.numberOfWords = getNumberOfWords(sample);
         this.score = scoreSentence();
         this.words = text.split(" ");
+        wordScore = generateWordScore(words);
     }
 
 //    METHODS
+    HashMap<String, Integer> generateWordScore(String[] allWords)
+    {
+        HashMap<String , Integer > sample  = new HashMap<>();
+        for (String s: allWords) {
+            sample.compute(s,(k,v) -> v == null? 1:v+1);
+        }
+        return sample;
+    }
     int scoreSentence()
     {
         int score = 0;
         return score;
     }
 
+
+//    OUTPUT METHODS
 
 
 
@@ -101,18 +119,18 @@ public class Sentence {
         this.numberOfProperNoun = numberOfProperNoun;
     }
 
-//    ToString
-@Override
+    @Override
     public String toString() {
-    return "Sentence{" +
-            "text='" + text + '\'' +
-            ", score=" + score +
-            ", sentenencePosition=" + sentenencePosition +
-            ", frequency=" + frequency +
-            ", numberOfWords=" + numberOfWords +
-            ", sentenceLength=" + sentenceLength +
-            ", numberOfProperNoun=" + numberOfProperNoun +
-            ", words=" + Arrays.toString(words) +
-            '}';
-}
+        return "Sentence{" +
+                "text='" + text + '\'' +
+                ", score=" + score +
+                ", sentenencePosition=" + sentenencePosition +
+                ", frequency=" + frequency +
+                ", numberOfWords=" + numberOfWords +
+                ", sentenceLength=" + sentenceLength +
+                ", numberOfProperNoun=" + numberOfProperNoun +
+                ", words=" + Arrays.toString(words) +
+                ", wordScore=" + wordScore +
+                '}';
+    }
 }
