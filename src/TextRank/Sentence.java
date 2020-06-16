@@ -1,7 +1,10 @@
 package TextRank;
 
+import java.util.Arrays;
+
 public class Sentence {
     String text = "The name of my University is Dhaka University.";
+    private int score ;
 
     // PARAMETERS
     private int sentenencePosition;
@@ -10,6 +13,7 @@ public class Sentence {
     private int sentenceLength;
     private int numberOfProperNoun;         // Implementation later
 
+    private String[] words;                 // Words of the Sentence
 //    CONSTRUCTOR
 
     Sentence()
@@ -18,21 +22,26 @@ public class Sentence {
         this.sentenencePosition = 0;
         this.sentenceLength = text.length();
         this.numberOfWords = getNumberOfWords(text);
-
+        this.words = text.split(" ");
     }
-    Sentence(String sample,int sentenencePosition)
+
+
+
+    Sentence(String sample, int sentenencePosition)
     {
         this.text = sample;
         this.sentenencePosition = sentenencePosition;
         this.sentenceLength = text.length();
         this.numberOfWords = getNumberOfWords(sample);
-
+        this.score = scoreSentence();
+        this.words = text.split(" ");
     }
 
 //    METHODS
-    void scoreSentence()
+    int scoreSentence()
     {
-
+        int score = 0;
+        return score;
     }
 
 
@@ -93,16 +102,17 @@ public class Sentence {
     }
 
 //    ToString
-
-    @Override
+@Override
     public String toString() {
-        return "Sentence{" +
-                "text='" + text + '\'' +
-                ", sentenencePosition=" + sentenencePosition +
-                ", frequency=" + frequency +
-                ", numberOfWords=" + numberOfWords +
-                ", sentenceLength=" + sentenceLength +
-                ", numberOfProperNoun=" + numberOfProperNoun +
-                '}';
-    }
+    return "Sentence{" +
+            "text='" + text + '\'' +
+            ", score=" + score +
+            ", sentenencePosition=" + sentenencePosition +
+            ", frequency=" + frequency +
+            ", numberOfWords=" + numberOfWords +
+            ", sentenceLength=" + sentenceLength +
+            ", numberOfProperNoun=" + numberOfProperNoun +
+            ", words=" + Arrays.toString(words) +
+            '}';
+}
 }
