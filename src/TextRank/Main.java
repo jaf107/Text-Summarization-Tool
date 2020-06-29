@@ -17,18 +17,17 @@ public class Main {
 
         */
 
-//        SummaryTool mytool = new SummaryTool();
-//
-//        mytool.mainProcess();
+        SummaryTool mytool = new SummaryTool();
+        mytool.mainProcess(); // MUST RUN
 
 
 
 //        Sentence TESTING
-        Sentence mySentence = new Sentence();
-        System.out.println(mySentence.toString());
+//        Sentence mySentence = new Sentence();
+//        System.out.println(mySentence.toString());
 
 
-//        mytool.showSentences();
-//        mytool.showProcessedSentences();
+        mytool.showSentences();
+        mytool.showProcessedSentences();
     }
 }

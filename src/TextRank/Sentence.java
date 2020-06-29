@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Sentence {
     String text = "The name of my University is Dhaka University";
-    private int score ;
+    private double score ;
 
     // PARAMETERS
     private int sentenencePosition;
