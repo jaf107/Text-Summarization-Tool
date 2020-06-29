@@ -18,4 +18,13 @@ public class Sentence {
         this.paragraphNumber = paragraphNumber;
 
     }
+
+
+    public double getScore() {
+        return score;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }
