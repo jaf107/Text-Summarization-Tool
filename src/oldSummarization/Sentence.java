@@ -27,4 +27,20 @@ public class Sentence {
     public int getNumber() {
         return number;
     }
+
+    public int getParagraphNumber() {
+        return paragraphNumber;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public int getNoOfWords() {
+        return noOfWords;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 }
