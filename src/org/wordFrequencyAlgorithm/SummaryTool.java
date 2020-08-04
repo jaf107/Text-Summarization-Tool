@@ -26,17 +26,6 @@ public class SummaryTool {
     String sentences[];
 
 
-    String textTable1[] = {"i", "know" ,"one" ,"thing", "for", "certain", "don’t", "settle" ,"for", "less", "than","what" ,"you’re"
-            ,"capable", "of", "but", "strive", "for" ,"something", "bigger", "Some" ,"of","you", "reading", "this", "might",
-            "identify", "with" ,"this" ,"message" ,"because" ,"it" ,"resonates" ,"with", "you", "on" ,"a" ,"deeper", "level"
-            , "for", "others", "at" ,"the" ,"end" ,"of" ,"their", "tether", "the", "message" ,"might" ,"be" ,"nothing"
-            ,"more" ,"than" ,"a", "trivial", "pep" ,"talk" ,"what" ,"i", "wish", "to", "convey", "irrespective", "of" ,"where"
-            ,"you" ,"are" ,"in", "your", "journey" ,"is", "never" ,"settle", "for", "less", "if", "you", "settle" ,"for"
-            , "less", "you" ,"will" ,"receive", "less" ,"than", "you", "deserve" ,"and", "convince", "yourself", "you"
-            ,"are", "justified", "to", "receive", "it"};
-
-
-
     HashMap<String,Integer> frequencyCounter = new HashMap<>();
     HashMap<String,Double> sentencesScore = new HashMap<>();
     ArrayList<String> summary = new ArrayList<>();
