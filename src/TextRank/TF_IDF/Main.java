@@ -18,7 +18,7 @@ public class Main {
         for (List<String> doc:documents             ) {
             for (String w:doc  ) {
 
-                double tfidf = calculator.tfIdf(doc1, documents, w);
+                double tfidf = calculator.tfIdf(doc, documents, w);
                 System.out.println("TF-IDF " +w +" = " +tfidf);
             }
         }
