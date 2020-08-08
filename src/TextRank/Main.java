@@ -17,9 +17,12 @@ public class Main {
 
         */
 
-        SummaryTool mytool = new SummaryTool();
-        mytool.mainProcess(); // MUST RUN
+//        SummaryTool mytool = new SummaryTool();
+//        mytool.mainProcess(); // MUST RUN
 
+        Sentence s = new Sentence("My name is Mahin");
+
+        System.out.println(s.toString());
 
 
 //        Sentence TESTING
@@ -27,7 +30,7 @@ public class Main {
 //        System.out.println(mySentence.toString());
 
 
-        mytool.showSentences();
-        mytool.showProcessedSentences();
+//        mytool.showSentences();
+//        mytool.showProcessedSentences();
     }
 }

@@ -24,12 +24,12 @@ public class Main {
 
 //        Output
 
-        summary.showComparison();
+//        summary.showComparison();
 
-//        summary.showSentences();              //show Sentence and it's scores
-//        summary.showSummary();                  //show Summary
+        summary.showSentences();              //show Sentence and it's scores
+        summary.showSummary();                  //show Summary
 
 //        summary.showTextTable();              // Show Text Table
-//        summary.showFrequencyTable();         // Show the Word Frequency Table
+        summary.showFrequencyTable();         // Show the Word Frequency Table
     }
 }
