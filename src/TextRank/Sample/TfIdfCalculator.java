@@ -23,7 +23,7 @@ public class TfIdfCalculator {
                 }
             }
         }
-        return Math.log(docs.size() / n);
+        return Math.log((docs.size() / n)+1);
     }
     public double tfIdf(ArrayList<String> doc, ArrayList<ArrayList<String>> docs, String term) {
         return tf(doc, term) * idf(docs, term);

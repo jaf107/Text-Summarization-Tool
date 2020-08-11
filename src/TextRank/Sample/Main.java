@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Tool myTool = new Tool("Hello this is Mahin. I'm from Dhaka University. This University is located in Shahbagh.");
+        Tool myTool = new Tool("Hello this is Mahin.");
 
         myTool.showDoc();
 
@@ -25,5 +25,7 @@ public class Main {
             }
         }
 
+
     }
+
 }
