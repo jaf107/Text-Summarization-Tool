@@ -17,12 +17,14 @@ public class Main {
 
         */
 
-//        SummaryTool mytool = new SummaryTool();
-//        mytool.mainProcess(); // MUST RUN
+        SummaryTool mytool = new SummaryTool();
+        mytool.mainProcess(); // MUST RUN
 
-        Sentence s = new Sentence("My name is Mahin");
+        System.out.println(mytool.toString());
 
-        System.out.println(s.toString());
+//        Sentence s = new Sentence("My name is Mahin");
+//
+//        System.out.println(s.toString());
 
 
 //        Sentence TESTING

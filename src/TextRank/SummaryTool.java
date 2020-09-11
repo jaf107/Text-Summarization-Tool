@@ -1,6 +1,9 @@
 package TextRank;
 
+import TextRank.BOGandTFIDF.BagOfWords;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SummaryTool {
 
@@ -9,6 +12,9 @@ public class SummaryTool {
     //    ArrayList sentences  = new ArrayList();
     String[] sentences;
     String[] processedSentences;
+
+    String[] bagOfWords;
+
 
     void mainProcess() {
         int n = 7;// Random initialization
@@ -26,6 +32,11 @@ public class SummaryTool {
 
     void textToSentence() {
         sentences = new String[fullStopCounter(text)];
+
+        String processedText = stopWordRemoval(text);
+        BagOfWords bogTool = new BagOfWords(processedText);
+
+        bagOfWords = bogTool.getWordsArray();
 
 
         System.out.println("Total number of sentences :" + fullStopCounter(text));
@@ -148,4 +159,10 @@ public class SummaryTool {
         }
     }
 
+    @Override
+    public String toString() {
+        return "SummaryTool{" +
+                "bagOfWords="+bagOfWords.length+"\n" + Arrays.toString(bagOfWords) +
+                '}';
+    }
 }
