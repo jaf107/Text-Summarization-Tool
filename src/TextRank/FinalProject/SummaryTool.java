@@ -1,10 +1,13 @@
 package TextRank.FinalProject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class SummaryTool {
 
+    static int numberOrdering = 0;
     String context;
     String summary;
 
@@ -16,6 +19,7 @@ public class SummaryTool {
     ArrayList<ArrayList<String>> docs;
 
     double[][] csMatrix;                    // Cosine Similarity Matrix
+    ArrayList<Double> scoreOfSentences;
 
 
     SummaryTool(String t) {
@@ -27,12 +31,14 @@ public class SummaryTool {
 
         noOfSentences = fullStopCounter(t);
         csMatrix = new double[noOfSentences][noOfSentences];
+        scoreOfSentences = new ArrayList();
 
         String[] sentencesArray = new String[noOfSentences];
         sentencesArray = context.split("\\.");
 
         for (String s : sentencesArray) {
-            paragraph.add(new Sentence(s));
+            numberOrdering++;
+            paragraph.add(new Sentence(s,numberOrdering));
         }
     }
 
@@ -56,6 +62,18 @@ public class SummaryTool {
                 csMatrix[i][j] = tool.dotProduct(s1,s2);
 //                csMatrix[j][i] = csMatrix[i][j];
             }
+        }
+
+
+        for(int i=0;i<noOfSentences;i++)
+        {
+            double value = 0.0;
+            for(int j=0; j<noOfSentences;j++)
+            {
+                value += csMatrix[i][j];
+            }
+            paragraph.get(i).setScore(value);
+            scoreOfSentences.add(value);
         }
         
 
@@ -109,6 +127,25 @@ public class SummaryTool {
                 fullstop++;
         }
         return fullstop;
+    }
+
+    void extraction(int n)
+    {
+        Collections.sort(scoreOfSentences,Collections.reverseOrder());
+
+        double threshold = scoreOfSentences.get(n-1);
+
+        System.out.println(threshold);
+        for (Sentence s: paragraph ) {
+            if(s.getScore() >= threshold)
+            {
+                System.out.println(s.getText() + s.getScore());
+                summary += s.getText();
+            }
+        }
+
+        System.out.println(summary);
+
     }
 
     void printcsMat()

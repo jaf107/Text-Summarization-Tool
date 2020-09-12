@@ -10,7 +10,8 @@ public class MainMethod {
         tool.tfidf();
         tool.cosineSimilarity();
 
-        tool.printcsMat();
+//        tool.printcsMat();
+        tool.extraction(5);
 //        System.out.println(tool.toString());
     }
 

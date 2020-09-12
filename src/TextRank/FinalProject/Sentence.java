@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Sentence {
+    int number;
     String text;
     String processedText;
+    Double score;
     ArrayList<String> words;
     ArrayList<String> allExclusiveWords;
 
@@ -16,14 +18,16 @@ public class Sentence {
     HashMap<String, Double> tfidf;
 
 
-    Sentence(String text)
+    Sentence(String text,int number)
     {
+        this.number = number;
         this.text = text;
         this.processedText = stopWordRemoval(text);
         this.paragraph = new ArrayList<>();
         this.words = new ArrayList<>();
         this.tfidf = new HashMap<String, Double>();
         this.allExclusiveWords = new ArrayList<>();
+        this.score = 0.0;
 
         String[] wordArray = processedText.split(" ");
         for (String w:wordArray) {
@@ -57,6 +61,15 @@ public class Sentence {
     public void setAllExclusiveWords(ArrayList<String> allExclusiveWords) {
         this.allExclusiveWords = allExclusiveWords;
     }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
 
     public String getText() {
         return text;
@@ -128,13 +141,15 @@ public class Sentence {
 
     @Override
     public String toString() {
-        return "Sentence{" +
-//                "text='" + text + '\'' +
+        return "\nSentence{" +
+                "number=" + number +
+                ", text='" + text + '\'' +
 //                ", processedText='" + processedText + '\'' +
+                ",\nscore=" + score +
 //                ", words=" + words +
-//                ", \nallExclusiveWords=" + allExclusiveWords +
+//                ", allExclusiveWords=" + allExclusiveWords +
 //                ", paragraph=" + paragraph +
-                ", \ntfidf=" + tfidf +
+//                ", tfidf=" + tfidf +
                 '}';
     }
 }
