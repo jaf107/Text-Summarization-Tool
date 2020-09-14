@@ -1,7 +1,5 @@
 package TextRank.FinalProject;
 
-import TextRank.VectorArray.VectorUsingArray;
-
 public class CosineSimilarity {
 
     Double dotProduct(Sentence s1, Sentence s2)

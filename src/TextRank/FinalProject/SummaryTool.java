@@ -11,7 +11,8 @@ public class SummaryTool {
     String context;
     String summary;
 
-    int noOfSentences;
+    int noOfSentences;                      // Number of Sentences in the context
+    int noOfSentencesInSummary;             // Number of Sentences in the summary
 
     ArrayList<Sentence> paragraph;
     ArrayList<String> allExclusiveWords;    // Takes all the words only once
@@ -32,6 +33,8 @@ public class SummaryTool {
         noOfSentences = fullStopCounter(t);
         csMatrix = new double[noOfSentences][noOfSentences];
         scoreOfSentences = new ArrayList();
+
+        noOfSentencesInSummary = noOfSentences/10;
 
         String[] sentencesArray = new String[noOfSentences];
         sentencesArray = context.split("\\.");
@@ -131,20 +134,22 @@ public class SummaryTool {
 
     void extraction(int n)
     {
+        n = this.noOfSentencesInSummary;
         Collections.sort(scoreOfSentences,Collections.reverseOrder());
 
         double threshold = scoreOfSentences.get(n-1);
 
-        System.out.println(threshold);
+        System.out.println("Threshold :" + threshold);
         for (Sentence s: paragraph ) {
             if(s.getScore() >= threshold)
             {
-                System.out.println(s.getText() + s.getScore());
+                System.out.println(s.getText());
                 summary += s.getText();
+                summary += ".";
             }
         }
 
-        System.out.println(summary);
+        System.out.println('\n'+summary+'\n');
 
     }
 
