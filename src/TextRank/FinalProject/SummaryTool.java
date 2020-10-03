@@ -7,34 +7,35 @@ import java.util.Collections;
 
 public class SummaryTool {
 
-    static int numberOrdering = 0;
-    String context;
-    String summary;
+    private static int numberOrdering = 0;
+    private String context;
+    private String summary;
 
-    int noOfSentences;                      // Number of Sentences in the context
-    int noOfSentencesInSummary;             // Number of Sentences in the summary
+    private int noOfSentences;                      // Number of Sentences in the context
+    private int noOfSentencesInSummary;             // Number of Sentences in the summary
 
-    ArrayList<Sentence> paragraph;
-    ArrayList<String> allExclusiveWords;    // Takes all the words only once
+    private ArrayList<Sentence> paragraph;
+    private ArrayList<String> allExclusiveWords;    // Takes all the words only once
 
-    ArrayList<ArrayList<String>> docs;
+    private ArrayList<ArrayList<String>> docs;
 
-    double[][] csMatrix;                    // Cosine Similarity Matrix
-    ArrayList<Double> scoreOfSentences;
+    private double[][] csMatrix;                    // Cosine Similarity Matrix
+    private ArrayList<Double> scoreOfSentences;
 
 
-    SummaryTool(String t) {
+    public SummaryTool(String t) {
         this.context = t;
         paragraph = new ArrayList<Sentence>();
         docs = new ArrayList<>();
         allExclusiveWords = new ArrayList<>();
 
+        summary = "";
 
         noOfSentences = fullStopCounter(t);
         csMatrix = new double[noOfSentences][noOfSentences];
         scoreOfSentences = new ArrayList();
 
-        noOfSentencesInSummary = noOfSentences/10;
+        noOfSentencesInSummary = noOfSentences/3;
 
         String[] sentencesArray = new String[noOfSentences];
         sentencesArray = context.split("\\.");
@@ -43,6 +44,12 @@ public class SummaryTool {
             numberOrdering++;
             paragraph.add(new Sentence(s,numberOrdering));
         }
+
+        docConversion();
+        formAllExclusiveWords();
+        tfidf();
+        cosineSimilarity();
+        extraction(noOfSentencesInSummary);
     }
 
     void tfidf() {
@@ -134,22 +141,22 @@ public class SummaryTool {
 
     void extraction(int n)
     {
-        n = this.noOfSentencesInSummary;
         Collections.sort(scoreOfSentences,Collections.reverseOrder());
 
         double threshold = scoreOfSentences.get(n-1);
 
-        System.out.println("Threshold :" + threshold);
+//        System.out.println('\n'+summary+'\n');
+//        System.out.println("Threshold :" + threshold);
         for (Sentence s: paragraph ) {
-            if(s.getScore() >= threshold)
+            if(s.getScore() >= threshold && s.getText()!= null)
             {
-                System.out.println(s.getText());
+//                System.out.println(s.getText() + ". ");
                 summary += s.getText();
-                summary += ".";
+                summary += ".\n";
             }
         }
 
-        System.out.println('\n'+summary+'\n');
+//        System.out.println('\n'+summary+'\n');
 
     }
 
@@ -165,6 +172,9 @@ public class SummaryTool {
         }
     }
 
+    public String getSummary() {
+        return summary;
+    }
 
     @Override
     public String toString() {

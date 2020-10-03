@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 public class Sentence {
-    int number;
-    String text;
-    String processedText;
-    Double score;
-    ArrayList<String> words;
-    ArrayList<String> allExclusiveWords;
+    private int number;
+    private String text;
+    private String processedText;
+    private Double score;
+    private ArrayList<String> words;
+    private ArrayList<String> allExclusiveWords;
 
-    ArrayList<ArrayList<String>> paragraph;
+    private ArrayList<ArrayList<String>> paragraph;
 
-    HashMap<String, Double> tfidf;
+    private HashMap<String, Double> tfidf;
 
 
     Sentence(String text,int number)
@@ -73,6 +73,14 @@ public class Sentence {
 
     public String getText() {
         return text;
+    }
+
+    public ArrayList<String> getAllExclusiveWords() {
+        return allExclusiveWords;
+    }
+
+    public HashMap<String, Double> getTfidf() {
+        return tfidf;
     }
 
     public ArrayList<String> getWords() {

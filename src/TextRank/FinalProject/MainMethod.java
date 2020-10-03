@@ -110,15 +110,8 @@ public class MainMethod {
                 "" +
                 "Talking to a professional or someone you trust, having them listen to what you are going through and getting support can help regulate emotions and reduce stress.";
         SummaryTool tool = new SummaryTool(text);
+        System.out.println(tool.getSummary());
 
-        tool.docConversion();
-                                  //Calculation of TD-IDF in paragraph
-        tool.formAllExclusiveWords();
-        tool.tfidf();
-        tool.cosineSimilarity();
-
-//        tool.printcsMat();
-        tool.extraction(5);
 //        System.out.println(tool.toString());
     }
 

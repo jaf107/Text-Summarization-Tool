@@ -18,9 +18,9 @@ public class CosineSimilarity {
         double val = 0.0;
 
 
-        for (String w:s1.allExclusiveWords)
+        for (String w:s1.getAllExclusiveWords())
         {
-            val += (s1.tfidf.get(w) * s2.tfidf.get(w));
+            val += (s1.getTfidf().get(w) * s2.getTfidf().get(w));
         }
 
         return val;
@@ -29,9 +29,9 @@ public class CosineSimilarity {
     {
         double val = 0.0;
 
-        for (String s:A.allExclusiveWords ) {
+        for (String s:A.getAllExclusiveWords()) {
 
-            val += Math.pow(A.tfidf.get(s),2);
+            val += Math.pow(A.getTfidf().get(s),2);
 
         }
         return Math.sqrt(val);
