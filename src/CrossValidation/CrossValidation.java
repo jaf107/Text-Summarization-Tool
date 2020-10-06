@@ -11,10 +11,14 @@ public class CrossValidation {
 
     CrossValidation(String machinemadeSummary,String goldenSummary)
     {
-        this.machinemadeSummary = machinemadeSummary;
-        this.referenceSummary = goldenSummary;
         precision = 0.0;
         recall = 0.0;
+
+        Preprocessing tool = new Preprocessing();
+
+        this.machinemadeSummary = tool.stopWordRemoval(tool.punctuationRemover(machinemadeSummary));
+        this.referenceSummary =tool.stopWordRemoval(tool.punctuationRemover(goldenSummary));
+
 
         calculatePrecision();
         calculateRecall();
@@ -95,8 +99,8 @@ public class CrossValidation {
     @Override
     public String toString() {
         return "CrossValidation{" +
-                "machinemadeSummary='" + machinemadeSummary + '\'' +
-                ", referenceSummary='" + referenceSummary + '\'' +
+//                "machinemadeSummary='" + machinemadeSummary + '\'' +
+//                ", referenceSummary='" + referenceSummary + '\'' +
                 ", precision=" + precision +
                 ", recall=" + recall +
                 '}';

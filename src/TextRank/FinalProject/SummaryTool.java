@@ -35,7 +35,7 @@ public class SummaryTool {
         csMatrix = new double[noOfSentences][noOfSentences];
         scoreOfSentences = new ArrayList();
 
-        noOfSentencesInSummary = noOfSentences/3;
+        noOfSentencesInSummary = noOfSentences/2;
 
         String[] sentencesArray = new String[noOfSentences];
         sentencesArray = context.split("\\.");

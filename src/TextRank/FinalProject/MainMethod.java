@@ -3,6 +3,7 @@ package TextRank.FinalProject;
 public class MainMethod {
 
     public static void main(String[] args) {
+
         String text = "Battling pandemic fatigue: Some feel burned out as the Covid-19 outbreak drags on with no end in sight. Freelance writer Sng Ler Jun has been taking on more writing assignments since March to earn extra money for his family and himself." +
                 "" +
                 "His 55-year-old mother was retrenched from a part-time job as a food promoter in February and his father, a 59-year-old taxi driver, has seen earnings fall since the start of the coronavirus pandemic." +
@@ -109,7 +110,10 @@ public class MainMethod {
                 "TALK TO SOMEONE: Seek help if you notice that you have signs of pandemic fatigue." +
                 "" +
                 "Talking to a professional or someone you trust, having them listen to what you are going through and getting support can help regulate emotions and reduce stress.";
+
+//        String text = "";
         SummaryTool tool = new SummaryTool(text);
+
         System.out.println(tool.getSummary());
 
 //        System.out.println(tool.toString());
