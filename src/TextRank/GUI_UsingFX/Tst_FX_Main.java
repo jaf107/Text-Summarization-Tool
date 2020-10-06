@@ -30,9 +30,9 @@ public class Tst_FX_Main extends Application {
         Label introTitle = new Label("Text Summarization Tool");
         Button startButton = new Button("Start");
 
-        introTitle.setTranslateX(100);
+        introTitle.setTranslateX(200);
         introTitle.setTranslateY(250);
-        startButton.setTranslateX(300);
+        startButton.setTranslateX(600);
         startButton.setTranslateY(250);
 
         startPane.getChildren().addAll(introTitle,startButton);
@@ -47,11 +47,11 @@ public class Tst_FX_Main extends Application {
         Pane menuPane = new Pane();
 
         // Menu buttons coordinates
-        toolButton.setTranslateX(250);
+        toolButton.setTranslateX(500);
         toolButton.setTranslateY(140);
-        aboutButton.setTranslateX(250);
+        aboutButton.setTranslateX(500);
         aboutButton.setTranslateY(240);
-        testButton.setTranslateX(250);
+        testButton.setTranslateX(500);
         testButton.setTranslateY(340);
         backButton_Menu.setTranslateX(50);
         backButton_Menu.setTranslateY(400);
@@ -59,11 +59,11 @@ public class Tst_FX_Main extends Application {
 
 
         menuPane.getChildren().addAll(toolButton,aboutButton,testButton,backButton_Menu);
-        menu = new Scene(menuPane,500,500);
+        menu = new Scene(menuPane,1000,500);
 
 
 
-        start = new Scene(startPane,500,500);
+        start = new Scene(startPane,1000,500);
 
         Font mFont = new Font("Helvetica",Font.BOLD,12);
         window.setTitle("Text Summarizer Tool");
@@ -74,10 +74,26 @@ public class Tst_FX_Main extends Application {
         Pane toolPane = new Pane();
 
         summarize = new Button("Summarize");
+        Button textRankButton = new Button("TextRank");
+        Button directButton = new Button("Manual");
+        Button wordFrequencyButton = new Button("WordFrequency");
+        Button backButton_Tool = new Button("Back");
 
-        toolPane.getChildren().add(summarize);
+        tool = new Scene(toolPane,1000,500);
+
+        toolPane.getChildren().addAll(summarize,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
+        summarize.setTranslateX(350);
+        summarize.setTranslateY(10);
+        textRankButton.setTranslateX(650);
+        textRankButton.setTranslateY(10);
+        directButton.setTranslateX(750);
+        directButton.setTranslateY(10);
+        wordFrequencyButton.setTranslateX(850);
+        wordFrequencyButton.setTranslateY(10);
+        backButton_Tool.setTranslateX(30);
+        backButton_Tool.setTranslateY(460);
 
 
 
@@ -113,7 +129,7 @@ public class Tst_FX_Main extends Application {
         toolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-        window.setScene(new Scene(toolPane));
+        window.setScene(tool);
             }
         });
         aboutButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -133,6 +149,12 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 window.setScene(start);
+            }
+        });
+        backButton_Tool.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(menu);
             }
         });
 
