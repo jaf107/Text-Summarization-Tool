@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 import static javafx.application.Application.launch;
 
 public class Tst_FX_Main extends Application {
@@ -56,13 +58,7 @@ public class Tst_FX_Main extends Application {
         menuPane.getChildren().addAll(toolButton,aboutButton,testButton,backButton_Menu);
         menu = new Scene(menuPane,500,500);
 
-        startButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("Im here");
-                window.setScene(menu);
-            }
-        });
+
 
         start = new Scene(startPane,500,500);
 
@@ -70,7 +66,65 @@ public class Tst_FX_Main extends Application {
         window.setScene(start);
         window.show();
 
+        // Tool page
+        JTextField context = new JTextField("Enter ");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Buttons set on  Action
+        // Start
+        startButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(menu);
+            }
+        });
+
+        //Menu
+        toolButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+        aboutButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+        testButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+
+        backButton_Menu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(start);
+            }
+        });
 
     }
 
