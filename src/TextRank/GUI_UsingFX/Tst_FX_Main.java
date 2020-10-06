@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import static javafx.application.Application.launch;
 
 public class Tst_FX_Main extends Application {
@@ -18,6 +20,7 @@ public class Tst_FX_Main extends Application {
     Stage window;
     Scene start,menu,tool;
 
+    Button summarize;
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
@@ -62,12 +65,19 @@ public class Tst_FX_Main extends Application {
 
         start = new Scene(startPane,500,500);
 
+        Font mFont = new Font("Helvetica",Font.BOLD,12);
         window.setTitle("Text Summarizer Tool");
         window.setScene(start);
         window.show();
 
         // Tool page
-        JTextField context = new JTextField("Enter ");
+        Pane toolPane = new Pane();
+
+        summarize = new Button("Summarize");
+
+        toolPane.getChildren().add(summarize);
+//        toolPane.getChildren().addAll(context,summary);
+        // Coordinates
 
 
 
@@ -103,7 +113,7 @@ public class Tst_FX_Main extends Application {
         toolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+        window.setScene(new Scene(toolPane));
             }
         });
         aboutButton.setOnAction(new EventHandler<ActionEvent>() {
