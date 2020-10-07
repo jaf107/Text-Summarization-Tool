@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -19,7 +20,8 @@ public class Tst_FX_Main extends Application {
     Stage window;
     Scene start,menu,tool;
 
-    TextField context_tool,summary_tool;
+
+    TextArea context_tool,summary_tool;
 
     Button summarize;
     @Override
@@ -87,8 +89,8 @@ public class Tst_FX_Main extends Application {
         Button wordFrequencyButton = new Button("WordFrequency");
         Button backButton_Tool = new Button("Back");
 
-        context_tool = new TextField();
-        summary_tool = new TextField();
+        context_tool = new TextArea();
+        summary_tool = new TextArea();
 
 //        context_tool.setPrefColumnCount(50);
         context_tool.setPrefSize(450,400);
@@ -96,6 +98,10 @@ public class Tst_FX_Main extends Application {
 
         summary_tool.setPrefSize(450,400);
         summary_tool.setPromptText("Press summarize button to get the summary");
+
+        context_tool.setWrapText(true);
+        summary_tool.setWrapText(true);
+
         tool = new Scene(toolPane,1000,500);
 
 
