@@ -171,29 +171,12 @@ public class Tst_FX_Main extends Application {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Buttons set on  Action
         // Start
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 window.setScene(menu);
             }
         });
@@ -202,7 +185,8 @@ public class Tst_FX_Main extends Application {
         toolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-        window.setScene(tool);
+
+                window.setScene(tool);
             }
         });
         aboutButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -214,6 +198,7 @@ public class Tst_FX_Main extends Application {
         evaluationButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
 
             }
         });
