@@ -1,5 +1,6 @@
 package TextRank.GUI_UsingFX;
 
+import TextRank.FinalProject.SummaryStatistics;
 import TextRank.FinalProject.SummaryTool;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -261,6 +262,51 @@ public class Tst_FX_Main extends Application {
             }
         });
 
+        statsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String context = context_tool.getText();
+                String summary = summary_tool.getText();
+
+                Pane statsPane = new Pane();
+                Scene statsScene = new Scene(statsPane,1000,500);
+                if(context.isEmpty() && summary.isEmpty())
+                {
+
+                }
+                else{
+                    SummaryStatistics summaryStatisticsTool = new SummaryStatistics(context,summary);
+
+
+                    Label wordsInContext = new Label(String.format("Total words in Context : %s", summaryStatisticsTool.getNoOfWordsInContext()));
+                    Label wordsInSummary = new Label("Total words in Summary : "+ summaryStatisticsTool.getNoOfWordsInSummary());
+                    Label reductionLabel = new Label("Words reduced by : "+  summaryStatisticsTool.getPercentageOfReduction()*100+"%");
+
+                    Button backButton = new Button("Back");
+                    backButton.setStyle(buttonCSS);
+
+                    wordsInContext.setTranslateX(25);
+                    wordsInContext.setTranslateY(25);
+                    wordsInSummary.setTranslateX(25);
+                    wordsInSummary.setTranslateY(50);
+                    reductionLabel.setTranslateX(25);
+                    reductionLabel.setTranslateY(75);
+
+                    backButton.setTranslateX(25);
+                    backButton.setTranslateY(460);
+
+                    backButton.setOnAction(e->
+                    {
+                        window.setScene(tool);
+                    });
+
+                    statsPane.getChildren().addAll(wordsInContext,wordsInSummary,reductionLabel,backButton);
+                    window.setScene(statsScene);
+                }
+
+
+            }
+        });
 
 
 
