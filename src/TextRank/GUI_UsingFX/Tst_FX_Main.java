@@ -122,6 +122,8 @@ public class Tst_FX_Main extends Application {
         Tooltip.install(wordFrequencyButton,new Tooltip("Word Frequency Algorithm"));
         Button backButton_Tool = new Button("Back");
         Tooltip.install(backButton_Tool,new Tooltip("Get back to Menu"));
+        Button statsButton = new Button("Stats");
+        Tooltip.install(statsButton,new Tooltip("Statistical Analysis of the above data"));
 
         context_tool = new TextArea();
         summary_tool = new TextArea();
@@ -140,18 +142,18 @@ public class Tst_FX_Main extends Application {
 
 
 
-        toolPane.getChildren().addAll(toolLabel,summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+        toolPane.getChildren().addAll(statsButton,toolLabel,summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
         toolLabel.setTranslateX(30);
         toolLabel.setTranslateY(10);
-        summarize.setTranslateX(400);
+        summarize.setTranslateX(370);
         summarize.setTranslateY(10);
         summarize.setStyle(buttonCSS);
-        textRankButton.setTranslateX(725);
+        textRankButton.setTranslateX(625);
         textRankButton.setTranslateY(10);
         textRankButton.setStyle(buttonCSS);
-        directButton.setTranslateX(800);
+        directButton.setTranslateX(750);
         directButton.setTranslateY(10);
         directButton.setStyle(buttonCSS);
         wordFrequencyButton.setTranslateX(875);
@@ -164,8 +166,19 @@ public class Tst_FX_Main extends Application {
         context_tool.setTranslateY(45);
         summary_tool.setTranslateX(530);
         summary_tool.setTranslateY(45);
+        statsButton.setTranslateX(930);
+        statsButton.setTranslateY(460);
+        statsButton.setStyle(buttonCSS);
 
 
+
+
+        summarize.setPrefSize(105,25);
+        textRankButton.setPrefSize(105,25);
+        directButton.setPrefSize(105,25);
+        wordFrequencyButton.setPrefSize(105,25);
+        statsButton.setPrefSize(50,25);
+        backButton_Tool.setPrefSize(50,25);
 
         // Buttons set on  Action
         // Start
@@ -247,6 +260,8 @@ public class Tst_FX_Main extends Application {
                 summary_tool.setText(summary);
             }
         });
+
+
 
 
         window = stage;
