@@ -1,5 +1,6 @@
 package TextRank.GUI_UsingFX;
 
+import TextRank.FinalProject.SummaryTool;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -176,7 +177,34 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String context = context_tool.getText();
+                SummaryTool textRankTool = new SummaryTool(context);
+                String summary = textRankTool.getSummary();
 
+                summary_tool.setText(summary);
+
+            }
+        });
+
+        textRankButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String context = context_tool.getText();
+                SummaryTool textRankTool = new SummaryTool(context);
+                String summary = textRankTool.getSummary();
+
+                summary_tool.setText(summary);
+            }
+        });
+
+        wordFrequencyButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String context = context_tool.getText();
+                org.wordFrequencyAlgorithm.SummaryTool wordFreqTool = new org.wordFrequencyAlgorithm.SummaryTool(context);
+
+                String summary = wordFreqTool.getSummary();
+
+                summary_tool.setText(summary);
             }
         });
 

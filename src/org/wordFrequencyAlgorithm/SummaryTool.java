@@ -136,16 +136,29 @@ public class SummaryTool {
     ArrayList<String> summary = new ArrayList<>();
 
     //Main Algorithm
+    public SummaryTool(String context)
+    {
+        this.text = context;
+        sentences = new String[fullstopCounter(text)];
+        sentences = text.split("\\.");
+//        textTable = context.split(" ");
+        mainProcess();
+
+    }
     void mainProcess()
     {
-        createWordFrequencyTable();
+
         tokenizeSentences();
+        extractWordsFromSentence();
+        createWordFrequencyTable();
         scoreSentences();
         findThreshold();
         generateSummary();
     }
 
-
+    public void setText(String text) {
+        this.text = text;
+    }
 
     void createWordFrequencyTable()
     {
@@ -165,10 +178,9 @@ public class SummaryTool {
             System.out.println(t);
 
         }*/
-        sentences = new String[fullstopCounter(text)];
-        sentences = text.split("\\.");
+
         for(int i = 0 ;i<sentences.length;i++){
-            sentences[i] += ".";
+            sentences[i] += ". ";
 
         }
 
@@ -356,6 +368,22 @@ public class SummaryTool {
         showSummary();
         //System.out.println("No of WORDS are : " + (spaceCounter(text) + 1));
     }
+
+    public String getSummary()
+    {
+        String summaryString = "";
+
+
+//        System.out.println("\n\n Summary:" );
+        for (String s: summary) {
+            summaryString += s;
+//            summaryString+= ". ";
+
+        }
+        return summaryString;
+
+    }
+
     void showSummary()
     {
 
