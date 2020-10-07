@@ -9,9 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class Tst_FX_Main extends Application {
 
@@ -28,11 +29,12 @@ public class Tst_FX_Main extends Application {
         // Start page Scene
         Pane startPane = new Pane();
         Label introTitle = new Label("Text Summarization Tool");
+        introTitle.setFont(Font.font("Arial",FontWeight.BOLD,48));
         Button startButton = new Button("Start");
 
         introTitle.setTranslateX(200);
-        introTitle.setTranslateY(250);
-        startButton.setTranslateX(600);
+        introTitle.setTranslateY(150);
+        startButton.setTranslateX(500);
         startButton.setTranslateY(250);
 
         startPane.getChildren().addAll(introTitle,startButton);
@@ -47,6 +49,8 @@ public class Tst_FX_Main extends Application {
         Pane menuPane = new Pane();
 
         Label menuLabel = new Label("Menu");
+        menuLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        menuLabel.setTextFill(Color.BLACK);
 
         // Menu buttons coordinates
         toolButton.setTranslateX(500);
@@ -69,7 +73,7 @@ public class Tst_FX_Main extends Application {
 
         start = new Scene(startPane,1000,500);
 
-        Font mFont = new Font("Helvetica",Font.BOLD,12);
+
         window.setTitle("Text Summarizer Tool");
         window.setScene(start);
         window.show();
