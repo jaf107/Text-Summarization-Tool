@@ -5,10 +5,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -33,6 +30,8 @@ public class Tst_FX_Main extends Application {
         Label introTitle = new Label("Text Summarization Tool");
         introTitle.setFont(Font.font("Arial",FontWeight.BOLD,48));
         Button startButton = new Button("Start");
+//        Tooltip startToolTip = new Tooltip("Start Button");
+        Tooltip.install(startButton,new Tooltip("Start Button"));
 
         introTitle.setTranslateX(200);
         introTitle.setTranslateY(150);
@@ -44,9 +43,13 @@ public class Tst_FX_Main extends Application {
         // Menu Scene
 
         Button toolButton = new Button("Tool");
+        Tooltip.install(toolButton,new Tooltip("Text Summarizer Tool "));
         Button aboutButton = new Button("About");
-        Button testButton = new Button("Testing");
+        Tooltip.install(aboutButton,new Tooltip("About section"));
+        Button evaluationButton = new Button("Evaluation");
+        Tooltip.install(evaluationButton,new Tooltip("Evaluation section"));
         Button backButton_Menu = new Button("Back");
+        Tooltip.install(backButton_Menu,new Tooltip("Get back to Start"));
 
         Pane menuPane = new Pane();
 
@@ -59,8 +62,8 @@ public class Tst_FX_Main extends Application {
         toolButton.setTranslateY(140);
         aboutButton.setTranslateX(500);
         aboutButton.setTranslateY(240);
-        testButton.setTranslateX(500);
-        testButton.setTranslateY(340);
+        evaluationButton.setTranslateX(500);
+        evaluationButton.setTranslateY(340);
         backButton_Menu.setTranslateX(50);
         backButton_Menu.setTranslateY(400);
         menuLabel.setTranslateX(50);
@@ -68,7 +71,7 @@ public class Tst_FX_Main extends Application {
 
 
 
-        menuPane.getChildren().addAll(toolButton,aboutButton,testButton,backButton_Menu,menuLabel);
+        menuPane.getChildren().addAll(toolButton,aboutButton,evaluationButton,backButton_Menu,menuLabel);
         menu = new Scene(menuPane,1000,500);
 
 
@@ -84,10 +87,15 @@ public class Tst_FX_Main extends Application {
         Pane toolPane = new Pane();
 
         summarize = new Button("Summarize");
+        Tooltip.install(summarize,new Tooltip("Summarize text\nDefault method: TextRank"));
         Button textRankButton = new Button("TextRank");
+        Tooltip.install(textRankButton,new Tooltip("Text Rank Algorithm"));
         Button directButton = new Button("Manual");
+        Tooltip.install(directButton,new Tooltip("Manual Method"));
         Button wordFrequencyButton = new Button("WordFrequency");
+        Tooltip.install(wordFrequencyButton,new Tooltip("Word Frequency Algorithm"));
         Button backButton_Tool = new Button("Back");
+        Tooltip.install(backButton_Tool,new Tooltip("Get back to Menu"));
 
         context_tool = new TextArea();
         summary_tool = new TextArea();
@@ -166,7 +174,7 @@ public class Tst_FX_Main extends Application {
 
             }
         });
-        testButton.setOnAction(new EventHandler<ActionEvent>() {
+        evaluationButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
