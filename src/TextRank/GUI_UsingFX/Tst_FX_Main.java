@@ -75,8 +75,8 @@ public class Tst_FX_Main extends Application {
         Button backButton_Menu = new Button("Back");
         Tooltip.install(backButton_Menu,new Tooltip("Get back to Start"));
         backButton_Menu.setStyle(buttonCSS);
-        backButton_Menu.setScaleX(2);
-        backButton_Menu.setScaleY(2);
+        backButton_Menu.setScaleX(1);
+        backButton_Menu.setScaleY(1);
 
         Pane menuPane = new Pane();
 
@@ -112,6 +112,9 @@ public class Tst_FX_Main extends Application {
 
         // Tool page
         Pane toolPane = new Pane();
+        Label toolLabel = new Label("Text Summarization Tool");
+        toolLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
+        toolLabel.setTextFill(Color.BLACK);
 
         summarize = new Button("Summarize");
         Tooltip.install(summarize,new Tooltip("Summarize text\nDefault method: TextRank"));
@@ -141,19 +144,26 @@ public class Tst_FX_Main extends Application {
 
 
 
-        toolPane.getChildren().addAll(summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+        toolPane.getChildren().addAll(toolLabel,summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
+        toolLabel.setTranslateX(30);
+        toolLabel.setTranslateY(10);
         summarize.setTranslateX(400);
         summarize.setTranslateY(10);
+        summarize.setStyle(buttonCSS);
         textRankButton.setTranslateX(725);
         textRankButton.setTranslateY(10);
+        textRankButton.setStyle(buttonCSS);
         directButton.setTranslateX(800);
         directButton.setTranslateY(10);
+        directButton.setStyle(buttonCSS);
         wordFrequencyButton.setTranslateX(875);
         wordFrequencyButton.setTranslateY(10);
+        wordFrequencyButton.setStyle(buttonCSS);
         backButton_Tool.setTranslateX(30);
         backButton_Tool.setTranslateY(460);
+        backButton_Tool.setStyle(buttonCSS);
         context_tool.setTranslateX(30);
         context_tool.setTranslateY(45);
         summary_tool.setTranslateX(530);
