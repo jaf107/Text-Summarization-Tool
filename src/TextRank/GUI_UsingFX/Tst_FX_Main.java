@@ -6,19 +6,18 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 import java.awt.*;
-
-import static javafx.application.Application.launch;
 
 public class Tst_FX_Main extends Application {
 
     Stage window;
     Scene start,menu,tool;
+
+    TextField context_tool,summary_tool;
 
     Button summarize;
     @Override
@@ -79,22 +78,36 @@ public class Tst_FX_Main extends Application {
         Button wordFrequencyButton = new Button("WordFrequency");
         Button backButton_Tool = new Button("Back");
 
+        context_tool = new TextField();
+        summary_tool = new TextField();
+
+//        context_tool.setPrefColumnCount(50);
+        context_tool.setPrefSize(450,400);
+        context_tool.setPromptText("Enter the article for summarization");
+
+        summary_tool.setPrefSize(450,400);
+        summary_tool.setPromptText("Press summarize button to get the summary");
         tool = new Scene(toolPane,1000,500);
 
-        toolPane.getChildren().addAll(summarize,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+
+
+        toolPane.getChildren().addAll(summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
-        summarize.setTranslateX(350);
+        summarize.setTranslateX(400);
         summarize.setTranslateY(10);
-        textRankButton.setTranslateX(650);
+        textRankButton.setTranslateX(725);
         textRankButton.setTranslateY(10);
-        directButton.setTranslateX(750);
+        directButton.setTranslateX(800);
         directButton.setTranslateY(10);
-        wordFrequencyButton.setTranslateX(850);
+        wordFrequencyButton.setTranslateX(875);
         wordFrequencyButton.setTranslateY(10);
         backButton_Tool.setTranslateX(30);
         backButton_Tool.setTranslateY(460);
-
+        context_tool.setTranslateX(30);
+        context_tool.setTranslateY(45);
+        summary_tool.setTranslateX(530);
+        summary_tool.setTranslateY(45);
 
 
 
@@ -155,6 +168,15 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 window.setScene(menu);
+            }
+        });
+
+        //Tool Pane
+        summarize.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String context = context_tool.getText();
+
             }
         });
 
