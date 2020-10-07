@@ -23,6 +23,15 @@ public class Tst_FX_Main extends Application {
     Button summarize;
     @Override
     public void start(Stage stage) throws Exception {
+
+        String buttonCSS = "-fx-background-color:\n" +
+                "        linear-gradient(#f2f2f2, #d6d6d6),\n" +
+                "        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),\n" +
+                "        linear-gradient(#dddddd 0%, #f6f6f6 50%);\n" +
+                "    -fx-background-radius: 8,7,6;\n" +
+                "    -fx-background-insets: 0,1,2;\n" +
+                "    -fx-text-fill: black;\n" +
+                "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );";
         window = stage;
 
         // Start page Scene
@@ -32,11 +41,14 @@ public class Tst_FX_Main extends Application {
         Button startButton = new Button("Start");
 //        Tooltip startToolTip = new Tooltip("Start Button");
         Tooltip.install(startButton,new Tooltip("Start Button"));
+        startButton.setStyle(buttonCSS);
+        startButton.setScaleX(4);
+        startButton.setScaleY(4);
 
         introTitle.setTranslateX(200);
         introTitle.setTranslateY(150);
-        startButton.setTranslateX(500);
-        startButton.setTranslateY(250);
+        startButton.setTranslateX(480);
+        startButton.setTranslateY(300);
 
         startPane.getChildren().addAll(introTitle,startButton);
 
@@ -44,12 +56,27 @@ public class Tst_FX_Main extends Application {
 
         Button toolButton = new Button("Tool");
         Tooltip.install(toolButton,new Tooltip("Text Summarizer Tool "));
+        toolButton.setStyle(buttonCSS);
+        toolButton.setScaleX(2);
+        toolButton.setScaleY(2);
+
         Button aboutButton = new Button("About");
+        aboutButton.setStyle(buttonCSS);
         Tooltip.install(aboutButton,new Tooltip("About section"));
+        aboutButton.setScaleX(2);
+        aboutButton.setScaleY(2);
+
         Button evaluationButton = new Button("Evaluation");
         Tooltip.install(evaluationButton,new Tooltip("Evaluation section"));
+        evaluationButton.setStyle(buttonCSS);
+        evaluationButton.setScaleX(2);
+        evaluationButton.setScaleY(2);
+
         Button backButton_Menu = new Button("Back");
         Tooltip.install(backButton_Menu,new Tooltip("Get back to Start"));
+        backButton_Menu.setStyle(buttonCSS);
+        backButton_Menu.setScaleX(2);
+        backButton_Menu.setScaleY(2);
 
         Pane menuPane = new Pane();
 
