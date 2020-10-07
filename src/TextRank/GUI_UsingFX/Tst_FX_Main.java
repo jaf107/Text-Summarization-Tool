@@ -46,6 +46,8 @@ public class Tst_FX_Main extends Application {
 
         Pane menuPane = new Pane();
 
+        Label menuLabel = new Label("Menu");
+
         // Menu buttons coordinates
         toolButton.setTranslateX(500);
         toolButton.setTranslateY(140);
@@ -55,10 +57,12 @@ public class Tst_FX_Main extends Application {
         testButton.setTranslateY(340);
         backButton_Menu.setTranslateX(50);
         backButton_Menu.setTranslateY(400);
+        menuLabel.setTranslateX(50);
+        menuLabel.setTranslateY(30);
 
 
 
-        menuPane.getChildren().addAll(toolButton,aboutButton,testButton,backButton_Menu);
+        menuPane.getChildren().addAll(toolButton,aboutButton,testButton,backButton_Menu,menuLabel);
         menu = new Scene(menuPane,1000,500);
 
 
