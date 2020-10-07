@@ -32,7 +32,7 @@ public class Tst_FX_Main extends Application {
                 "    -fx-background-insets: 0,1,2;\n" +
                 "    -fx-text-fill: black;\n" +
                 "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );";
-        window = stage;
+
 
         // Start page Scene
         Pane startPane = new Pane();
@@ -106,9 +106,7 @@ public class Tst_FX_Main extends Application {
         start = new Scene(startPane,1000,500);
 
 
-        window.setTitle("Text Summarizer Tool");
-        window.setScene(start);
-        window.show();
+
 
         // Tool page
         Pane toolPane = new Pane();
@@ -251,6 +249,14 @@ public class Tst_FX_Main extends Application {
                 summary_tool.setText(summary);
             }
         });
+
+
+        window = stage;
+
+        window.setTitle("Text Summarizer Tool");
+
+        window.setScene(start);
+        window.show();
 
     }
 
