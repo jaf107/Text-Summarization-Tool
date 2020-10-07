@@ -96,16 +96,16 @@ public class Tst_FX_Main extends Application {
         menuLabel.setTranslateX(50);
         menuLabel.setTranslateY(30);
 
+        toolButton.setPrefSize(90,30);
+        aboutButton.setPrefSize(90,30);
+        evaluationButton.setPrefSize(90,30);
+
+
 
 
         menuPane.getChildren().addAll(toolButton,aboutButton,evaluationButton,backButton_Menu,menuLabel);
         menu = new Scene(menuPane,1000,500);
-
-
-
         start = new Scene(startPane,1000,500);
-
-
 
 
         // Tool page
