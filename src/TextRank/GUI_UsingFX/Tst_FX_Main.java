@@ -293,7 +293,6 @@ public class Tst_FX_Main extends Application {
                 {
                     context_tool.setText("");
                     summary_tool.setText("");
-
                 }
                 else {
                 org.wordFrequencyAlgorithm.SummaryTool wordFreqTool = new org.wordFrequencyAlgorithm.SummaryTool(context);
