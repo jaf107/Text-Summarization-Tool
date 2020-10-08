@@ -290,7 +290,8 @@ public class Tst_FX_Main extends Application {
 
                     Label wordsInContext = new Label(String.format("Total words in Context : %s", summaryStatisticsTool.getNoOfWordsInContext()));
                     Label wordsInSummary = new Label("Total words in Summary : "+ summaryStatisticsTool.getNoOfWordsInSummary());
-                    Label reductionLabel = new Label("Words reduced by : "+  summaryStatisticsTool.getPercentageOfReduction()*100+"%");
+                    Label reductionLabel = new Label("Words reduced by : "+ (100- summaryStatisticsTool.getPercentageOfReduction()*100)+"%");
+                    Label percentageLabel = new Label("Summary Words percentage wrt to Context : "+ ( summaryStatisticsTool.getPercentageOfReduction()*100)+"%");
 
                     Button backButton = new Button("Back");
                     backButton.setStyle(buttonCSS);
@@ -303,6 +304,8 @@ public class Tst_FX_Main extends Application {
                     wordsInSummary.setTranslateY(120);
                     reductionLabel.setTranslateX(25);
                     reductionLabel.setTranslateY(160);
+                    percentageLabel.setTranslateX(25);
+                    percentageLabel.setTranslateY(200);
 
 
                     statsTitle.setFont(Font.font("Arial",FontWeight.BOLD,30));
@@ -317,16 +320,20 @@ public class Tst_FX_Main extends Application {
                     reductionLabel.setFont(Font.font("Arial", FontWeight.LIGHT, 20));
                     reductionLabel.setTextFill(Color.BLACK);
 
+                    percentageLabel.setFont(Font.font("Arial", FontWeight.LIGHT, 20));
+                    percentageLabel.setTextFill(Color.BLACK);
+
 
                     backButton.setTranslateX(30);
                     backButton.setTranslateY(460);
+                    backButton.setPrefSize(50,25);
 
                     backButton.setOnAction(e->
                     {
                         window.setScene(tool);
                     });
 
-                    statsPane.getChildren().addAll(statsTitle,wordsInContext,wordsInSummary,reductionLabel,backButton);
+                    statsPane.getChildren().addAll(statsTitle,percentageLabel,wordsInContext,wordsInSummary,reductionLabel,backButton);
                     window.setScene(statsScene);
                 }
 
