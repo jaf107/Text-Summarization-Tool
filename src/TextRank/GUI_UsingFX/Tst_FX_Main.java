@@ -126,8 +126,13 @@ public class Tst_FX_Main extends Application {
         Button statsButton = new Button("Stats");
         Tooltip.install(statsButton,new Tooltip("Statistical Analysis of the above data"));
 
-        // Sample run button
-        Button runSampleButton = new Button("Run Sample");
+        // Delete Button
+        Button deleteButton = new Button("Delete");
+        Tooltip.install(deleteButton,new Tooltip("Delete all the texts in context"));
+
+
+        // Sample run Button
+        Button runSampleButton = new Button("Sample");
         Tooltip.install(runSampleButton,new Tooltip("Run Sample Data"));
 
         context_tool = new TextArea();
@@ -147,7 +152,8 @@ public class Tst_FX_Main extends Application {
 
 
 
-        toolPane.getChildren().addAll(statsButton,toolLabel,summarize,runSampleButton,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+        toolPane.getChildren().addAll(statsButton,toolLabel,deleteButton, summarize,runSampleButton,context_tool
+                ,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
         toolLabel.setTranslateX(30);
@@ -175,14 +181,19 @@ public class Tst_FX_Main extends Application {
         statsButton.setTranslateY(460);
         statsButton.setStyle(buttonCSS);
 
+        deleteButton.setTranslateX(320);
+        deleteButton.setTranslateY(460);
+        deleteButton.setStyle(buttonCSS);
 
 
-        runSampleButton.setTranslateX(370);
+
+        runSampleButton.setTranslateX(400);
         runSampleButton.setTranslateY(460);
         runSampleButton.setStyle(buttonCSS);
 
 
-        runSampleButton.setPrefSize(105,25);
+        runSampleButton.setPrefSize(80,25);
+        deleteButton.setPrefSize(70,25);
         summarize.setPrefSize(105,25);
         textRankButton.setPrefSize(105,25);
         directButton.setPrefSize(105,25);
@@ -240,11 +251,18 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String context = context_tool.getText();
-                SummaryTool textRankTool = new SummaryTool(context);
-                String summary = textRankTool.getSummary();
+                if(context.isEmpty())
+                {
+                    context_tool.setText("");
+                    summary_tool.setText("");
 
-                summary_tool.setText(summary);
+                }
+                else {
+                    SummaryTool textRankTool = new SummaryTool(context);
+                    String summary = textRankTool.getSummary();
 
+                    summary_tool.setText(summary);
+                }
             }
         });
 
@@ -252,10 +270,18 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String context = context_tool.getText();
-                SummaryTool textRankTool = new SummaryTool(context);
-                String summary = textRankTool.getSummary();
+                if(context.isEmpty())
+                {
+                    context_tool.setText("");
+                    summary_tool.setText("");
 
-                summary_tool.setText(summary);
+                }
+                else {
+                    SummaryTool textRankTool = new SummaryTool(context);
+                    String summary = textRankTool.getSummary();
+
+                    summary_tool.setText(summary);
+                }
             }
         });
 
@@ -263,11 +289,26 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String context = context_tool.getText();
+                if(context.isEmpty())
+                {
+                    context_tool.setText("");
+                    summary_tool.setText("");
+
+                }
+                else {
                 org.wordFrequencyAlgorithm.SummaryTool wordFreqTool = new org.wordFrequencyAlgorithm.SummaryTool(context);
 
                 String summary = wordFreqTool.getSummary();
 
                 summary_tool.setText(summary);
+            }
+            }
+        });
+
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                context_tool.setText("");
             }
         });
 
@@ -281,6 +322,8 @@ public class Tst_FX_Main extends Application {
                 Scene statsScene = new Scene(statsPane,1000,500);
                 if(context.isEmpty() && summary.isEmpty())
                 {
+                    context_tool.setText("");
+                    summary_tool.setText("");
 
                 }
                 else{
