@@ -126,6 +126,10 @@ public class Tst_FX_Main extends Application {
         Button statsButton = new Button("Stats");
         Tooltip.install(statsButton,new Tooltip("Statistical Analysis of the above data"));
 
+        // Sample run button
+        Button runSampleButton = new Button("Run Sample");
+        Tooltip.install(runSampleButton,new Tooltip("Run Sample Data"));
+
         context_tool = new TextArea();
         summary_tool = new TextArea();
 
@@ -143,7 +147,7 @@ public class Tst_FX_Main extends Application {
 
 
 
-        toolPane.getChildren().addAll(statsButton,toolLabel,summarize,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+        toolPane.getChildren().addAll(statsButton,toolLabel,summarize,runSampleButton,context_tool,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
         toolLabel.setTranslateX(30);
@@ -173,7 +177,12 @@ public class Tst_FX_Main extends Application {
 
 
 
+        runSampleButton.setTranslateX(370);
+        runSampleButton.setTranslateY(460);
+        runSampleButton.setStyle(buttonCSS);
 
+
+        runSampleButton.setPrefSize(105,25);
         summarize.setPrefSize(105,25);
         textRankButton.setPrefSize(105,25);
         directButton.setPrefSize(105,25);
@@ -291,6 +300,17 @@ public class Tst_FX_Main extends Application {
                     wordsInSummary.setTranslateY(50);
                     reductionLabel.setTranslateX(25);
                     reductionLabel.setTranslateY(75);
+
+
+                    wordsInContext.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    wordsInContext.setTextFill(Color.BLACK);
+
+                    wordsInSummary.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    wordsInSummary.setTextFill(Color.BLACK);
+
+                    reductionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    reductionLabel.setTextFill(Color.BLACK);
+
 
                     backButton.setTranslateX(25);
                     backButton.setTranslateY(460);
