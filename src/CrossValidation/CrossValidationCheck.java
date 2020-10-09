@@ -6,55 +6,62 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CrossValidationCheck {
-    ArrayList<String> machineSummaries;
-    ArrayList<String> referanceSummaries;
+    private ArrayList<CrossValidation> articleEvaluation;
+
     CrossValidationCheck()
     {
-        String machineSummary = "";
-        String referanceSummary ="";
-
-
-        File machineSummaryFile = new File("Inputs/Article1.txt");
-        try(FileReader fileReader = new FileReader(machineSummaryFile))
-        {
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null)
-            {
-                System.out.println(line);
-                machineSummary+=line;
-            }
-
-
-        }catch (Exception e){
-
-        }
-//        machineSummaries.add(machineSummary);
-        machineSummary = "";
-
-        System.out.println("\n\n\n\n\n\n\n");
-        File referanceSummaryFile = new File("ReferanceSummary/Article1.txt");
-        try(FileReader fileReader = new FileReader(referanceSummaryFile))
-        {
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null)
-            {
-                System.out.println(line);
-                referanceSummary += line;
-            }
-
-
-        }catch (Exception e){
-
-        }
-//        referanceSummaries.add(referanceSummary);
-        referanceSummary = "";
+        articleEvaluation = new ArrayList<CrossValidation>();
     }
 
-    public static void main(String[] args) {
-        CrossValidationCheck crossValidationCheck = new CrossValidationCheck();
+
+    @Override
+    public String toString() {
+        return "CrossValidationCheck{" +
+                "articleEvaluation=" + articleEvaluation +
+                '}';
+    }
+
+    public void getCrossValidated() {
+        int counter = 0;
+
+
+        for (int i= 0;i<8;i++) {
+            counter++;
+            String article = "Article" + counter + ".txt";
+
+            String referanceSummary = "";
+            String machineSummary = "";
+            File file = new File("Evaluation/TextRankSummary/" + article);
+            try (FileReader fileReader = new FileReader(file)) {
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                String line = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    machineSummary += line;
+                    machineSummary += "\n";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            file = new File("Evaluation/ReferanceSummary/" + article);
+            try (FileReader fileReader = new FileReader(file)) {
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                String line = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    referanceSummary += line;
+                    referanceSummary += "\n";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            articleEvaluation.add(new CrossValidation(machineSummary,referanceSummary));
+//            System.out.println(referanceSummary + "\n\n\n" + machineSummary);
+        }
+
+
+
     }
 }

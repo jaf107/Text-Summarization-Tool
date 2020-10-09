@@ -29,8 +29,8 @@ public class CrossValidation {
         int numberOfOverlappingWords = getNumberOfOverlappedWords(getMachinemadeSummary(),getReferenceSummary());
         int totalWordsInSystemSummary = wordCounter(getMachinemadeSummary());
 
-        System.out.println("Overlapped Words:" + numberOfOverlappingWords);
-        System.out.println("Total system Summary words:" + totalWordsInSystemSummary);
+//        System.out.println("Overlapped Words:" + numberOfOverlappingWords);
+//        System.out.println("Total system Summary words:" + totalWordsInSystemSummary);
 
         this.precision = (double)numberOfOverlappingWords/totalWordsInSystemSummary;
     }
@@ -41,8 +41,8 @@ public class CrossValidation {
         int totalWordsInReferenceSummary = wordCounter(getReferenceSummary());
 
 
-        System.out.println("Overlapped Words:" + numberOfOverlappingWords);
-        System.out.println("Total Reference Summary words:" + totalWordsInReferenceSummary);
+//        System.out.println("Overlapped Words:" + numberOfOverlappingWords);
+//        System.out.println("Total Reference Summary words:" + totalWordsInReferenceSummary);
 
         this.recall = (double)numberOfOverlappingWords/totalWordsInReferenceSummary;
 
@@ -98,11 +98,11 @@ public class CrossValidation {
 
     @Override
     public String toString() {
-        return "CrossValidation{" +
+        return "\nCrossValidation{" +
 //                "machinemadeSummary='" + machinemadeSummary + '\'' +
 //                ", referenceSummary='" + referenceSummary + '\'' +
                 ", precision=" + precision +
                 ", recall=" + recall +
-                '}';
+                '}' + "\n\n";
     }
 }

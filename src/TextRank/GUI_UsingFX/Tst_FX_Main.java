@@ -94,6 +94,7 @@ public class Tst_FX_Main extends Application {
         evaluationButton.setTranslateY(340);
         backButton_Menu.setTranslateX(30);
         backButton_Menu.setTranslateY(460);
+        backButton_Menu.setPrefSize(50,25);
         menuLabel.setTranslateX(50);
         menuLabel.setTranslateY(30);
 
@@ -211,6 +212,20 @@ public class Tst_FX_Main extends Application {
         statsButton.setPrefSize(50,25);
         backButton_Tool.setPrefSize(50,25);
 
+
+
+        //Evaluation Scene
+        Pane evaluationPane = new Pane();
+        Scene evaluationScene  = new Scene(evaluationPane,1000,500);
+
+        Button backButton_evaluation = new Button("Back");
+        backButton_evaluation.setTranslateX(30);
+        backButton_evaluation.setTranslateY(460);
+        backButton_evaluation.setStyle(buttonCSS);
+        backButton_evaluation.setPrefSize(50,25);
+
+        evaluationPane.getChildren().addAll(backButton_evaluation);
+
         // Buttons set on  Action
         // Start
         startButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -239,7 +254,17 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
+                window.setScene(evaluationScene);
 
+
+
+            }
+        });
+
+        backButton_evaluation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(menu);
             }
         });
 
