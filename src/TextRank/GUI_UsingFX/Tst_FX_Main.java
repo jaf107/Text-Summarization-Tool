@@ -137,12 +137,18 @@ public class Tst_FX_Main extends Application {
 
         context_tool = new TextArea();
         summary_tool = new TextArea();
+        Label summaryLabel = new Label("Summary:");
+        summaryLabel.setFont(Font.font("Arial",FontWeight.BOLD,14));
+        summaryLabel.setTextFill(Color.BLACK);
+        Label contextLabel = new Label("Context:");
+        contextLabel.setFont(Font.font("Arial",FontWeight.BOLD,14));
+        contextLabel.setTextFill(Color.BLACK);
 
 //        context_tool.setPrefColumnCount(50);
-        context_tool.setPrefSize(450,400);
+        context_tool.setPrefSize(450,370);
         context_tool.setPromptText("Enter the article for summarization");
 
-        summary_tool.setPrefSize(450,400);
+        summary_tool.setPrefSize(450,370);
         summary_tool.setPromptText("Press summarize button to get the summary");
 
         context_tool.setWrapText(true);
@@ -152,7 +158,7 @@ public class Tst_FX_Main extends Application {
 
 
 
-        toolPane.getChildren().addAll(statsButton,toolLabel,deleteButton, summarize,runSampleButton,context_tool
+        toolPane.getChildren().addAll(summaryLabel,contextLabel,statsButton,toolLabel,deleteButton, summarize,runSampleButton,context_tool
                 ,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
@@ -173,10 +179,14 @@ public class Tst_FX_Main extends Application {
         backButton_Tool.setTranslateX(30);
         backButton_Tool.setTranslateY(460);
         backButton_Tool.setStyle(buttonCSS);
+        contextLabel.setTranslateX(30);
+        contextLabel.setTranslateY(45);
+        summaryLabel.setTranslateX(530);
+        summaryLabel.setTranslateY(45);
         context_tool.setTranslateX(30);
-        context_tool.setTranslateY(45);
+        context_tool.setTranslateY(70);
         summary_tool.setTranslateX(530);
-        summary_tool.setTranslateY(45);
+        summary_tool.setTranslateY(70);
         statsButton.setTranslateX(930);
         statsButton.setTranslateY(460);
         statsButton.setStyle(buttonCSS);
