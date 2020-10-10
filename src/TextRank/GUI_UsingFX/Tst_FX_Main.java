@@ -227,6 +227,12 @@ public class Tst_FX_Main extends Application {
         sampleImageView.setPreserveRatio(true);
         runSampleButton.setGraphic(sampleImageView);
 
+        Image deleteImage = new Image(new FileInputStream("Images/delete.png"));
+        ImageView deleteImageView = new ImageView(deleteImage);
+        deleteImageView.setFitHeight(10);
+        deleteImageView.setPreserveRatio(true);
+        deleteButton.setGraphic(deleteImageView);
+
         tool = new Scene(toolPane, 1000, 500);
 
 
