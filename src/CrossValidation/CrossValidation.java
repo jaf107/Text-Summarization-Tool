@@ -95,6 +95,13 @@ public class CrossValidation {
         return spaceCounter;
     }
 
+    public double getPrecision() {
+        return precision;
+    }
+
+    public double getRecall() {
+        return recall;
+    }
 
     @Override
     public String toString() {

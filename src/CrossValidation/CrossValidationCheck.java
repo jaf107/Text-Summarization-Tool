@@ -7,10 +7,16 @@ import java.util.ArrayList;
 
 public class CrossValidationCheck {
     private ArrayList<CrossValidation> articleEvaluation;
+    private double averagePrecision;
+    private double averageRecall;
 
-    CrossValidationCheck()
+
+    public CrossValidationCheck()
     {
         articleEvaluation = new ArrayList<CrossValidation>();
+        getCrossValidated();
+        calculateAveragePrecision();
+        calculateAverageRecall();
     }
 
 
@@ -19,6 +25,39 @@ public class CrossValidationCheck {
         return "CrossValidationCheck{" +
                 "articleEvaluation=" + articleEvaluation +
                 '}';
+    }
+
+    public ArrayList<CrossValidation> getArticleEvaluation() {
+        return articleEvaluation;
+    }
+
+    void calculateAveragePrecision()
+    {
+        double d = 0.0;
+        for (CrossValidation article:articleEvaluation  ) {
+            d += article.getPrecision();
+        }
+
+        this.averagePrecision = d/(double) articleEvaluation.size();
+
+    }
+    void calculateAverageRecall()
+    {
+        double d = 0.0;
+        for (CrossValidation article:articleEvaluation  ) {
+            d += article.getRecall();
+        }
+
+        this.averageRecall = (d/(double) articleEvaluation.size());
+
+    }
+
+    public double getAveragePrecision() {
+        return averageRecall;
+    }
+
+    public double getAverageRecall() {
+        return averageRecall;
     }
 
     public void getCrossValidated() {
@@ -60,6 +99,10 @@ public class CrossValidationCheck {
             articleEvaluation.add(new CrossValidation(machineSummary,referanceSummary));
 //            System.out.println(referanceSummary + "\n\n\n" + machineSummary);
         }
+
+
+
+
 
 
 
