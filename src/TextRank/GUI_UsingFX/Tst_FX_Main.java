@@ -215,6 +215,18 @@ public class Tst_FX_Main extends Application {
         summarizeImageView.setPreserveRatio(true);
         summarize.setGraphic(summarizeImageView);
 
+        Image statsImage = new Image(new FileInputStream("Images/stats.png"));
+        ImageView statsImageView = new ImageView(statsImage);
+        statsImageView.setFitHeight(10);
+        statsImageView.setPreserveRatio(true);
+        statsButton.setGraphic(statsImageView);
+
+        Image sampleImage = new Image(new FileInputStream("Images/sample.png"));
+        ImageView sampleImageView = new ImageView(sampleImage);
+        sampleImageView.setFitHeight(10);
+        sampleImageView.setPreserveRatio(true);
+        runSampleButton.setGraphic(sampleImageView);
+
         tool = new Scene(toolPane, 1000, 500);
 
 
@@ -247,7 +259,7 @@ public class Tst_FX_Main extends Application {
         context_tool.setTranslateY(70);
         summary_tool.setTranslateX(530);
         summary_tool.setTranslateY(70);
-        statsButton.setTranslateX(930);
+        statsButton.setTranslateX(910);
         statsButton.setTranslateY(460);
         statsButton.setStyle(buttonCSS);
 
@@ -267,7 +279,7 @@ public class Tst_FX_Main extends Application {
         textRankButton.setPrefSize(105, 25);
         directButton.setPrefSize(105, 25);
         wordFrequencyButton.setPrefSize(105, 25);
-        statsButton.setPrefSize(50, 25);
+        statsButton.setPrefSize(70, 25);
         backButton_Tool.setPrefSize(backButtonWidth,backButtonHeight);
 
 
@@ -282,10 +294,21 @@ public class Tst_FX_Main extends Application {
         detailsButton_evaluation.setStyle(buttonCSS);
         detailsButton_evaluation.setTranslateX(550);
         detailsButton_evaluation.setTranslateY(300);
-        detailsButton_evaluation.setPrefSize(70, 25);
+        detailsButton_evaluation.setPrefSize(80, 25);
 
         meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         meanRecallLabel.setTextFill(Color.BLACK);
+
+
+        // Image - evaluation
+
+        Image detailsImage = new Image(new FileInputStream("Images/details.png"));
+        ImageView detailsImageView = new ImageView(detailsImage);
+        detailsImageView.setFitHeight(15);
+        detailsImageView.setPreserveRatio(true);
+        detailsButton_evaluation.setGraphic(detailsImageView);
+
+
 
 
         CategoryAxis xAxis = new CategoryAxis();
