@@ -13,6 +13,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -20,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class Tst_FX_Main extends Application {
@@ -62,6 +65,14 @@ public class Tst_FX_Main extends Application {
         startButton.setTranslateY(300);
 
         startPane.getChildren().addAll(introTitle, startButton);
+
+        // Image
+        Image image = new Image(new FileInputStream("Images/icons8-start-48.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(10);
+        imageView.setPreserveRatio(true);
+
+        startButton.setGraphic(imageView);
 
         // Menu Scene
 
@@ -269,7 +280,7 @@ public class Tst_FX_Main extends Application {
         barChart.getData().add(dataSeries2);
 
         barChart.setTranslateX(50);
-        barChart.setTranslateY(30);
+        barChart.setTranslateY(60);
 
         Pane evaluationPane = new Pane(barChart);
 
