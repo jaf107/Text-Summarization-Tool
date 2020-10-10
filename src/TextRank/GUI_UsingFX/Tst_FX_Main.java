@@ -169,7 +169,7 @@ public class Tst_FX_Main extends Application {
         Tooltip.install(summarize, new Tooltip("Summarize text\nDefault method: TextRank"));
         Button textRankButton = new Button("TextRank");
         Tooltip.install(textRankButton, new Tooltip("Text Rank Algorithm"));
-        Button directButton = new Button("Manual");
+        Button directButton = new Button("Direct");
         Tooltip.install(directButton, new Tooltip("Manual Method"));
         Button wordFrequencyButton = new Button("WordFrequency");
         Tooltip.install(wordFrequencyButton, new Tooltip("Word Frequency Algorithm"));
@@ -215,6 +215,26 @@ public class Tst_FX_Main extends Application {
         summarizeImageView.setPreserveRatio(true);
         summarize.setGraphic(summarizeImageView);
 
+        Image textRankImage = new Image(new FileInputStream("Images/textRank.png"));
+        ImageView textRankImageView = new ImageView(textRankImage);
+        textRankImageView.setFitHeight(10);
+        textRankImageView.setPreserveRatio(true);
+        textRankButton.setGraphic(textRankImageView);
+
+        Image directImage = new Image(new FileInputStream("Images/direct.png"));
+        ImageView directImageView = new ImageView(directImage);
+        directImageView.setFitHeight(10);
+        directImageView.setPreserveRatio(true);
+        directButton.setGraphic(directImageView);
+
+        Image wordFrequencyImage = new Image(new FileInputStream("Images/wordFrequency.png"));
+        ImageView wordFrequencyImageView= new ImageView(wordFrequencyImage);
+        wordFrequencyImageView.setFitHeight(10);
+        wordFrequencyImageView.setPreserveRatio(true);
+        wordFrequencyButton.setGraphic(wordFrequencyImageView);
+
+
+
         Image statsImage = new Image(new FileInputStream("Images/stats.png"));
         ImageView statsImageView = new ImageView(statsImage);
         statsImageView.setFitHeight(10);
@@ -251,7 +271,7 @@ public class Tst_FX_Main extends Application {
         directButton.setTranslateX(750);
         directButton.setTranslateY(10);
         directButton.setStyle(buttonCSS);
-        wordFrequencyButton.setTranslateX(875);
+        wordFrequencyButton.setTranslateX(855);
         wordFrequencyButton.setTranslateY(10);
         wordFrequencyButton.setStyle(buttonCSS);
         backButton_Tool.setTranslateX(30);
@@ -283,13 +303,18 @@ public class Tst_FX_Main extends Application {
         deleteButton.setPrefSize(70, 25);
         summarize.setPrefSize(105, 25);
         textRankButton.setPrefSize(105, 25);
-        directButton.setPrefSize(105, 25);
-        wordFrequencyButton.setPrefSize(105, 25);
+        directButton.setPrefSize(90, 25);
+        wordFrequencyButton.setPrefSize(120, 25);
         statsButton.setPrefSize(70, 25);
         backButton_Tool.setPrefSize(backButtonWidth,backButtonHeight);
 
 
         //Evaluation Scene
+
+        Label evaluationTitle = new Label("Recall-Oriented Understudy for Gisting Evaluation (ROGUE)");
+        evaluationTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        evaluationTitle.setTextFill(Color.BLACK);
+
 
         Label meanPrecisionLabel = new Label();
         meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -348,7 +373,7 @@ public class Tst_FX_Main extends Application {
         barChart.getData().add(dataSeries2);
 
         barChart.setTranslateX(50);
-        barChart.setTranslateY(60);
+        barChart.setTranslateY(70);
 
         Pane evaluationPane = new Pane(barChart);
 
@@ -357,6 +382,9 @@ public class Tst_FX_Main extends Application {
         meanRecallLabel.setTranslateX(550);
         meanRecallLabel.setTranslateY(240);
 
+        evaluationTitle.setTranslateX(50);
+        evaluationTitle.setTranslateY(15);
+
         Scene evaluationScene = new Scene(evaluationPane, 1000, 500);
         Button backButton_evaluation = new Button("Back");
         backButton_evaluation.setGraphic(backImageView);
@@ -364,7 +392,7 @@ public class Tst_FX_Main extends Application {
         backButton_evaluation.setTranslateY(460);
         backButton_evaluation.setStyle(buttonCSS);
         backButton_evaluation.setPrefSize(backButtonWidth,backButtonHeight);
-        evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel, meanPrecisionLabel, detailsButton_evaluation);
+        evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel,evaluationTitle, meanPrecisionLabel, detailsButton_evaluation);
 
 
         // Buttons set on  Action
