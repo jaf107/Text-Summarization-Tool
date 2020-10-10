@@ -207,6 +207,14 @@ public class Tst_FX_Main extends Application {
         context_tool.setWrapText(true);
         summary_tool.setWrapText(true);
 
+        //Images - tool
+
+        Image summarizeImage = new Image(new FileInputStream("Images/summarizeButton.png"));
+        ImageView summarizeImageView = new ImageView(summarizeImage);
+        summarizeImageView.setFitHeight(10);
+        summarizeImageView.setPreserveRatio(true);
+        summarize.setGraphic(summarizeImageView);
+
         tool = new Scene(toolPane, 1000, 500);
 
 
