@@ -46,6 +46,16 @@ public class Tst_FX_Main extends Application {
                 "    -fx-text-fill: black;\n" +
                 "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );";
 
+        // BackButtons Image
+        FileInputStream backImageInputStream = new FileInputStream("Images/back2.png");
+        Image backImage = new Image(backImageInputStream);
+        ImageView backImageView = new ImageView(backImage);
+        backImageView.setFitHeight(10);
+        backImageView.setPreserveRatio(true);
+
+        int backButtonWidth = 70;
+        int backButtonHeight = 25;
+
 
         // Start page Scene
         Pane startPane = new Pane();
@@ -96,8 +106,29 @@ public class Tst_FX_Main extends Application {
         Button backButton_Menu = new Button("Back");
         Tooltip.install(backButton_Menu, new Tooltip("Get back to Start"));
         backButton_Menu.setStyle(buttonCSS);
+        backButton_Menu.setGraphic(backImageView);
         backButton_Menu.setScaleX(1);
         backButton_Menu.setScaleY(1);
+
+        // Images - tool
+
+        Image toolImage = new Image(new FileInputStream("Images/tool1.png"));
+        ImageView toolImageView = new ImageView(toolImage);
+        toolImageView.setFitHeight(15);
+        toolImageView.setPreserveRatio(true);
+        toolButton.setGraphic(toolImageView);
+
+        Image aboutImage = new Image(new FileInputStream("Images/about.png"));
+        ImageView aboutImageView = new ImageView(aboutImage);
+        aboutImageView.setFitHeight(15);
+        aboutImageView.setPreserveRatio(true);
+        aboutButton.setGraphic(aboutImageView);
+
+        Image evaluationImage = new Image(new FileInputStream("Images/evaluation.png"));
+        ImageView evaluationImageView = new ImageView(evaluationImage);
+        evaluationImageView.setFitHeight(15);
+        evaluationImageView.setPreserveRatio(true);
+        evaluationButton.setGraphic(evaluationImageView);
 
         Pane menuPane = new Pane();
 
@@ -114,7 +145,7 @@ public class Tst_FX_Main extends Application {
         evaluationButton.setTranslateY(340);
         backButton_Menu.setTranslateX(30);
         backButton_Menu.setTranslateY(460);
-        backButton_Menu.setPrefSize(50, 25);
+        backButton_Menu.setPrefSize(backButtonWidth,backButtonHeight);
         menuLabel.setTranslateX(50);
         menuLabel.setTranslateY(30);
 
@@ -144,6 +175,7 @@ public class Tst_FX_Main extends Application {
         Tooltip.install(wordFrequencyButton, new Tooltip("Word Frequency Algorithm"));
         Button backButton_Tool = new Button("Back");
         Tooltip.install(backButton_Tool, new Tooltip("Get back to Menu"));
+        backButton_Tool.setGraphic(backImageView);
         Button statsButton = new Button("Stats");
         Tooltip.install(statsButton, new Tooltip("Statistical Analysis of the above data"));
 
@@ -228,7 +260,7 @@ public class Tst_FX_Main extends Application {
         directButton.setPrefSize(105, 25);
         wordFrequencyButton.setPrefSize(105, 25);
         statsButton.setPrefSize(50, 25);
-        backButton_Tool.setPrefSize(50, 25);
+        backButton_Tool.setPrefSize(backButtonWidth,backButtonHeight);
 
 
         //Evaluation Scene
@@ -290,10 +322,11 @@ public class Tst_FX_Main extends Application {
 
         Scene evaluationScene = new Scene(evaluationPane, 1000, 500);
         Button backButton_evaluation = new Button("Back");
+        backButton_evaluation.setGraphic(backImageView);
         backButton_evaluation.setTranslateX(30);
         backButton_evaluation.setTranslateY(460);
         backButton_evaluation.setStyle(buttonCSS);
-        backButton_evaluation.setPrefSize(50, 25);
+        backButton_evaluation.setPrefSize(backButtonWidth,backButtonHeight);
         evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel, meanPrecisionLabel, detailsButton_evaluation);
 
 
@@ -335,10 +368,11 @@ public class Tst_FX_Main extends Application {
 
                 Button backButton = new Button("Back");
                 backButton.setStyle(buttonCSS);
+                backButton.setGraphic(backImageView);
 
                 backButton.setTranslateX(30);
                 backButton.setTranslateY(460);
-                backButton.setPrefSize(50,25);
+                backButton.setPrefSize(backButtonWidth,backButtonHeight);
 
 
 
@@ -514,7 +548,7 @@ public class Tst_FX_Main extends Application {
 
                     Button backButton = new Button("Back");
                     backButton.setStyle(buttonCSS);
-
+                    backButton.setGraphic(backImageView);
                     statsTitle.setTranslateX(25);
                     statsTitle.setTranslateY(20);
                     wordsInContext.setTranslateX(25);
@@ -545,7 +579,8 @@ public class Tst_FX_Main extends Application {
 
                     backButton.setTranslateX(30);
                     backButton.setTranslateY(460);
-                    backButton.setPrefSize(50,25);
+                    backButton.setPrefSize(backButtonWidth,backButtonHeight);
+                    backButton.setGraphic(backImageView);
 
                     backButton.setOnAction(e->
                     {
