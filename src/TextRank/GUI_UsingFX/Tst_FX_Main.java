@@ -1,5 +1,6 @@
 package TextRank.GUI_UsingFX;
 
+import CrossValidation.CrossValidation;
 import CrossValidation.CrossValidationCheck;
 import TextRank.FinalProject.SummaryStatistics;
 import TextRank.FinalProject.SummaryTool;
@@ -19,15 +20,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Tst_FX_Main extends Application {
 
     Stage window;
-    Scene start,menu,tool;
+    Scene start, menu, tool;
 
 
-    TextArea context_tool,summary_tool;
+    TextArea context_tool, summary_tool;
 
     Button summarize;
+
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -44,10 +48,10 @@ public class Tst_FX_Main extends Application {
         // Start page Scene
         Pane startPane = new Pane();
         Label introTitle = new Label("Text Summarization Tool");
-        introTitle.setFont(Font.font("Arial",FontWeight.BOLD,48));
+        introTitle.setFont(Font.font("Arial", FontWeight.BOLD, 48));
         Button startButton = new Button("Start");
 //        Tooltip startToolTip = new Tooltip("Start Button");
-        Tooltip.install(startButton,new Tooltip("Start Button"));
+        Tooltip.install(startButton, new Tooltip("Start Button"));
         startButton.setStyle(buttonCSS);
         startButton.setScaleX(4);
         startButton.setScaleY(4);
@@ -57,30 +61,30 @@ public class Tst_FX_Main extends Application {
         startButton.setTranslateX(480);
         startButton.setTranslateY(300);
 
-        startPane.getChildren().addAll(introTitle,startButton);
+        startPane.getChildren().addAll(introTitle, startButton);
 
         // Menu Scene
 
         Button toolButton = new Button("Tool");
-        Tooltip.install(toolButton,new Tooltip("Text Summarizer Tool "));
+        Tooltip.install(toolButton, new Tooltip("Text Summarizer Tool "));
         toolButton.setStyle(buttonCSS);
         toolButton.setScaleX(2);
         toolButton.setScaleY(2);
 
         Button aboutButton = new Button("About");
         aboutButton.setStyle(buttonCSS);
-        Tooltip.install(aboutButton,new Tooltip("About section"));
+        Tooltip.install(aboutButton, new Tooltip("About section"));
         aboutButton.setScaleX(2);
         aboutButton.setScaleY(2);
 
         Button evaluationButton = new Button("Evaluation");
-        Tooltip.install(evaluationButton,new Tooltip("Evaluation section"));
+        Tooltip.install(evaluationButton, new Tooltip("Evaluation section"));
         evaluationButton.setStyle(buttonCSS);
         evaluationButton.setScaleX(2);
         evaluationButton.setScaleY(2);
 
         Button backButton_Menu = new Button("Back");
-        Tooltip.install(backButton_Menu,new Tooltip("Get back to Start"));
+        Tooltip.install(backButton_Menu, new Tooltip("Get back to Start"));
         backButton_Menu.setStyle(buttonCSS);
         backButton_Menu.setScaleX(1);
         backButton_Menu.setScaleY(1);
@@ -100,73 +104,72 @@ public class Tst_FX_Main extends Application {
         evaluationButton.setTranslateY(340);
         backButton_Menu.setTranslateX(30);
         backButton_Menu.setTranslateY(460);
-        backButton_Menu.setPrefSize(50,25);
+        backButton_Menu.setPrefSize(50, 25);
         menuLabel.setTranslateX(50);
         menuLabel.setTranslateY(30);
 
-        toolButton.setPrefSize(90,30);
-        aboutButton.setPrefSize(90,30);
-        evaluationButton.setPrefSize(90,30);
+        toolButton.setPrefSize(90, 30);
+        aboutButton.setPrefSize(90, 30);
+        evaluationButton.setPrefSize(90, 30);
 
 
-        menuPane.getChildren().addAll(toolButton,aboutButton,evaluationButton,backButton_Menu,menuLabel);
-        menu = new Scene(menuPane,1000,500);
-        start = new Scene(startPane,1000,500);
+        menuPane.getChildren().addAll(toolButton, aboutButton, evaluationButton, backButton_Menu, menuLabel);
+        menu = new Scene(menuPane, 1000, 500);
+        start = new Scene(startPane, 1000, 500);
 
 
         // Tool page
         Pane toolPane = new Pane();
         Label toolLabel = new Label("Text Summarization Tool");
-        toolLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
+        toolLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         toolLabel.setTextFill(Color.BLACK);
 
         summarize = new Button("Summarize");
-        Tooltip.install(summarize,new Tooltip("Summarize text\nDefault method: TextRank"));
+        Tooltip.install(summarize, new Tooltip("Summarize text\nDefault method: TextRank"));
         Button textRankButton = new Button("TextRank");
-        Tooltip.install(textRankButton,new Tooltip("Text Rank Algorithm"));
+        Tooltip.install(textRankButton, new Tooltip("Text Rank Algorithm"));
         Button directButton = new Button("Manual");
-        Tooltip.install(directButton,new Tooltip("Manual Method"));
+        Tooltip.install(directButton, new Tooltip("Manual Method"));
         Button wordFrequencyButton = new Button("WordFrequency");
-        Tooltip.install(wordFrequencyButton,new Tooltip("Word Frequency Algorithm"));
+        Tooltip.install(wordFrequencyButton, new Tooltip("Word Frequency Algorithm"));
         Button backButton_Tool = new Button("Back");
-        Tooltip.install(backButton_Tool,new Tooltip("Get back to Menu"));
+        Tooltip.install(backButton_Tool, new Tooltip("Get back to Menu"));
         Button statsButton = new Button("Stats");
-        Tooltip.install(statsButton,new Tooltip("Statistical Analysis of the above data"));
+        Tooltip.install(statsButton, new Tooltip("Statistical Analysis of the above data"));
 
         // Delete Button
         Button deleteButton = new Button("Delete");
-        Tooltip.install(deleteButton,new Tooltip("Delete all the texts in context"));
+        Tooltip.install(deleteButton, new Tooltip("Delete all the texts in context"));
 
 
         // Sample run Button
         Button runSampleButton = new Button("Sample");
-        Tooltip.install(runSampleButton,new Tooltip("Run Sample Data"));
+        Tooltip.install(runSampleButton, new Tooltip("Run Sample Data"));
 
         context_tool = new TextArea();
         summary_tool = new TextArea();
         Label summaryLabel = new Label("Summary:");
-        summaryLabel.setFont(Font.font("Arial",FontWeight.BOLD,14));
+        summaryLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         summaryLabel.setTextFill(Color.BLACK);
         Label contextLabel = new Label("Context:");
-        contextLabel.setFont(Font.font("Arial",FontWeight.BOLD,14));
+        contextLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         contextLabel.setTextFill(Color.BLACK);
 
 //        context_tool.setPrefColumnCount(50);
-        context_tool.setPrefSize(450,370);
+        context_tool.setPrefSize(450, 370);
         context_tool.setPromptText("Enter the article for summarization");
 
-        summary_tool.setPrefSize(450,370);
+        summary_tool.setPrefSize(450, 370);
         summary_tool.setPromptText("Press summarize button to get the summary");
 
         context_tool.setWrapText(true);
         summary_tool.setWrapText(true);
 
-        tool = new Scene(toolPane,1000,500);
+        tool = new Scene(toolPane, 1000, 500);
 
 
-
-        toolPane.getChildren().addAll(summaryLabel,contextLabel,statsButton,toolLabel,deleteButton, summarize,runSampleButton,context_tool
-                ,summary_tool,textRankButton,directButton,wordFrequencyButton,backButton_Tool);
+        toolPane.getChildren().addAll(summaryLabel, contextLabel, statsButton, toolLabel, deleteButton, summarize, runSampleButton, context_tool
+                , summary_tool, textRankButton, directButton, wordFrequencyButton, backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
         toolLabel.setTranslateX(30);
@@ -203,36 +206,86 @@ public class Tst_FX_Main extends Application {
         deleteButton.setStyle(buttonCSS);
 
 
-
         runSampleButton.setTranslateX(400);
         runSampleButton.setTranslateY(460);
         runSampleButton.setStyle(buttonCSS);
 
 
-        runSampleButton.setPrefSize(80,25);
-        deleteButton.setPrefSize(70,25);
-        summarize.setPrefSize(105,25);
-        textRankButton.setPrefSize(105,25);
-        directButton.setPrefSize(105,25);
-        wordFrequencyButton.setPrefSize(105,25);
-        statsButton.setPrefSize(50,25);
-        backButton_Tool.setPrefSize(50,25);
-
+        runSampleButton.setPrefSize(80, 25);
+        deleteButton.setPrefSize(70, 25);
+        summarize.setPrefSize(105, 25);
+        textRankButton.setPrefSize(105, 25);
+        directButton.setPrefSize(105, 25);
+        wordFrequencyButton.setPrefSize(105, 25);
+        statsButton.setPrefSize(50, 25);
+        backButton_Tool.setPrefSize(50, 25);
 
 
         //Evaluation Scene
-        Pane evaluationPane = new Pane();
-        Scene evaluationScene  = new Scene(evaluationPane,1000,500);
+
+        Label meanPrecisionLabel = new Label();
+        meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        meanPrecisionLabel.setTextFill(Color.BLACK);
+        Label meanRecallLabel = new Label();
+
+        Button detailsButton_evaluation = new Button("Details");
+        detailsButton_evaluation.setStyle(buttonCSS);
+        detailsButton_evaluation.setTranslateX(550);
+        detailsButton_evaluation.setTranslateY(300);
+        detailsButton_evaluation.setPrefSize(70, 25);
+
+        meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        meanRecallLabel.setTextFill(Color.BLACK);
 
 
+        CategoryAxis xAxis = new CategoryAxis();
+        xAxis.setLabel("Precison");
 
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Scores");
+
+        BarChart barChart = new BarChart(xAxis, yAxis);
+
+        XYChart.Series dataSeries1 = new XYChart.Series();
+        dataSeries1.setName("Precision Scores");
+
+        CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
+
+        meanPrecisionLabel.setText("Precision : " + crossValidationCheckTool.getAveragePrecision());
+        meanRecallLabel.setText("Recall : " + crossValidationCheckTool.getAverageRecall());
+
+
+        dataSeries1.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAveragePrecision()));
+
+        barChart.getData().add(dataSeries1);
+
+
+        XYChart.Series dataSeries2 = new XYChart.Series();
+        dataSeries2.setName("Recall Scores");
+
+        dataSeries2.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAverageRecall()));
+
+
+        barChart.getData().add(dataSeries2);
+
+        barChart.setTranslateX(50);
+        barChart.setTranslateY(30);
+
+        Pane evaluationPane = new Pane(barChart);
+
+        meanPrecisionLabel.setTranslateX(550);
+        meanPrecisionLabel.setTranslateY(200);
+        meanRecallLabel.setTranslateX(550);
+        meanRecallLabel.setTranslateY(240);
+
+        Scene evaluationScene = new Scene(evaluationPane, 1000, 500);
         Button backButton_evaluation = new Button("Back");
         backButton_evaluation.setTranslateX(30);
         backButton_evaluation.setTranslateY(460);
         backButton_evaluation.setStyle(buttonCSS);
-        backButton_evaluation.setPrefSize(50,25);
+        backButton_evaluation.setPrefSize(50, 25);
+        evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel, meanPrecisionLabel, detailsButton_evaluation);
 
-        evaluationPane.getChildren().addAll(backButton_evaluation);
 
         // Buttons set on  Action
         // Start
@@ -261,17 +314,22 @@ public class Tst_FX_Main extends Application {
         evaluationButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                window.setScene(evaluationScene);
 
+            }
+        });
 
-//                window.setTitle("BarChart Experiments");
+        detailsButton_evaluation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
 
-                Label meanPrecisionLabel = new Label();
-                meanPrecisionLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
-                meanPrecisionLabel.setTextFill(Color.BLACK);
-                Label meanRecallLabel = new Label();
+                Button backButton = new Button("Back");
+                backButton.setStyle(buttonCSS);
 
-                meanRecallLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
-                meanRecallLabel.setTextFill(Color.BLACK);
+                backButton.setTranslateX(30);
+                backButton.setTranslateY(460);
+                backButton.setPrefSize(50,25);
+
 
 
                 CategoryAxis xAxis = new CategoryAxis();
@@ -283,54 +341,55 @@ public class Tst_FX_Main extends Application {
                 BarChart barChart = new BarChart(xAxis, yAxis);
 
                 XYChart.Series dataSeries1 = new XYChart.Series();
-                dataSeries1.setName("Precision Scores");
+                dataSeries1.setName("Precision Scores Evaluation");
+
 
                 CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
-
-                meanPrecisionLabel.setText("Precision : " + crossValidationCheckTool.getAveragePrecision());
-                meanRecallLabel.setText("Recall : " + crossValidationCheckTool.getAverageRecall());
+                ArrayList<CrossValidation> checkedArticles = crossValidationCheckTool.getArticleEvaluation();
 
 
+                int counter=1;
+                String articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
 
-                dataSeries1.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAveragePrecision()));
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries1.getData().add(new XYChart.Data(nameOfArticle, article.getPrecision()));
+                }
+
 
                 barChart.getData().add(dataSeries1);
 
 
                 XYChart.Series dataSeries2 = new XYChart.Series();
-                dataSeries2.setName("Recall Scores");
+                dataSeries2.setName("Recall");
 
-                dataSeries2.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAverageRecall()));
+                counter=1;
+                articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
 
-
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries2.getData().add(new XYChart.Data(nameOfArticle, article.getRecall()));
+                }
 
                 barChart.getData().add(dataSeries2);
 
-                barChart.setTranslateX(50);
-                barChart.setTranslateY(30);
 
                 Pane pane = new Pane(barChart);
-
-                meanPrecisionLabel.setTranslateX(550);
-                meanPrecisionLabel.setTranslateY(200);
-                meanRecallLabel.setTranslateX(550);
-                meanRecallLabel.setTranslateY(240);
-
-                pane.getChildren().addAll(backButton_evaluation,meanRecallLabel, meanPrecisionLabel);
+                pane.getChildren().addAll(backButton);
 
 
+                Scene detailsScene = new Scene(pane, 1000, 500);
 
-                Scene scene = new Scene(pane, 1000, 500);
+                window.setScene(detailsScene);
 
-                window.setScene(scene);
-//            primaryStage.setHeight(300);
-//            primaryStage.setWidth(1200);
-
-
-//                window.setScene(evaluationScene);
-
-
-
+                backButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        window.setScene(evaluationScene);
+                    }
+                });
             }
         });
 
@@ -483,8 +542,11 @@ public class Tst_FX_Main extends Application {
                         window.setScene(tool);
                     });
 
+
                     statsPane.getChildren().addAll(statsTitle,percentageLabel,wordsInContext,wordsInSummary,reductionLabel,backButton);
                     window.setScene(statsScene);
+
+
                 }
 
 
