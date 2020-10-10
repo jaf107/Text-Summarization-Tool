@@ -266,7 +266,13 @@ public class Tst_FX_Main extends Application {
 //                window.setTitle("BarChart Experiments");
 
                 Label meanPrecisionLabel = new Label();
+                meanPrecisionLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
+                meanPrecisionLabel.setTextFill(Color.BLACK);
                 Label meanRecallLabel = new Label();
+
+                meanRecallLabel.setFont(Font.font("Arial",FontWeight.BOLD,20));
+                meanRecallLabel.setTextFill(Color.BLACK);
+
 
                 CategoryAxis xAxis = new CategoryAxis();
                 xAxis.setLabel("Precison");
@@ -281,6 +287,8 @@ public class Tst_FX_Main extends Application {
 
                 CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
 
+                meanPrecisionLabel.setText("Precision : " + crossValidationCheckTool.getAveragePrecision());
+                meanRecallLabel.setText("Recall : " + crossValidationCheckTool.getAverageRecall());
 
 
 
@@ -303,10 +311,10 @@ public class Tst_FX_Main extends Application {
 
                 Pane pane = new Pane(barChart);
 
-                meanPrecisionLabel.setTranslateX(500);
-                meanPrecisionLabel.setTranslateY(300);
-                meanRecallLabel.setTranslateX(500);
-                meanRecallLabel.setTranslateY(340);
+                meanPrecisionLabel.setTranslateX(550);
+                meanPrecisionLabel.setTranslateY(200);
+                meanRecallLabel.setTranslateX(550);
+                meanRecallLabel.setTranslateY(240);
 
                 pane.getChildren().addAll(backButton_evaluation,meanRecallLabel, meanPrecisionLabel);
 

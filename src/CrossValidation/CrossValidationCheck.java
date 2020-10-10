@@ -53,7 +53,7 @@ public class CrossValidationCheck {
     }
 
     public double getAveragePrecision() {
-        return averageRecall;
+        return averagePrecision;
     }
 
     public double getAverageRecall() {
