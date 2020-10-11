@@ -1,0 +1,11 @@
+A Bangladeshi team, Bioforge, was announced as one of the Solver teams at this year's prestigious MIT Solve Challenge. The team received the Bill & Melinda Gates Foundation award for winning the "Maternal & Newborn Health" challenge, with their pitch for cost-effective and easy-to-assemble neonatal incubators for doctors with limited resources.
+
+Bioforge is among the 35 new Solver teams selected from 20 countries. For the Solver class of 2020, a total prize funding of over USD 1 million was announced for winners of the challenges. Furthermore, the Bangladeshi team also secured the Community Prize in MIT Solve Challenge 2020.
+
+The team will now have access to resources from MIT and partner organisations Microsoft and General Electric for technical, logistical and financial support. They will also be able to collaborate with other Solvers for the project and ask for assistance from MIT students and professors. 
+Led by founders Dr. Dewan AFK Choudhury and Ju-un Nahar Choudhury, Bioforge is a biotechnology company offering a low-cost and practical model of neonatal incubator for areas without proper access to healthcare technology. According to the team, the incubator should be able to provide all the necessary functions of a traditional incubator, including a built-in photo-therapy unit, temperature control, ability to tilt the bed, providing a physical barrier required for the baby to survive, without the high price and mobility issues for treatment of premature and low birthweight babies. The locally designed and manufactured incubators are easy to assemble and do not require highly skilled operators, reducing the cost of repairs as well. Bioforge's incubator technology, with MIT Solve's network, claims to reduce Bangladesh's neonatal mortality by one-third in the next five years.
+
+The project will move into clinical trials next, and if successful, find partners to deliver and deploy the incubators to resource-stricken regions in Bangladesh.
+
+Solve is an initiative of the Massachusetts Institute of Technology (MIT). Solve aims to find tech-based social entrepreneurs around the world through innovation challenges. The initiative then brings together MIT's innovation ecosystem and members to fund and support these entrepreneurs to create a long-lasting, positive impact on different sectors of the society.
+

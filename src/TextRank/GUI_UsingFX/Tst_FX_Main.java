@@ -179,7 +179,7 @@ public class Tst_FX_Main extends Application {
 
 
         Button algorithmsButton = new Button("Algorithms");
-        Tooltip.install(algorithmsButton, new Tooltip("Text Rank Algorithm"));
+        Tooltip.install(algorithmsButton, new Tooltip("Algorithms used in Summarization\n1. Text Rank\n2. Direct\n3. Word Frequency"));
         algorithmsButton.setStyle(buttonCSS);
         algorithmsButton.setScaleX(1.5);
         algorithmsButton.setScaleY(1.5);
@@ -568,11 +568,25 @@ public class Tst_FX_Main extends Application {
                     Label wordFrequencyTitle = new Label("Word Frequency Algorithm");
                     wordFrequencyTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
                     wordFrequencyTitle.setTextFill(Color.BLACK);
+                    wordFrequencyTitle.setUnderline(true);
                     wordFrequencyTitle.setTranslateX(30);
                     wordFrequencyTitle.setTranslateY(30);
 
                     Text wordFrequencyText = new Text();
+                    wordFrequencyText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
 
+
+
+                    wordFrequencyText.setText("\t5 steps :\n\n\n" +
+                            "        1. Create Word Frequency Table\n\n" +
+                            "        2. Tokenize Sentences\n\n" +
+                            "        3. Score the sentences\n\n" +
+                            "        4. Find Threshold\n\n" +
+                            "        5. Generate Summary");
+
+
+                    wordFrequencyText.setTranslateX(30);
+                    wordFrequencyText.setTranslateY(100);
 
 
                     Button backButton_wordFrequency = new Button("Back");
@@ -595,6 +609,102 @@ public class Tst_FX_Main extends Application {
                     wordFrequencyPane.getChildren().addAll(backButton_wordFrequency,wordFrequencyTitle,wordFrequencyText);
                     Scene wordFrequencyScene = new Scene(wordFrequencyPane,1000,500);
                     window.setScene(wordFrequencyScene);
+                });
+
+                textRank.setOnAction(e->{
+                    Label textRankTitle = new Label("Text Rank Algorithm");
+                    textRankTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    textRankTitle.setTextFill(Color.BLACK);
+                    textRankTitle.setUnderline(true);
+                    textRankTitle.setTranslateX(30);
+                    textRankTitle.setTranslateY(30);
+
+                    Text textRankText = new Text();
+                    textRankText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
+
+
+
+                    textRankText.setText("\t5 steps :\n\n\n" +
+                            "        1. Create Word Frequency Table\n\n" +
+                            "        2. Tokenize Sentences\n\n" +
+                            "        3. Score the sentences\n\n" +
+                            "        4. Find Threshold\n\n" +
+                            "        5. Generate Summary");
+
+
+                    textRankText.setTranslateX(30);
+                    textRankText.setTranslateY(100);
+
+
+                    Button backButton_textRank = new Button("Back");
+                    Tooltip.install(backButton_textRank, new Tooltip("Back"));
+                    backButton_textRank.setGraphic(backImageView);
+                    backButton_textRank.setTranslateX(30);
+                    backButton_textRank.setTranslateY(460);
+                    backButton_textRank.setStyle(buttonCSS);
+                    backButton_textRank.setPrefSize(backButtonWidth,backButtonHeight);
+                    backButton_textRank.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            window.setScene(algorithmScene);
+                        }
+                    });
+
+                    Pane textRankPane = new Pane();
+
+
+                    textRankPane.getChildren().addAll(backButton_textRank,textRankText,textRankTitle);
+                    Scene textRankScene = new Scene(textRankPane,1000,500);
+                    window.setScene(textRankScene);
+                });
+
+
+                direct.setOnAction(e ->{
+                    Label directTitle = new Label("Direct Algorithm");
+                    directTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    directTitle.setTextFill(Color.BLACK);
+                    directTitle.setUnderline(true);
+                    directTitle.setTranslateX(30);
+                    directTitle.setTranslateY(30);
+
+                    Text directText = new Text();
+                    directText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
+
+
+
+                    directText.setText("\t5 steps :\n\n\n" +
+                            "        1. Create Word Frequency Table\n\n" +
+                            "        2. Tokenize Sentences\n\n" +
+                            "        3. Score the sentences\n\n" +
+                            "        4. Find Threshold\n\n" +
+                            "        5. Generate Summary");
+
+
+                    directText.setTranslateX(30);
+                    directText.setTranslateY(100);
+
+
+                    Button backButton_direct = new Button("Back");
+                    Tooltip.install(backButton_direct, new Tooltip("Back"));
+                    backButton_direct.setGraphic(backImageView);
+                    backButton_direct.setTranslateX(30);
+                    backButton_direct.setTranslateY(460);
+                    backButton_direct.setStyle(buttonCSS);
+                    backButton_direct.setPrefSize(backButtonWidth,backButtonHeight);
+                    backButton_direct.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            window.setScene(algorithmScene);
+                        }
+                    });
+
+                    Pane directPane = new Pane();
+
+
+                    directPane.getChildren().addAll(backButton_direct,directText,directTitle);
+                    Scene directScene = new Scene(directPane,1000,500);
+                    window.setScene(directScene);
+
                 });
 
 
@@ -774,6 +884,7 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 context_tool.setText("");
+                summary_tool.setText("");
             }
         });
 
