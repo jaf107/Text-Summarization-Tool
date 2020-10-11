@@ -16,7 +16,7 @@ public class CrossValidationCheck {
     public CrossValidationCheck()
     {
         articleEvaluation = new ArrayList<CrossValidation>();
-        articleNumber = 9;
+        articleNumber = 20;
         getCrossValidated();
         calculateAveragePrecision();
         calculateAverageRecall();

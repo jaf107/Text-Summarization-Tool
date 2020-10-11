@@ -785,9 +785,17 @@ public class Tst_FX_Main extends Application {
                 barChart.getData().add(dataSeries2);
 
 
-                Pane pane = new Pane(barChart);
-                pane.getChildren().addAll(backButton);
+                Pane pane = new Pane();
+                pane.getChildren().addAll(backButton,barChart);
+                double scale = 1.0;
+                barChart.setBarGap(0.5);
+                barChart.setScaleX(scale);
+                barChart.setScaleY(scale);
+                barChart.setScaleZ(scale);
+                barChart.setTranslateX(50);
+                barChart.setTranslateY(70);
 
+                barChart.setPrefSize(900,400);
 
                 Scene detailsScene = new Scene(pane, 1000, 500);
 
