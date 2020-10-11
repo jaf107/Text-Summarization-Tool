@@ -2,8 +2,8 @@ package Algorithms.TextRank.GUI_UsingFX;
 
 import CrossValidation.CrossValidation;
 import CrossValidation.CrossValidationCheck;
-import TextRank.FinalProject.SummaryStatistics;
-import TextRank.FinalProject.SummaryTool;
+import Algorithms.TextRank.FinalProject.SummaryStatistics;
+import Algorithms.TextRank.FinalProject.SummaryTool;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -858,6 +858,26 @@ public class Tst_FX_Main extends Application {
             }
         });
 
+        directButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String context = context_tool.getText();
+                if(context.isEmpty())
+                {
+                    context_tool.setText("");
+                    summary_tool.setText("");
+
+                }
+                else {
+                    Algorithms.Direct.SummaryTool directTool = new Algorithms.Direct.SummaryTool(context);
+                    String summary = directTool.getSummary();
+
+                    summary_tool.setText(summary);
+                }
+
+            }
+        });
+
         textRankButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -887,7 +907,9 @@ public class Tst_FX_Main extends Application {
                     summary_tool.setText("");
                 }
                 else {
-                org.wordFrequencyAlgorithm.SummaryTool wordFreqTool = new org.wordFrequencyAlgorithm.SummaryTool(context);
+
+
+                    Algorithms.WordFrequency.SummaryTool wordFreqTool = new Algorithms.WordFrequency.SummaryTool(context);
 
                 String summary = wordFreqTool.getSummary();
 
@@ -984,111 +1006,25 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                String context = "Battling pandemic fatigue: Some feel burned out as the Covid-19 outbreak drags on with no end in sight\n" +
+                String context = "‘The Good Morrow’ is a typical Donnian love poem, divided into three stanzas. It’s one of those love poems in which he praises the spiritual relationship between men and women and hails it so ardently.\n" +
                         "\n" +
-                        "Freelance writer Sng Ler Jun has been taking on more writing assignments since March to earn extra money for his family and himself.\n" +
+                        "In the opening stanza, the poet expresses his wonder as to what he and his beloved did before they fell in love with each other. He becomes surprised remembering their past love experiences. He compares the love experiences of himself and his beloved with `weaning’, falsely sucking country pleasures’ and `snorting.’ The reference to these three physical activities indicates that they spent a life of worldly enjoyment. But now the poet using the conjunction ‘But’ makes a contrast and say’s that all these past physical activities seem to be utterly meaningless. The closing two lines of the first stanza imply that though the poet indulged himself in ‘country pleasures’, he has never been unmindful to perfect beauty of ideal spiritual love, which he always desired and has finally ‘got’ in his present beloved.\n" +
                         "\n" +
-                        "His 55-year-old mother was retrenched from a part-time job as a food promoter in February and his father, a 59-year-old taxi driver, has seen earnings fall since the start of the coronavirus pandemic.\n" +
+                        "Obviously there is a shift from physical to spiritual love, sleeping to waking period, sensuous appearances to ideal reality and as if from platonic cave to the world of light in the poet and his beloved. Here the poet seems to have touched the metaphysics of Plato. In his metaphysics, Plato at first takes something concrete such as man, but soon he leaps into abstract namely the Form of man. Similarly Donne also begins with physical love and soon he turns to Platonic or metaphysical love.\n" +
                         "\n" +
-                        "As a result, the 24-year-old, who is doing a communications degree from the University at Buffalo at the Singapore Institute of Management, said he feels \"pressured to work harder\".\n" +
+                        "The first stanza contains several Donnian elements. It opens abruptly with an explosive question. This abrupt colloquial beginning, which is so characteristic of Donne startles us and captures our attention. Another noticeable thing is that Donne swears his true relation – ‘I wonder by my troth’. Here he is unconventional. Any of his contemporary of Elizabethan poets might swear to God, but Donne has not done it. Then there are the references of physical union and the use of imageries in the following three lines. The fourth line contains a legendary conceit,a legend that tells of seven young men of Ephesus who took refuge in a cave during the persecution of Diocletian and were entombed there. They were found alive two centuries later. Here Donne compares himself and his beloved with the seven sleepers. Here he is cynical when he utters the word ‘did’. Surely the word ‘did’ includes the connotations of sexual doing – what did we ever do with the time?\n" +
                         "\n" +
-                        "The worry of finding a stable job after he graduates in December keeps him up at night. \"I'm doing unpaid writing work to beef up my resume so it'll help in my job hunt,\" said Sng, who is an only child.\n" +
+                        "The second stanza begins with hail and celebration. The unconscious past of flesh is over and a new conscious spiritual relationship begins. So the speaker cerebrates the present. “Now good morrow to our waking souls”. He also makes declaration that their souls have also learnt not to spy one another. That the married women or men involve in extra-marital affair was a dominant theme in the Elizabethan and Jacobean literature. So, fear only works in sensual lovers as motivation for watching over each other, least the other should become unfaithful to his or her mate. But the speaker and his beloved have overcome this fear and a peaceful satisfaction prevails their love. And for their faithful love they will control the temptations of other things. They love so faithfully and ardently that their love has the force to be merged into the universal love and to move out to become “an every where”.\n" +
                         "\n" +
-                        "Still, he feels \"plagued by the uncertainty\" as he does not know when the economy will improve. \"It's demoralising thinking about it and I feel burned out.\"\n" +
+                        "As spiritual lovers, the poet and his beloved are indifferent to earthly pleasures and possessions – let the sea-lovers and map-lovers do what they like to do. The lovers want to be happy with their joint world though they have their individual worlds but their individual worlds are fused into a single world. Now they are the joint owners of a single world.\n" +
                         "\n" +
-                        "Because of this, his mood and energy has been low and he no longer enjoys the walks he used to take in the neighbourhood.\n" +
+                        "Here in this stanza, we find the presence of imagery from the contemporary geographical world. That is to say the contemporary geographical interest of the explorers.\n" +
                         "\n" +
-                        "Dr Annabelle Chow, principal clinical psychologist at Annabelle Psychology, said the burnout a person experiences due to effects brought about by Covid-19 is a sign of pandemic fatigue.\n" +
+                        "The third stanza opens with endearing words from the speaker. The two lovers stand so closely that their respective faces are reflected in each others eyes. The simplicity of their heart is also reflected in their faces, which are conceived as two hemispheres of their world. But their world of love is so unearthly that its hemispheres are free from coldness and decay. They are not afraid of separation or break up of their “relation, because” ‘what ever dyes, was not mixt equality’. The ingredients of their love have been proportionately mixed and there is no ware and woof between them. They have love equally and proportionately.\n" +
                         "\n" +
-                        "\"Pandemic fatigue describes a mental state where a prolonged, heightened state of fear and caution leads to a form of burnout. Although it is not classified as a mental disorder, the effects of pandemic fatigue are nevertheless real and have an impact on those experiencing it,\" she said.\n" +
+                        "Thus the poem ends with the establishment of true friendship. After an abrupt beginning, there is calmness at last. The couple has rejected the country pleasures and entered into a true inter-dependent friendship. They have renounced the mundane world in order possess an unearthly world. Experience has thought them that the true happiness can be achieved through a mutual spiritual friendship.\n" +
                         "\n" +
-                        "Signs include reduced socialising with others; feeling restless, sad, helpless, unmotivated and frustrated; being irritable and sensitive; and having low mood and energy, and insomnia.\n" +
-                        "\n" +
-                        "Long-term worries about a pandemic can take a toll on mental and emotional health and may result in the worsening of mental health conditions and chronic health problems.\n" +
-                        "\n" +
-                        "It may also lead to headaches, an inability to focus, digestive issues, insomnia and a weakened immune system, ultimately affecting a person's overall daily functioning.\n" +
-                        "\n" +
-                        "Terri Chen, senior clinical psychologist at the National University Hospital's (NUH) Department of Psychological Medicine, said it is likely that people started feeling these effects in April when the circuit breaker here was extended.\n" +
-                        "\n" +
-                        "The restrictions were a \"drastic change\" to people's daily routine and way of life.\n" +
-                        "\n" +
-                        "\"Everyone was required to adapt in a short amount of time and many people were accepting of these restrictions as they thought it was a short-term measure to deal with the virus,\" said Chen, who is head of psychology at NUH.\n" +
-                        "\n" +
-                        "\"But when the circuit breaker was extended and subsequent announcements about phase one and phase two were made, it was hard for people to keep up, and even more so with no clear end in sight.\"\n" +
-                        "\n" +
-                        "Dr Chow said seniors, children, caregivers, front-line workers, those who are living alone or socially isolated, and those who already struggle with depression and anxiety have an increased risk of getting pandemic fatigue.\n" +
-                        "\n" +
-                        "Working adults have also been hit hard. Dr Geraldine Tan, director and principal psychologist at The Therapy Room, started noticing signs of pandemic fatigue in her clients last month.\n" +
-                        "\n" +
-                        "\"The uncertainty of the job market and the impending crisis get them down. The breaks they used to take overseas are now non-existent and the work they do has taken a radical shift for some, especially if they are working from home,\" she said.\n" +
-                        "\n" +
-                        "\"Each day becomes more routine and mundane. People in Singapore are very used to travelling and now we appear to be imprisoned on our island.\"\n" +
-                        "\n" +
-                        "For those working or studying from home, the frequent need to be connected via video conferencing also contributes to the fatigue.\n" +
-                        "\n" +
-                        "People report feeling exhausted after virtual interactions, a phenomenon known as \"Zoom fatigue\", although it also applies to other video-conferencing platforms like Google Hangouts, Skype or FaceTime.\n" +
-                        "\n" +
-                        "Sng, who has been attending online classes since late April, said he sometimes does not switch on his webcam during lessons.\n" +
-                        "\n" +
-                        "\"I feel like the lack of a physical presence makes me less accountable. I've put on 5kg since the circuit breaker and I don't want people to see me looking like a mess at home. I was also sick of looking at my own face on the screen.\"\n" +
-                        "\n" +
-                        "NUH's Chen said a lot of energy is required to pay attention to non-verbal communication, which is harder to pick up over video conferencing.\n" +
-                        "\n" +
-                        "\"The multi-person screens tax the brain further from the need to process and decode all the information at once. Staring at your own face during the meetings can be stressful too,\" she added.\n" +
-                        "\n" +
-                        "One danger of pandemic fatigue is that people may drop their guard against the virus.\n" +
-                        "\n" +
-                        "According to a Sunday Times survey of 1,000 people aged 16 and above, people in Singapore are becoming weary of the rules to limit the spread of the coronavirus.\n" +
-                        "\n" +
-                        "It showed that 44 per cent of people are tired of following the necessary health measures. These include having to wear a mask, checking in with SafeEntry, limiting the size of physical gatherings with friends and family, and not being able to travel overseas.\n" +
-                        "\n" +
-                        "Dr Chow said the constant barrage of Covid-19 news and advisories could actually be desensitising and complacency may set in.\n" +
-                        "\n" +
-                        "\"Repeated exposure to pandemic-related news will eventually diminish the initial feelings of anxiety and caution. Consequently, we may begin to engage in behaviours that were initially inhibited by the anxiety responses, such as not adhering to safe distancing rules or washing our hands as regularly as we did before,\" she said.\n" +
-                        "\n" +
-                        "Habituation - the progressive decrease in response, such as feelings of anxiety, after repeated exposure to a stimulus - has caused people to become less careful or conscious about the precautions they need to take than they were at the start of the pandemic, said Chen.\n" +
-                        "\n" +
-                        "\"This means that over time - especially if we or anyone we knew did not get Covid-19 - we are likely to be less careful or conscious about the precautions as it would appear that there is less of a need to maintain such levels of vigilance,\" she said.\n" +
-                        "\n" +
-                        "While it is normal to drop our guard when we see no end in sight, a reminder of the benefits of maintaining precautions and the consequences of not doing so would help people stay vigilant to fight Covid-19, Chen added.\n" +
-                        "\n" +
-                        "But musician Joe Chahal, 35, said he feels \"extremely tired\" of the situation even though he complies with the measures.\n" +
-                        "\n" +
-                        "\"I find it difficult to breathe comfortably with a mask and I don't feel like leaving my house because I have to wear it. There's also the hassle of constantly having to check in to places with SafeEntry. There are long queues just to enter a mall or a shop on weekends.\"\n" +
-                        "\n" +
-                        "Because of this, he hardly goes out and does not meet his friends much now.\n" +
-                        "\n" +
-                        "Dr Chow cautioned that social avoidance and distancing can make people feel isolated and lonely, and may increase stress and anxiety.\n" +
-                        "\n" +
-                        "Chen advised people to seek help from a psychologist if they experience persistent anxiety, hopelessness or sadness for more than two weeks, which in turn affects their performance and relationships.\n" +
-                        "\n" +
-                        "While it is normal to feel weary in response to the pandemic, it is important to remember that \"we are not alone in our struggles\", she said.\n" +
-                        "\n" +
-                        "\"This is a marathon and not a short sprint, so people need to manage their expectations and pace themselves so that they are able to go the distance,\" she added.\n" +
-                        "\n" +
-                        "\"It is important to remind ourselves that we are doing the best we can in an unprecedented situation that we are all experiencing for the first time in our lives.\"\n" +
-                        "\n" +
-                        "HOW TO COPE WITH PANDEMIC FATIGUE\n" +
-                        "Terri Chen, head of psychology and senior clinical psychologist at the National University Hospital's department of psychological medicine, gives some tips.\n" +
-                        "\n" +
-                        "BE AWARE: We cannot make changes if we are not aware of what is going on within us. When we are busy, it is easy to overlook emotions and behaviours that are warning signs for us. Practise awareness to take care of your mental health. Take some time to check in with yourself daily. This can be as short as one minute a day to observe and describe to yourself what you are thinking and feeling within.\n" +
-                        "\n" +
-                        "BE CREATIVE: Many of the ways we use to recharge have been thwarted or impacted by pandemic restrictions. Short getaways, for instance, are no longer an option. Neither are large gatherings, which feed our innate social needs.\n" +
-                        "\n" +
-                        "Being creative and open to new ideas and experiences can help you cope in the interim. For instance, you can travel vicariously with friends by having a \"watch party\" of a travel show and make a fantasy list of future travel plans together.\n" +
-                        "\n" +
-                        "BE KIND AND COMPASSIONATE: There are many things that are not within our control at this moment, which could leave us feeling angry and frustrated. This can lead to criticisms being directed towards ourselves or others, which may worsen our mood.\n" +
-                        "\n" +
-                        "Show kindness to yourself or others through one act a day. Research has shown that this can help us feel happier and it also boosts our immune system and energy levels.\n" +
-                        "\n" +
-                        "BE PATIENT: We do not know when the coronavirus pandemic will end and it is hard to be patient with the safety restrictions indefinitely. Make space for emotions, as it is impossible to think logically 100 per cent of the time.\n" +
-                        "\n" +
-                        "Try the \"five, four, three, two, one\" technique to relax: Look around you and name them aloud as you notice them: five things you can see, four things you can feel, three things you can hear, two things you can smell and one thing you can taste.\n" +
-                        "\n" +
-                        "BE EFFECTIVE: There are many tips and suggestions on how to cope with the pandemic, such as practising mindfulness or working out, and it can be overwhelming - and tiring - to try many things at once.\n" +
-                        "\n" +
-                        "It is more effective to identify what need - physical, emotional, intellectual or spiritual - is most pressing and try one technique at a time to gauge if it helps you.";
-
+                        "In the first stanza, there is the regret for past doings, in the second stanza the pleasure of discovering something in the last stanza, the prospect/hope of doing better/using the discovery. The abrupt beginning of the poem, the use of conceits form everyday life and myth in the first stanza, the geographical reference of stanza two, the use of scholastic philosophy in stanza three, and ultimately the emphasis of spiritual love continue to make it one of those poems of Donne which combine intellect and emotion. These above motioned qualities have made the poem get a certain place in honored, treasured lyrics written by John Donne.";
                 context_tool.setText(context);
             }
         });
