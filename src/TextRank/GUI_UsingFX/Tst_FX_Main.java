@@ -178,11 +178,11 @@ public class Tst_FX_Main extends Application {
 
 
 
-        Button algorithms = new Button("Algorithms");
-        Tooltip.install(algorithms, new Tooltip("Text Rank Algorithm"));
-        algorithms.setStyle(buttonCSS);
-        algorithms.setScaleX(1.5);
-        algorithms.setScaleY(1.5);
+        Button algorithmsButton = new Button("Algorithms");
+        Tooltip.install(algorithmsButton, new Tooltip("Text Rank Algorithm"));
+        algorithmsButton.setStyle(buttonCSS);
+        algorithmsButton.setScaleX(1.5);
+        algorithmsButton.setScaleY(1.5);
 
         Button textRankButton_about = new Button("Text Rank");
         Tooltip.install(textRankButton_about, new Tooltip("Text Rank Algorithm"));
@@ -203,8 +203,8 @@ public class Tst_FX_Main extends Application {
         aboutTitle.setTranslateX(30);
         aboutTitle.setTranslateY(25);
 
-        algorithms.setTranslateX(800);
-        algorithms.setTranslateY(450);
+        algorithmsButton.setTranslateX(800);
+        algorithmsButton.setTranslateY(450);
 
         aboutText.setTranslateX(30);
         aboutText.setTranslateY(100);
@@ -218,7 +218,7 @@ public class Tst_FX_Main extends Application {
 
 
 
-        aboutPane.getChildren().addAll(algorithms,aboutTitle,backButton_about,aboutText);
+        aboutPane.getChildren().addAll(algorithmsButton,aboutTitle,backButton_about,aboutText);
         Scene aboutScene = new Scene(aboutPane,1000,500);
 
 
@@ -489,6 +489,71 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 window.setScene(menu);
+            }
+        });
+
+        algorithmsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Button backButton = new Button("Back");
+                Tooltip.install(backButton, new Tooltip("Back"));
+                backButton.setGraphic(backImageView);
+                backButton.setTranslateX(30);
+                backButton.setTranslateY(460);
+                backButton.setStyle(buttonCSS);
+                backButton.setPrefSize(backButtonWidth,backButtonHeight);
+                backButton.setOnAction(e->{
+                    window.setScene(aboutScene);
+                });
+
+                Pane algorithmsPane = new Pane();
+
+                Label algorithmTitle = new Label("Algorithms");
+                algorithmTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                algorithmTitle.setTextFill(Color.BLACK);
+//                algorithmTitle.setUnderline(true);
+                algorithmTitle.setTranslateX(30);
+                algorithmTitle.setTranslateY(30);
+
+                Button textRank = new Button("Text Rank");
+                Tooltip.install(textRank, new Tooltip("Text Rank Algorithm"));
+                textRank.setGraphic(textRankImageView);
+                textRank.setTranslateX(400);
+                textRank.setTranslateY(150);
+                textRank.setStyle(buttonCSS);
+                textRank.setPrefSize(120,25);
+
+                Button direct = new Button("Direct");
+                Tooltip.install(direct, new Tooltip("Direct Algorithm"));
+                direct.setGraphic(directImageView);
+                direct.setTranslateX(400);
+                direct.setTranslateY(250);
+                direct.setStyle(buttonCSS);
+                direct.setPrefSize(120,25);
+
+                Button wordFrequency = new Button("Word Frequency");
+                Tooltip.install(wordFrequency, new Tooltip("Word Frequency Algorithm"));
+                wordFrequency.setGraphic(wordFrequencyImageView);
+                wordFrequency.setTranslateX(400);
+                wordFrequency.setTranslateY(350);
+                wordFrequency.setStyle(buttonCSS);
+                wordFrequency.setPrefSize(120,25);
+
+
+                double scale  = 2;
+                textRank.setScaleX(scale);
+                textRank.setScaleY(scale);
+
+                direct.setScaleX(scale);
+                direct.setScaleY(scale);
+
+                wordFrequency.setScaleX(scale);
+                wordFrequency.setScaleY(scale);
+
+
+                algorithmsPane.getChildren().addAll(algorithmTitle,backButton,textRank,direct,wordFrequency);
+                Scene algorithmScene = new Scene(algorithmsPane,1000,500);
+                window.setScene(algorithmScene);
             }
         });
 
