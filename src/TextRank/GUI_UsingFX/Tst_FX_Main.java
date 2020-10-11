@@ -731,6 +731,13 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
+                Label detailsTitle = new Label("Details");
+                detailsTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                detailsTitle.setTextFill(Color.BLACK);
+//                algorithmTitle.setUnderline(true);
+                detailsTitle.setTranslateX(30);
+                detailsTitle.setTranslateY(30);
+
                 Button backButton = new Button("Back");
                 backButton.setStyle(buttonCSS);
                 backButton.setGraphic(backImageView);
@@ -786,7 +793,7 @@ public class Tst_FX_Main extends Application {
 
 
                 Pane pane = new Pane();
-                pane.getChildren().addAll(backButton,barChart);
+                pane.getChildren().addAll(backButton,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
