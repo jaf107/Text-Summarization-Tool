@@ -197,6 +197,11 @@ public class Tst_FX_Main extends Application {
         backButton_about.setPrefSize(backButtonWidth,backButtonHeight);
 
 
+        Image algorithmsImage = new Image(new FileInputStream("Images/algorithms.png"));
+        ImageView algorithmsImageView = new ImageView(algorithmsImage);
+        algorithmsImageView.setFitHeight(10);
+        algorithmsImageView.setPreserveRatio(true);
+        algorithmsButton.setGraphic(algorithmsImageView);
 
         // Coordinates
 
@@ -540,6 +545,8 @@ public class Tst_FX_Main extends Application {
                 wordFrequency.setPrefSize(120,25);
 
 
+
+
                 double scale  = 2;
                 textRank.setScaleX(scale);
                 textRank.setScaleY(scale);
@@ -554,6 +561,41 @@ public class Tst_FX_Main extends Application {
                 algorithmsPane.getChildren().addAll(algorithmTitle,backButton,textRank,direct,wordFrequency);
                 Scene algorithmScene = new Scene(algorithmsPane,1000,500);
                 window.setScene(algorithmScene);
+
+
+                wordFrequency.setOnAction(e->{
+
+                    Label wordFrequencyTitle = new Label("Word Frequency Algorithm");
+                    wordFrequencyTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    wordFrequencyTitle.setTextFill(Color.BLACK);
+                    wordFrequencyTitle.setTranslateX(30);
+                    wordFrequencyTitle.setTranslateY(30);
+
+
+                    Button backButton_wordFrequency = new Button("Back");
+                    Tooltip.install(backButton_wordFrequency, new Tooltip("Back"));
+                    backButton_wordFrequency.setGraphic(backImageView);
+                    backButton_wordFrequency.setTranslateX(30);
+                    backButton_wordFrequency.setTranslateY(460);
+                    backButton_wordFrequency.setStyle(buttonCSS);
+                    backButton_wordFrequency.setPrefSize(backButtonWidth,backButtonHeight);
+                    backButton_wordFrequency.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            window.setScene(algorithmScene);
+                        }
+                    });
+
+                    Pane wordFrequencyPane = new Pane();
+
+
+                    wordFrequencyPane.getChildren().addAll(backButton_wordFrequency,wordFrequencyTitle);
+                    Scene wordFrequencyScene = new Scene(wordFrequencyPane,1000,500);
+                    window.setScene(wordFrequencyScene);
+                });
+
+
+
             }
         });
 
