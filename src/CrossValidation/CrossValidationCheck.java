@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CrossValidationCheck {
+
+    private int articleNumber;
     private ArrayList<CrossValidation> articleEvaluation;
     private double averagePrecision;
     private double averageRecall;
@@ -14,6 +16,7 @@ public class CrossValidationCheck {
     public CrossValidationCheck()
     {
         articleEvaluation = new ArrayList<CrossValidation>();
+        articleNumber = 9;
         getCrossValidated();
         calculateAveragePrecision();
         calculateAverageRecall();
@@ -64,7 +67,7 @@ public class CrossValidationCheck {
         int counter = 0;
 
 
-        for (int i= 0;i<8;i++) {
+        for (int i= 0;i<articleNumber;i++) {
             counter++;
             String article = "Article" + counter + ".txt";
 

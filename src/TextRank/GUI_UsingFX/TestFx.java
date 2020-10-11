@@ -3,9 +3,11 @@ package TextRank.GUI_UsingFX;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -13,24 +15,15 @@ import java.io.FileInputStream;
 public class TestFx extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Image image = new Image(new FileInputStream("Images/startButton.png"));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(20);
-        imageView.setFitWidth(20);
+    public void start(Stage primaryStage) throws Exception {
+        Text text = new Text("This is a JavaFX text.");
+        text.setUnderline(true);
+        Label label = new Label("This is a label");
+        label.setUnderline(true);
 
-
-        Button startButton = new Button("Sample");
-        startButton.setGraphic(imageView);
-//        startButton.setPrefSize(100,25);
-
-        VBox vBox = new VBox();
-        Scene scene = new Scene(vBox,300,300);
-
-        vBox.getChildren().addAll(startButton);
-        stage.setScene(scene);
-        stage.show();
-//        sample.setGraphic();
+        Scene scene = new Scene(new VBox(text,label), 300, 250);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

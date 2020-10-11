@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -157,6 +158,62 @@ public class Tst_FX_Main extends Application {
         menuPane.getChildren().addAll(toolButton, aboutButton, evaluationButton, backButton_Menu, menuLabel);
         menu = new Scene(menuPane, 1000, 500);
         start = new Scene(startPane, 1000, 500);
+
+        // About page
+
+        Pane aboutPane = new Pane();
+
+        Label aboutTitle = new Label("Text Summarization Tool");
+        aboutTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        aboutTitle.setTextFill(Color.BLACK);
+        aboutTitle.setUnderline(true);
+
+
+        Text aboutText = new Text("");
+
+
+        Button algorithms = new Button("Algorithms");
+        Tooltip.install(algorithms, new Tooltip("Text Rank Algorithm"));
+        algorithms.setStyle(buttonCSS);
+        algorithms.setScaleX(1.5);
+        algorithms.setScaleY(1.5);
+
+        Button textRankButton_about = new Button("Text Rank");
+        Tooltip.install(textRankButton_about, new Tooltip("Text Rank Algorithm"));
+        textRankButton_about.setStyle(buttonCSS);
+
+        Button backButton_about = new Button("Back");
+        Tooltip.install(backButton_about, new Tooltip("Back"));
+        backButton_about.setGraphic(backImageView);
+        backButton_about.setTranslateX(30);
+        backButton_about.setTranslateY(460);
+        backButton_about.setStyle(buttonCSS);
+        backButton_about.setPrefSize(backButtonWidth,backButtonHeight);
+
+
+
+        // Coordinates
+
+        aboutTitle.setTranslateX(30);
+        aboutTitle.setTranslateY(25);
+
+        algorithms.setTranslateX(800);
+        algorithms.setTranslateY(460);
+
+
+
+
+
+
+
+
+
+
+
+
+        aboutPane.getChildren().addAll(algorithms,aboutTitle,backButton_about);
+        Scene aboutScene = new Scene(aboutPane,1000,500);
+
 
 
         // Tool page
@@ -417,8 +474,25 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
+                window.setScene(aboutScene);
             }
         });
+
+        backButton_about.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(menu);
+            }
+        });
+
+
+
+
+
+
+
+
+
         evaluationButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -426,7 +500,6 @@ public class Tst_FX_Main extends Application {
 
             }
         });
-
         detailsButton_evaluation.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
