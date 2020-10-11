@@ -571,6 +571,9 @@ public class Tst_FX_Main extends Application {
                     wordFrequencyTitle.setTranslateX(30);
                     wordFrequencyTitle.setTranslateY(30);
 
+                    Text wordFrequencyText = new Text();
+
+
 
                     Button backButton_wordFrequency = new Button("Back");
                     Tooltip.install(backButton_wordFrequency, new Tooltip("Back"));
@@ -589,7 +592,7 @@ public class Tst_FX_Main extends Application {
                     Pane wordFrequencyPane = new Pane();
 
 
-                    wordFrequencyPane.getChildren().addAll(backButton_wordFrequency,wordFrequencyTitle);
+                    wordFrequencyPane.getChildren().addAll(backButton_wordFrequency,wordFrequencyTitle,wordFrequencyText);
                     Scene wordFrequencyScene = new Scene(wordFrequencyPane,1000,500);
                     window.setScene(wordFrequencyScene);
                 });
