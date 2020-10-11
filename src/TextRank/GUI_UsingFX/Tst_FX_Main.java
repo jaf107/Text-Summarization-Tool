@@ -164,12 +164,18 @@ public class Tst_FX_Main extends Application {
         Pane aboutPane = new Pane();
 
         Label aboutTitle = new Label("Text Summarization Tool");
-        aboutTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        aboutTitle.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
         aboutTitle.setTextFill(Color.BLACK);
         aboutTitle.setUnderline(true);
 
 
-        Text aboutText = new Text("");
+        Text aboutText = new Text("Text Summarizer is a tool used to generate a precise summary from a voluminous text. It also delivers accurate summary which can fluently pass the intended messages.\n" +
+                "\n\nThere are two main types of summarizing text in Natural language Process.\n" +
+                "\n\n\bAbstraction : entails paraphrasing and shortening\n" +
+                "\n\bExtraction   : involves scoring sentences and extracting the important ones'\n");
+        aboutText.setFont(Font.font("Arial",FontWeight.EXTRA_LIGHT,20));
+        aboutText.setWrappingWidth(900);
+
 
 
         Button algorithms = new Button("Algorithms");
@@ -198,7 +204,10 @@ public class Tst_FX_Main extends Application {
         aboutTitle.setTranslateY(25);
 
         algorithms.setTranslateX(800);
-        algorithms.setTranslateY(460);
+        algorithms.setTranslateY(450);
+
+        aboutText.setTranslateX(30);
+        aboutText.setTranslateY(100);
 
 
 
@@ -209,9 +218,7 @@ public class Tst_FX_Main extends Application {
 
 
 
-
-
-        aboutPane.getChildren().addAll(algorithms,aboutTitle,backButton_about);
+        aboutPane.getChildren().addAll(algorithms,aboutTitle,backButton_about,aboutText);
         Scene aboutScene = new Scene(aboutPane,1000,500);
 
 
