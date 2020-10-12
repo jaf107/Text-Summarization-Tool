@@ -415,10 +415,7 @@ public class Tst_FX_Main extends Application {
         evaluationTitle.setTextFill(Color.BLACK);
 
 
-        Label meanPrecisionLabel = new Label();
-        meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        meanPrecisionLabel.setTextFill(Color.BLACK);
-        Label meanRecallLabel = new Label();
+
 
         Button detailsButton_textRank_evaluation = new Button("TextRank");
         detailsButton_textRank_evaluation.setStyle(buttonCSS);
@@ -438,8 +435,7 @@ public class Tst_FX_Main extends Application {
         detailsButton_wordFrequency_evaluation.setTranslateY(280);
         detailsButton_wordFrequency_evaluation.setPrefSize(100, 25);
 
-        meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        meanRecallLabel.setTextFill(Color.BLACK);
+
 
 
         // Image - evaluation
@@ -468,6 +464,12 @@ public class Tst_FX_Main extends Application {
         RogueDirect rogueDirect = new RogueDirect();
         RogueWordFrequency rogueWordFrequency = new RogueWordFrequency();
 
+        Label meanPrecisionLabel = new Label();
+        meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        meanPrecisionLabel.setTextFill(Color.BLACK);
+        Label meanRecallLabel = new Label();
+        meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        meanRecallLabel.setTextFill(Color.BLACK);
         df.setRoundingMode(RoundingMode.UP);
         meanPrecisionLabel.setText("Precision : " + df.format(rogueTextRankTool.getAveragePrecision()));
         meanRecallLabel.setText("Recall : " + df.format(rogueTextRankTool.getAverageRecall()));
@@ -834,8 +836,20 @@ public class Tst_FX_Main extends Application {
                     }
                 });
 
-
-
+                RogueDirect rogueDirect1 = new RogueDirect();
+                Label meanPrecisionLabel = new Label();
+                meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanPrecisionLabel.setTextFill(Color.BLACK);
+                Label meanRecallLabel = new Label();
+                meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanRecallLabel.setTextFill(Color.BLACK);
+                df.setRoundingMode(RoundingMode.UP);
+                meanPrecisionLabel.setText("Precision : " + df.format(rogueDirect1.getAveragePrecision()));
+                meanRecallLabel.setText("Recall : " + df.format(rogueDirect1.getAverageRecall()));
+                meanPrecisionLabel.setTranslateX(750);
+                meanPrecisionLabel.setTranslateY(10);
+                meanRecallLabel.setTranslateX(750);
+                meanRecallLabel.setTranslateY(40);
 
 
                 CategoryAxis xAxis = new CategoryAxis();
@@ -850,7 +864,7 @@ public class Tst_FX_Main extends Application {
                 dataSeries1.setName("Precision Scores Evaluation");
 
 
-                RogueDirect rogueDirect1 = new RogueDirect();
+
                 ArrayList<CrossValidation> checkedArticles = rogueDirect1.getArticleEvaluation();
 
 
@@ -884,7 +898,7 @@ public class Tst_FX_Main extends Application {
 
                 Pane pane = new Pane();
                 pane.setBackground(allBackground);
-                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
+                pane.getChildren().addAll(backButton_details_textrank,meanPrecisionLabel,meanRecallLabel,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
@@ -914,19 +928,34 @@ public class Tst_FX_Main extends Application {
                 detailsTitle.setTranslateX(30);
                 detailsTitle.setTranslateY(30);
 
-                Button backButton_details_textrank = new Button("Back");
-                backButton_details_textrank.setGraphic(backImageView);
-                backButton_details_textrank.setTranslateX(30);
-                backButton_details_textrank.setTranslateY(460);
-                backButton_details_textrank.setStyle(buttonCSS);
-                backButton_details_textrank.setPrefSize(backButtonWidth,backButtonHeight);
+                Button backButton_details_wordFrequncy = new Button("Back");
+                backButton_details_wordFrequncy.setGraphic(backImageView);
+                backButton_details_wordFrequncy.setTranslateX(30);
+                backButton_details_wordFrequncy.setTranslateY(460);
+                backButton_details_wordFrequncy.setStyle(buttonCSS);
+                backButton_details_wordFrequncy.setPrefSize(backButtonWidth,backButtonHeight);
 
-                backButton_details_textrank.setOnAction(new EventHandler<ActionEvent>() {
+                backButton_details_wordFrequncy.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         window.setScene(evaluationScene);
                     }
                 });
+
+                RogueWordFrequency rogueWordFrequency1 = new RogueWordFrequency();
+                Label meanPrecisionLabel = new Label();
+                meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanPrecisionLabel.setTextFill(Color.BLACK);
+                Label meanRecallLabel = new Label();
+                meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanRecallLabel.setTextFill(Color.BLACK);
+                df.setRoundingMode(RoundingMode.UP);
+                meanPrecisionLabel.setText("Precision : " + df.format(rogueWordFrequency1.getAveragePrecision()));
+                meanRecallLabel.setText("Recall : " + df.format(rogueWordFrequency1.getAverageRecall()));
+                meanPrecisionLabel.setTranslateX(750);
+                meanPrecisionLabel.setTranslateY(10);
+                meanRecallLabel.setTranslateX(750);
+                meanRecallLabel.setTranslateY(40);
 
 
 
@@ -944,7 +973,7 @@ public class Tst_FX_Main extends Application {
                 dataSeries1.setName("Precision Scores Evaluation");
 
 
-                RogueWordFrequency rogueWordFrequency1 = new RogueWordFrequency();
+
                 ArrayList<CrossValidation> checkedArticles = rogueWordFrequency1.getArticleEvaluation();
 
 
@@ -978,7 +1007,7 @@ public class Tst_FX_Main extends Application {
 
                 Pane pane = new Pane();
                 pane.setBackground(allBackground);
-                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
+                pane.getChildren().addAll(backButton_details_wordFrequncy,meanPrecisionLabel,meanRecallLabel,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
@@ -1114,7 +1143,21 @@ public class Tst_FX_Main extends Application {
                     }
                 });
 
+                RogueTextRank rogueTextRankTool = new RogueTextRank();
 
+                Label meanPrecisionLabel = new Label();
+                meanPrecisionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanPrecisionLabel.setTextFill(Color.BLACK);
+                Label meanRecallLabel = new Label();
+                meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+                meanRecallLabel.setTextFill(Color.BLACK);
+                df.setRoundingMode(RoundingMode.UP);
+                meanPrecisionLabel.setText("Precision : " + df.format(rogueTextRankTool.getAveragePrecision()));
+                meanRecallLabel.setText("Recall : " + df.format(rogueTextRankTool.getAverageRecall()));
+                meanPrecisionLabel.setTranslateX(750);
+                meanPrecisionLabel.setTranslateY(10);
+                meanRecallLabel.setTranslateX(750);
+                meanRecallLabel.setTranslateY(40);
 
 
 
@@ -1130,7 +1173,7 @@ public class Tst_FX_Main extends Application {
                 dataSeries1.setName("Precision Scores Evaluation");
 
 
-                RogueTextRank rogueTextRankTool = new RogueTextRank();
+
                 ArrayList<CrossValidation> checkedArticles = rogueTextRankTool.getArticleEvaluation();
 
 
@@ -1164,7 +1207,7 @@ public class Tst_FX_Main extends Application {
 
                 Pane pane = new Pane();
                 pane.setBackground(allBackground);
-                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
+                pane.getChildren().addAll(backButton_details_textrank,meanPrecisionLabel,meanRecallLabel,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
