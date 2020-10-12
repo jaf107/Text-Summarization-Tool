@@ -347,7 +347,8 @@ public class Tst_FX_Main extends Application {
         tool = new Scene(toolPane, 1000, 500);
 
 
-        toolPane.getChildren().addAll(summaryLabel, contextLabel, statsButton, toolLabel, deleteButton, summarize, runSampleButton, context_tool
+        toolPane.getChildren().addAll(summaryLabel, contextLabel, statsButton,
+                toolLabel, deleteButton, summarize, runSampleButton, context_tool
                 , summary_tool, textRankButton, directButton, wordFrequencyButton, backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
         // Coordinates
@@ -1250,12 +1251,15 @@ public class Tst_FX_Main extends Application {
         backButton_Menu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 window.setScene(start);
             }
         });
         backButton_Tool.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                summary_tool.setText("");
+                context_tool.setText("");
                 window.setScene(menu);
             }
         });
