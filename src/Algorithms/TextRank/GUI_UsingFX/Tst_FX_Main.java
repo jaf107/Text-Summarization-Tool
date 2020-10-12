@@ -15,7 +15,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -54,14 +54,23 @@ public class Tst_FX_Main extends Application {
         backImageView.setFitHeight(10);
         backImageView.setPreserveRatio(true);
 
+
+        // Background
+        Image startImage = new Image(new FileInputStream("Images/Background/ts.jpg"));
+        ImageView startBackgroundImageView = new ImageView(startImage);
+        BackgroundImage startBackgroundImage = new BackgroundImage(startImage, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background startBackground = new Background(startBackgroundImage);
+
         int backButtonWidth = 70;
         int backButtonHeight = 25;
 
 
         // Start page Scene
         Pane startPane = new Pane();
-        Label introTitle = new Label("Text Summarization Tool");
-        introTitle.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+        startPane.setBackground(startBackground);
+//        Label introTitle = new Label("Text Summarization Tool");
+//        introTitle.setFont(Font.font("Arial", FontWeight.BOLD, 48));
         Button startButton = new Button("Start");
 //        Tooltip startToolTip = new Tooltip("Start Button");
         Tooltip.install(startButton, new Tooltip("Start Button"));
@@ -69,12 +78,12 @@ public class Tst_FX_Main extends Application {
         startButton.setScaleX(4);
         startButton.setScaleY(4);
 
-        introTitle.setTranslateX(200);
-        introTitle.setTranslateY(150);
+//        introTitle.setTranslateX(200);
+//        introTitle.setTranslateY(150);
         startButton.setTranslateX(480);
         startButton.setTranslateY(300);
 
-        startPane.getChildren().addAll(introTitle, startButton);
+        startPane.getChildren().addAll( startButton);
 
         // Image
         Image image = new Image(new FileInputStream("Images/icons8-start-48.png"));
@@ -133,16 +142,29 @@ public class Tst_FX_Main extends Application {
 
         Pane menuPane = new Pane();
 
+        Image allImage = new Image(new FileInputStream("Images/Background/ts_light_2.png"));
+        BackgroundImage allBackgroundImage = new BackgroundImage(allImage, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background allBackground = new Background(allBackgroundImage);
+
+
+        Image allaboutImage = new Image(new FileInputStream("Images/Background/ts_light_2.png"));
+        BackgroundImage allBgroundImage = new BackgroundImage(allaboutImage, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background allAboutBg = new Background(allBgroundImage);
+
+        menuPane.setBackground(allBackground);
+
         Label menuLabel = new Label("Menu");
         menuLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         menuLabel.setTextFill(Color.BLACK);
 
         // Menu buttons coordinates
-        toolButton.setTranslateX(500);
+        toolButton.setTranslateX(480);
         toolButton.setTranslateY(140);
-        aboutButton.setTranslateX(500);
+        aboutButton.setTranslateX(480);
         aboutButton.setTranslateY(240);
-        evaluationButton.setTranslateX(500);
+        evaluationButton.setTranslateX(480);
         evaluationButton.setTranslateY(340);
         backButton_Menu.setTranslateX(30);
         backButton_Menu.setTranslateY(460);
@@ -162,6 +184,7 @@ public class Tst_FX_Main extends Application {
         // About page
 
         Pane aboutPane = new Pane();
+        aboutPane.setBackground(allAboutBg);
 
         Label aboutTitle = new Label("Text Summarization Tool");
         aboutTitle.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
@@ -230,6 +253,7 @@ public class Tst_FX_Main extends Application {
 
         // Tool page
         Pane toolPane = new Pane();
+        toolPane.setBackground(allBackground);
         Label toolLabel = new Label("Text Summarization Tool");
         toolLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         toolLabel.setTextFill(Color.BLACK);
@@ -445,6 +469,7 @@ public class Tst_FX_Main extends Application {
         barChart.setTranslateY(70);
 
         Pane evaluationPane = new Pane(barChart);
+        evaluationPane.setBackground(allAboutBg);
 
         meanPrecisionLabel.setTranslateX(550);
         meanPrecisionLabel.setTranslateY(200);
@@ -463,6 +488,21 @@ public class Tst_FX_Main extends Application {
         backButton_evaluation.setPrefSize(backButtonWidth,backButtonHeight);
         evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel,evaluationTitle, meanPrecisionLabel, detailsButton_evaluation);
 
+
+        Button backButton_details = new Button("Back");
+        backButton_details.setStyle(buttonCSS);
+        backButton_details.setGraphic(backImageView);
+
+        backButton_details.setTranslateX(30);
+        backButton_details.setTranslateY(460);
+        backButton_details.setPrefSize(backButtonWidth,backButtonHeight);
+
+        backButton_details.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                window.setScene(menu);
+            }
+        });
 
         // Buttons set on  Action
         // Start
@@ -512,6 +552,7 @@ public class Tst_FX_Main extends Application {
                 });
 
                 Pane algorithmsPane = new Pane();
+                algorithmsPane.setBackground(allBackground);
 
                 Label algorithmTitle = new Label("Algorithms");
                 algorithmTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
@@ -604,6 +645,7 @@ public class Tst_FX_Main extends Application {
                     });
 
                     Pane wordFrequencyPane = new Pane();
+                    wordFrequencyPane.setBackground(allBackground);
 
 
                     wordFrequencyPane.getChildren().addAll(backButton_wordFrequency,wordFrequencyTitle,wordFrequencyText);
@@ -651,6 +693,7 @@ public class Tst_FX_Main extends Application {
                     });
 
                     Pane textRankPane = new Pane();
+                    textRankPane.setBackground(allAboutBg);
 
 
                     textRankPane.getChildren().addAll(backButton_textRank,textRankText,textRankTitle);
@@ -700,6 +743,7 @@ public class Tst_FX_Main extends Application {
                     });
 
                     Pane directPane = new Pane();
+                    directPane.setBackground(allBackground);
 
 
                     directPane.getChildren().addAll(backButton_direct,directText,directTitle);
@@ -739,13 +783,7 @@ public class Tst_FX_Main extends Application {
                 detailsTitle.setTranslateX(30);
                 detailsTitle.setTranslateY(30);
 
-                Button backButton = new Button("Back");
-                backButton.setStyle(buttonCSS);
-                backButton.setGraphic(backImageView);
 
-                backButton.setTranslateX(30);
-                backButton.setTranslateY(460);
-                backButton.setPrefSize(backButtonWidth,backButtonHeight);
 
 
 
@@ -794,7 +832,8 @@ public class Tst_FX_Main extends Application {
 
 
                 Pane pane = new Pane();
-                pane.getChildren().addAll(backButton,barChart,detailsTitle);
+                pane.setBackground(allBackground);
+                pane.getChildren().addAll(backButton_details,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
@@ -809,12 +848,6 @@ public class Tst_FX_Main extends Application {
 
                 window.setScene(detailsScene);
 
-                backButton.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        window.setScene(evaluationScene);
-                    }
-                });
             }
         });
 
@@ -933,6 +966,7 @@ public class Tst_FX_Main extends Application {
                 String summary = summary_tool.getText();
 
                 Pane statsPane = new Pane();
+                statsPane.setBackground(allBackground);
                 Scene statsScene = new Scene(statsPane,1000,500);
                 if(context.isEmpty() && summary.isEmpty())
                 {
