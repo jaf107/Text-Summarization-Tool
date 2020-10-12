@@ -859,8 +859,8 @@ public class Tst_FX_Main extends Application {
                 meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                 meanRecallLabel.setTextFill(Color.BLACK);
                 df.setRoundingMode(RoundingMode.UP);
-                meanPrecisionLabel.setText("Precision : " + df.format(rogueDirect1.getAveragePrecision()));
-                meanRecallLabel.setText("Recall : " + df.format(rogueDirect1.getAverageRecall()));
+                meanPrecisionLabel.setText("Precision   : " + df.format(rogueDirect1.getAveragePrecision()));
+                meanRecallLabel.setText(   "Recall         : " + df.format(rogueDirect1.getAverageRecall()));
                 meanPrecisionLabel.setTranslateX(750);
                 meanPrecisionLabel.setTranslateY(10);
                 meanRecallLabel.setTranslateX(750);
@@ -965,8 +965,8 @@ public class Tst_FX_Main extends Application {
                 meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                 meanRecallLabel.setTextFill(Color.BLACK);
                 df.setRoundingMode(RoundingMode.UP);
-                meanPrecisionLabel.setText("Precision : " + df.format(rogueWordFrequency1.getAveragePrecision()));
-                meanRecallLabel.setText("Recall : " + df.format(rogueWordFrequency1.getAverageRecall()));
+                meanPrecisionLabel.setText("Precision  : " + df.format(rogueWordFrequency1.getAveragePrecision()));
+                meanRecallLabel.setText(   "Recall        : " + df.format(rogueWordFrequency1.getAverageRecall()));
                 meanPrecisionLabel.setTranslateX(750);
                 meanPrecisionLabel.setTranslateY(10);
                 meanRecallLabel.setTranslateX(750);
@@ -1167,8 +1167,8 @@ public class Tst_FX_Main extends Application {
                 meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                 meanRecallLabel.setTextFill(Color.BLACK);
                 df.setRoundingMode(RoundingMode.UP);
-                meanPrecisionLabel.setText("Precision : " + df.format(rogueTextRankTool.getAveragePrecision()));
-                meanRecallLabel.setText("Recall : " + df.format(rogueTextRankTool.getAverageRecall()));
+                meanPrecisionLabel.setText("Precision  : " + df.format(rogueTextRankTool.getAveragePrecision()));
+                meanRecallLabel.setText(   "Recall        : " + df.format(rogueTextRankTool.getAverageRecall()));
                 meanPrecisionLabel.setTranslateX(750);
                 meanPrecisionLabel.setTranslateY(10);
                 meanRecallLabel.setTranslateX(750);
