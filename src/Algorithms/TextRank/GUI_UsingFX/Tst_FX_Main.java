@@ -169,9 +169,9 @@ public class Tst_FX_Main extends Application {
         toolButton.setTranslateX(480);
         toolButton.setTranslateY(140);
         aboutButton.setTranslateX(480);
-        aboutButton.setTranslateY(240);
+        aboutButton.setTranslateY(340);
         evaluationButton.setTranslateX(480);
-        evaluationButton.setTranslateY(340);
+        evaluationButton.setTranslateY(240);
         backButton_Menu.setTranslateX(30);
         backButton_Menu.setTranslateY(460);
         backButton_Menu.setPrefSize(backButtonWidth,backButtonHeight);
@@ -788,7 +788,7 @@ public class Tst_FX_Main extends Application {
                             "    3. Mat[i][j] = ((noOfWords of sentence 'i') + (noOfWords of sentence 'j'))/2\n\n" +
                             "    4. Score of a row for each sentence is added\n\n" +
                             "    5. Order of sentences are maintained and half of the sentences are marked\n\n" +
-                            "    6. Extraction of most scored sentences");
+                            "    6. Extraction of most scored sentences by maintaining Order");
 
 
                     directText.setTranslateX(30);
