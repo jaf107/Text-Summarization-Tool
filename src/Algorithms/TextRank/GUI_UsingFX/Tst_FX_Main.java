@@ -847,8 +847,18 @@ public class Tst_FX_Main extends Application {
                 recallEquals.setTranslateY(320);
 
 
+                Button backButton_ROGUE = new Button("Back");
+                backButton_ROGUE.setGraphic(backImageView);
+                backButton_ROGUE.setTranslateX(30);
+                backButton_ROGUE.setTranslateY(460);
+                backButton_ROGUE.setStyle(buttonCSS);
+                backButton_ROGUE.setPrefSize(backButtonWidth,backButtonHeight);
 
-                aboutROGUE_pane.getChildren().addAll(ROGUE,introText,recall,line1,line2,recallEquals,precision,precisionEquals);
+                backButton_ROGUE.setOnAction(e->
+                        window.setScene(evaluationScene));
+
+
+                aboutROGUE_pane.getChildren().addAll(ROGUE,introText,backButton_ROGUE,recall,line1,line2,recallEquals,precision,precisionEquals);
                 aboutROGUE_pane.setBackground(allBackground);
                 Scene aboutROGUE_scene = new Scene(aboutROGUE_pane,1000,500);
 
