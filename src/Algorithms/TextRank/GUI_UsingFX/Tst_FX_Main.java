@@ -23,6 +23,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Tst_FX_Main extends Application {
@@ -34,6 +36,8 @@ public class Tst_FX_Main extends Application {
     TextArea context_tool, summary_tool;
 
     Button summarize;
+
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -448,8 +452,9 @@ public class Tst_FX_Main extends Application {
 
         RogueTextRank rogueTextRankTool = new RogueTextRank();
 
-        meanPrecisionLabel.setText("Precision : " + rogueTextRankTool.getAveragePrecision());
-        meanRecallLabel.setText("Recall : " + rogueTextRankTool.getAverageRecall());
+        df.setRoundingMode(RoundingMode.UP);
+        meanPrecisionLabel.setText("Precision : " + df.format(rogueTextRankTool.getAveragePrecision()));
+        meanRecallLabel.setText("Recall : " + df.format(rogueTextRankTool.getAverageRecall()));
 
 
         dataSeries1.getData().add(new XYChart.Data("Mean", rogueTextRankTool.getAveragePrecision()));
@@ -482,7 +487,14 @@ public class Tst_FX_Main extends Application {
         Scene evaluationScene = new Scene(evaluationPane, 1000, 500);
 
         Button aboutROGUE = new Button("About");
-//        aboutROGUE.setGraphic(aboutButton);
+
+
+        Image aboutROGUEImage = new Image(new FileInputStream("Images/about.png"));
+        ImageView aboutROGUEImageView = new ImageView(aboutROGUEImage);
+        aboutROGUEImageView.setFitHeight(15);
+        aboutROGUEImageView.setPreserveRatio(true);
+
+        aboutROGUE.setGraphic(aboutROGUEImageView);
         aboutROGUE.setTranslateX(800);
         aboutROGUE.setTranslateY(450);
         aboutROGUE.setStyle(buttonCSS);
