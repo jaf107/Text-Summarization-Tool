@@ -1,7 +1,7 @@
 package Algorithms.TextRank.GUI_UsingFX;
 
-import CrossValidation.CrossValidation;
-import CrossValidation.CrossValidationCheck;
+import ROGUE.CrossValidation;
+import ROGUE.RogueTextRank;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -9,7 +9,6 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -32,8 +31,8 @@ public class BarChartTest extends Application {
             dataSeries1.setName("Precision Scores Evaluation");
 
 
-            CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
-            ArrayList<CrossValidation> checkedArticles = crossValidationCheckTool.getArticleEvaluation();
+            RogueTextRank rogueTextRankTool = new RogueTextRank();
+            ArrayList<CrossValidation> checkedArticles = rogueTextRankTool.getArticleEvaluation();
 
 
             int counter=1;

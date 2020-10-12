@@ -1,11 +1,11 @@
-package CrossValidation;
+package ROGUE;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class CrossValidationCheck {
+public class RogueTextRank {
 
     private int articleNumber;
     private ArrayList<CrossValidation> articleEvaluation;
@@ -13,7 +13,7 @@ public class CrossValidationCheck {
     private double averageRecall;
 
 
-    public CrossValidationCheck()
+    public RogueTextRank()
     {
         articleEvaluation = new ArrayList<CrossValidation>();
         articleNumber = 20;
@@ -25,7 +25,7 @@ public class CrossValidationCheck {
 
     @Override
     public String toString() {
-        return "CrossValidationCheck{" +
+        return "RogueTextRank{" +
                 "articleEvaluation=" + articleEvaluation +
                 '}';
     }

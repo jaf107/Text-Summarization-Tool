@@ -1,7 +1,7 @@
 package Algorithms.TextRank.GUI_UsingFX;
 
-import CrossValidation.CrossValidation;
-import CrossValidation.CrossValidationCheck;
+import ROGUE.CrossValidation;
+import ROGUE.RogueTextRank;
 import Algorithms.TextRank.FinalProject.SummaryStatistics;
 import Algorithms.TextRank.FinalProject.SummaryTool;
 import javafx.application.Application;
@@ -446,13 +446,13 @@ public class Tst_FX_Main extends Application {
         XYChart.Series dataSeries1 = new XYChart.Series();
         dataSeries1.setName("Precision Scores");
 
-        CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
+        RogueTextRank rogueTextRankTool = new RogueTextRank();
 
-        meanPrecisionLabel.setText("Precision : " + crossValidationCheckTool.getAveragePrecision());
-        meanRecallLabel.setText("Recall : " + crossValidationCheckTool.getAverageRecall());
+        meanPrecisionLabel.setText("Precision : " + rogueTextRankTool.getAveragePrecision());
+        meanRecallLabel.setText("Recall : " + rogueTextRankTool.getAverageRecall());
 
 
-        dataSeries1.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAveragePrecision()));
+        dataSeries1.getData().add(new XYChart.Data("Mean", rogueTextRankTool.getAveragePrecision()));
 
         barChart.getData().add(dataSeries1);
 
@@ -460,7 +460,7 @@ public class Tst_FX_Main extends Application {
         XYChart.Series dataSeries2 = new XYChart.Series();
         dataSeries2.setName("Recall Scores");
 
-        dataSeries2.getData().add(new XYChart.Data("Mean", crossValidationCheckTool.getAverageRecall()));
+        dataSeries2.getData().add(new XYChart.Data("Mean", rogueTextRankTool.getAverageRecall()));
 
 
         barChart.getData().add(dataSeries2);
@@ -803,8 +803,8 @@ public class Tst_FX_Main extends Application {
                 dataSeries1.setName("Precision Scores Evaluation");
 
 
-                CrossValidationCheck crossValidationCheckTool = new CrossValidationCheck();
-                ArrayList<CrossValidation> checkedArticles = crossValidationCheckTool.getArticleEvaluation();
+                RogueTextRank rogueTextRankTool = new RogueTextRank();
+                ArrayList<CrossValidation> checkedArticles = rogueTextRankTool.getArticleEvaluation();
 
 
                 int counter=1;

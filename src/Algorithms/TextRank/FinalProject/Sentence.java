@@ -21,7 +21,7 @@ public class Sentence {
     Sentence(String text,int number)
     {
         this.number = number;
-        this.text = text;
+        this.text = text.trim();
         this.processedText = stopWordRemoval(text);
         this.paragraph = new ArrayList<>();
         this.words = new ArrayList<>();

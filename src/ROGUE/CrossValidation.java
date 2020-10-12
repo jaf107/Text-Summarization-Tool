@@ -1,6 +1,4 @@
-package CrossValidation;
-
-import static java.lang.Integer.min;
+package ROGUE;
 
 public class CrossValidation {
     String machinemadeSummary;
