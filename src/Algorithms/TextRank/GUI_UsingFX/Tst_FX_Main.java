@@ -655,23 +655,27 @@ public class Tst_FX_Main extends Application {
 
                 textRank.setOnAction(e->{
                     Label textRankTitle = new Label("Text Rank Algorithm");
-                    textRankTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    textRankTitle.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
                     textRankTitle.setTextFill(Color.BLACK);
                     textRankTitle.setUnderline(true);
                     textRankTitle.setTranslateX(30);
                     textRankTitle.setTranslateY(30);
 
                     Text textRankText = new Text();
-                    textRankText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
+                    textRankText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 23));
 
 
 
-                    textRankText.setText("\t5 steps :\n\n\n" +
-                            "        1. Create Word Frequency Table\n\n" +
-                            "        2. Tokenize Sentences\n\n" +
-                            "        3. Score the sentences\n\n" +
-                            "        4. Find Threshold\n\n" +
-                            "        5. Generate Summary");
+                    textRankText.setText("" +
+                            "        8 Steps :\n\n\n" +
+                            "        1. Context -> Sentences\n" +
+                            "        2. Preprocessing of Sentences\n" +
+                            "        3. Tokenize Words vectors from processed Sentences\n" +
+                            "        4. TF-IDF calculation\n" +
+                            "        5. Scoring tf idf value by implementing BOG(Bag of Words model)\n" +
+                            "        6. Cosine Similarity Matrix\n" +
+                            "        7. Scoring Sentences\n" +
+                            "        8. Extraction");
 
 
                     textRankText.setTranslateX(30);
@@ -704,7 +708,7 @@ public class Tst_FX_Main extends Application {
 
                 direct.setOnAction(e ->{
                     Label directTitle = new Label("Direct Algorithm");
-                    directTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                    directTitle.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
                     directTitle.setTextFill(Color.BLACK);
                     directTitle.setUnderline(true);
                     directTitle.setTranslateX(30);
@@ -718,7 +722,7 @@ public class Tst_FX_Main extends Application {
                     directText.setText("    6 Steps:\n\n\n" +
                             "    1. Context -> Sentence\n\n" +
                             "    2. Intersection Matrix is created. Size of Matrix = [sentence.length()][sentence.length()]\n\n" +
-                            "    3. mat[i][j] = ((noOfWords of sentence 'i') + (noOfWords of sentence 'j'))/2\n\n" +
+                            "    3. Mat[i][j] = ((noOfWords of sentence 'i') + (noOfWords of sentence 'j'))/2\n\n" +
                             "    4. Score of a row for each sentence is added\n\n" +
                             "    5. Order of sentences are maintained and half of the sentences are marked\n\n" +
                             "    6. Extraction of most scored sentences");
