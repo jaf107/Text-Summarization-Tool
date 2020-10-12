@@ -7,6 +7,17 @@ import java.util.Collections;
 
 public class SummaryTool {
 
+    /*
+        1. Context -> Sentences
+        2. Preprocessing of Sentences
+        3. Tokenize Words vectors from processed Sentences
+        4. TF-IDF calculation
+        5. Scoring tf idf value by implementing BOG(Bag of Words model)
+        6. Cosine Similarity Matrix
+        7. Scoring Sentences
+        8. Extraction
+     */
+
     private static int numberOrdering = 0;
     private String context;
     private String summary;
