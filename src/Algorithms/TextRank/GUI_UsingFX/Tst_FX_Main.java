@@ -1,9 +1,11 @@
 package Algorithms.TextRank.GUI_UsingFX;
 
 import ROGUE.CrossValidation;
+import ROGUE.RogueDirect;
 import ROGUE.RogueTextRank;
 import Algorithms.TextRank.FinalProject.SummaryStatistics;
 import Algorithms.TextRank.FinalProject.SummaryTool;
+import ROGUE.RogueWordFrequency;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -418,11 +420,23 @@ public class Tst_FX_Main extends Application {
         meanPrecisionLabel.setTextFill(Color.BLACK);
         Label meanRecallLabel = new Label();
 
-        Button detailsButton_evaluation = new Button("Details");
-        detailsButton_evaluation.setStyle(buttonCSS);
-        detailsButton_evaluation.setTranslateX(550);
-        detailsButton_evaluation.setTranslateY(300);
-        detailsButton_evaluation.setPrefSize(80, 25);
+        Button detailsButton_textRank_evaluation = new Button("TextRank");
+        detailsButton_textRank_evaluation.setStyle(buttonCSS);
+        detailsButton_textRank_evaluation.setTranslateX(550);
+        detailsButton_textRank_evaluation.setTranslateY(200);
+        detailsButton_textRank_evaluation.setPrefSize(100, 25);
+
+        Button detailsButton_direct_evaluation = new Button("Direct");
+        detailsButton_direct_evaluation.setStyle(buttonCSS);
+        detailsButton_direct_evaluation.setTranslateX(550);
+        detailsButton_direct_evaluation.setTranslateY(240);
+        detailsButton_direct_evaluation.setPrefSize(100, 25);
+
+        Button detailsButton_wordFrequency_evaluation = new Button("WordFrequncy");
+        detailsButton_wordFrequency_evaluation.setStyle(buttonCSS);
+        detailsButton_wordFrequency_evaluation.setTranslateX(550);
+        detailsButton_wordFrequency_evaluation.setTranslateY(280);
+        detailsButton_wordFrequency_evaluation.setPrefSize(100, 25);
 
         meanRecallLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         meanRecallLabel.setTextFill(Color.BLACK);
@@ -434,7 +448,7 @@ public class Tst_FX_Main extends Application {
         ImageView detailsImageView = new ImageView(detailsImage);
         detailsImageView.setFitHeight(15);
         detailsImageView.setPreserveRatio(true);
-        detailsButton_evaluation.setGraphic(detailsImageView);
+//        detailsButton_textRank_evaluation.setGraphic(detailsImageView);
 
 
 
@@ -451,13 +465,17 @@ public class Tst_FX_Main extends Application {
         dataSeries1.setName("Precision Scores");
 
         RogueTextRank rogueTextRankTool = new RogueTextRank();
+        RogueDirect rogueDirect = new RogueDirect();
+        RogueWordFrequency rogueWordFrequency = new RogueWordFrequency();
 
         df.setRoundingMode(RoundingMode.UP);
         meanPrecisionLabel.setText("Precision : " + df.format(rogueTextRankTool.getAveragePrecision()));
         meanRecallLabel.setText("Recall : " + df.format(rogueTextRankTool.getAverageRecall()));
 
 
-        dataSeries1.getData().add(new XYChart.Data("Mean", rogueTextRankTool.getAveragePrecision()));
+        dataSeries1.getData().add(new XYChart.Data("TextRank", rogueTextRankTool.getAveragePrecision()));
+        dataSeries1.getData().add(new XYChart.Data("Direct", rogueDirect.getAveragePrecision()));
+        dataSeries1.getData().add(new XYChart.Data("WordFrequency", rogueWordFrequency.getAveragePrecision()));
 
         barChart.getData().add(dataSeries1);
 
@@ -465,7 +483,9 @@ public class Tst_FX_Main extends Application {
         XYChart.Series dataSeries2 = new XYChart.Series();
         dataSeries2.setName("Recall Scores");
 
-        dataSeries2.getData().add(new XYChart.Data("Mean", rogueTextRankTool.getAverageRecall()));
+        dataSeries2.getData().add(new XYChart.Data("TextRank", rogueTextRankTool.getAverageRecall()));
+        dataSeries2.getData().add(new XYChart.Data("Direct", rogueDirect.getAverageRecall()));
+        dataSeries2.getData().add(new XYChart.Data("WordFrequency", rogueWordFrequency.getAverageRecall()));
 
 
         barChart.getData().add(dataSeries2);
@@ -509,7 +529,9 @@ public class Tst_FX_Main extends Application {
         backButton_evaluation.setTranslateY(460);
         backButton_evaluation.setStyle(buttonCSS);
         backButton_evaluation.setPrefSize(backButtonWidth,backButtonHeight);
-        evaluationPane.getChildren().addAll(aboutROGUE,backButton_evaluation, meanRecallLabel,evaluationTitle, meanPrecisionLabel, detailsButton_evaluation);
+        evaluationPane.getChildren().addAll(aboutROGUE,backButton_evaluation,detailsButton_direct_evaluation
+                , detailsButton_wordFrequency_evaluation,evaluationTitle,
+                 detailsButton_textRank_evaluation);
 
 
 
@@ -787,6 +809,196 @@ public class Tst_FX_Main extends Application {
 
 
 
+        detailsButton_direct_evaluation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                Label detailsTitle = new Label("Details : Direct");
+                detailsTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                detailsTitle.setTextFill(Color.BLACK);
+//                algorithmTitle.setUnderline(true);
+                detailsTitle.setTranslateX(30);
+                detailsTitle.setTranslateY(30);
+
+                Button backButton_details_textrank = new Button("Back");
+                backButton_details_textrank.setGraphic(backImageView);
+                backButton_details_textrank.setTranslateX(30);
+                backButton_details_textrank.setTranslateY(460);
+                backButton_details_textrank.setStyle(buttonCSS);
+                backButton_details_textrank.setPrefSize(backButtonWidth,backButtonHeight);
+
+                backButton_details_textrank.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        window.setScene(evaluationScene);
+                    }
+                });
+
+
+
+
+
+                CategoryAxis xAxis = new CategoryAxis();
+                xAxis.setLabel("Precison");
+
+                NumberAxis yAxis = new NumberAxis();
+                yAxis.setLabel("Scores");
+
+                BarChart barChart = new BarChart(xAxis, yAxis);
+
+                XYChart.Series dataSeries1 = new XYChart.Series();
+                dataSeries1.setName("Precision Scores Evaluation");
+
+
+                RogueDirect rogueDirect1 = new RogueDirect();
+                ArrayList<CrossValidation> checkedArticles = rogueDirect1.getArticleEvaluation();
+
+
+                int counter=1;
+                String articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
+
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries1.getData().add(new XYChart.Data(nameOfArticle, article.getPrecision()));
+                }
+
+
+                barChart.getData().add(dataSeries1);
+
+
+                XYChart.Series dataSeries2 = new XYChart.Series();
+                dataSeries2.setName("Recall");
+
+                counter=1;
+                articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
+
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries2.getData().add(new XYChart.Data(nameOfArticle, article.getRecall()));
+                }
+
+                barChart.getData().add(dataSeries2);
+
+
+                Pane pane = new Pane();
+                pane.setBackground(allBackground);
+                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
+                double scale = 1.0;
+                barChart.setBarGap(0.5);
+                barChart.setScaleX(scale);
+                barChart.setScaleY(scale);
+                barChart.setScaleZ(scale);
+                barChart.setTranslateX(50);
+                barChart.setTranslateY(70);
+
+                barChart.setPrefSize(900,400);
+
+                Scene detailsScene = new Scene(pane, 1000, 500);
+
+                window.setScene(detailsScene);
+
+            }
+        });
+
+
+        detailsButton_wordFrequency_evaluation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                Label detailsTitle = new Label("Details : WordFrequency");
+                detailsTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                detailsTitle.setTextFill(Color.BLACK);
+//                algorithmTitle.setUnderline(true);
+                detailsTitle.setTranslateX(30);
+                detailsTitle.setTranslateY(30);
+
+                Button backButton_details_textrank = new Button("Back");
+                backButton_details_textrank.setGraphic(backImageView);
+                backButton_details_textrank.setTranslateX(30);
+                backButton_details_textrank.setTranslateY(460);
+                backButton_details_textrank.setStyle(buttonCSS);
+                backButton_details_textrank.setPrefSize(backButtonWidth,backButtonHeight);
+
+                backButton_details_textrank.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        window.setScene(evaluationScene);
+                    }
+                });
+
+
+
+
+
+                CategoryAxis xAxis = new CategoryAxis();
+                xAxis.setLabel("Precison");
+
+                NumberAxis yAxis = new NumberAxis();
+                yAxis.setLabel("Scores");
+
+                BarChart barChart = new BarChart(xAxis, yAxis);
+
+                XYChart.Series dataSeries1 = new XYChart.Series();
+                dataSeries1.setName("Precision Scores Evaluation");
+
+
+                RogueWordFrequency rogueWordFrequency1 = new RogueWordFrequency();
+                ArrayList<CrossValidation> checkedArticles = rogueWordFrequency1.getArticleEvaluation();
+
+
+                int counter=1;
+                String articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
+
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries1.getData().add(new XYChart.Data(nameOfArticle, article.getPrecision()));
+                }
+
+
+                barChart.getData().add(dataSeries1);
+
+
+                XYChart.Series dataSeries2 = new XYChart.Series();
+                dataSeries2.setName("Recall");
+
+                counter=1;
+                articleString = "Article";
+                for (CrossValidation article:checkedArticles  ) {
+
+                    String nameOfArticle = articleString+counter;
+                    counter++;
+                    dataSeries2.getData().add(new XYChart.Data(nameOfArticle, article.getRecall()));
+                }
+
+                barChart.getData().add(dataSeries2);
+
+
+                Pane pane = new Pane();
+                pane.setBackground(allBackground);
+                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
+                double scale = 1.0;
+                barChart.setBarGap(0.5);
+                barChart.setScaleX(scale);
+                barChart.setScaleY(scale);
+                barChart.setScaleZ(scale);
+                barChart.setTranslateX(50);
+                barChart.setTranslateY(70);
+
+                barChart.setPrefSize(900,400);
+
+                Scene detailsScene = new Scene(pane, 1000, 500);
+
+                window.setScene(detailsScene);
+
+
+            }
+        });
+
+
+
 
 
 
@@ -877,16 +1089,30 @@ public class Tst_FX_Main extends Application {
                 window.setScene(aboutROGUE_scene);
             }
         });
-        detailsButton_evaluation.setOnAction(new EventHandler<ActionEvent>() {
+        detailsButton_textRank_evaluation.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                Label detailsTitle = new Label("Details");
+                Label detailsTitle = new Label("Details : TextRank");
                 detailsTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
                 detailsTitle.setTextFill(Color.BLACK);
 //                algorithmTitle.setUnderline(true);
                 detailsTitle.setTranslateX(30);
                 detailsTitle.setTranslateY(30);
+
+                Button backButton_details_textrank = new Button("Back");
+                backButton_details_textrank.setGraphic(backImageView);
+                backButton_details_textrank.setTranslateX(30);
+                backButton_details_textrank.setTranslateY(460);
+                backButton_details_textrank.setStyle(buttonCSS);
+                backButton_details_textrank.setPrefSize(backButtonWidth,backButtonHeight);
+
+                backButton_details_textrank.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        window.setScene(evaluationScene);
+                    }
+                });
 
 
 
@@ -938,7 +1164,7 @@ public class Tst_FX_Main extends Application {
 
                 Pane pane = new Pane();
                 pane.setBackground(allBackground);
-                pane.getChildren().addAll(backButton_details,barChart,detailsTitle);
+                pane.getChildren().addAll(backButton_details_textrank,barChart,detailsTitle);
                 double scale = 1.0;
                 barChart.setBarGap(0.5);
                 barChart.setScaleX(scale);
