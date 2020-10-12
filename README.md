@@ -3,8 +3,7 @@ Text Summarization Tool using the following extractive approaches.
 
   1.Word Frequency Algorithm.
   2.Text Rank Algorithm.
-    -> Single-domain-multiple-documents summarization task.
-  3. Direct method
+  3. Direct method Algorithm.
   
 Language - Java.
 
