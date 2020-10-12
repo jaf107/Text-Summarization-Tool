@@ -73,7 +73,7 @@ public class RogueDirect {
 
             String referanceSummary = "";
             String machineSummary = "";
-            File file = new File("Evaluation/TextRank/" + article);
+            File file = new File("Evaluation/DirectSummary/" + article);
             try (FileReader fileReader = new FileReader(file)) {
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 

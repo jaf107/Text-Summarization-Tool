@@ -73,7 +73,7 @@ public class RogueWordFrequency {
 
             String referanceSummary = "";
             String machineSummary = "";
-            File file = new File("Evaluation/TextRank/" + article);
+            File file = new File("Evaluation/WordFrequencySummary/" + article);
             try (FileReader fileReader = new FileReader(file)) {
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
