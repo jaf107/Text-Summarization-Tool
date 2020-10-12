@@ -480,13 +480,25 @@ public class Tst_FX_Main extends Application {
         evaluationTitle.setTranslateY(15);
 
         Scene evaluationScene = new Scene(evaluationPane, 1000, 500);
+
+        Button aboutROGUE = new Button("About");
+//        aboutROGUE.setGraphic(aboutButton);
+        aboutROGUE.setTranslateX(800);
+        aboutROGUE.setTranslateY(450);
+        aboutROGUE.setStyle(buttonCSS);
+        aboutROGUE.setPrefSize(backButtonWidth,backButtonHeight);
+        aboutROGUE.setScaleX(1.5);
+        aboutROGUE.setScaleY(1.5);
+
+
         Button backButton_evaluation = new Button("Back");
         backButton_evaluation.setGraphic(backImageView);
         backButton_evaluation.setTranslateX(30);
         backButton_evaluation.setTranslateY(460);
         backButton_evaluation.setStyle(buttonCSS);
         backButton_evaluation.setPrefSize(backButtonWidth,backButtonHeight);
-        evaluationPane.getChildren().addAll(backButton_evaluation, meanRecallLabel,evaluationTitle, meanPrecisionLabel, detailsButton_evaluation);
+        evaluationPane.getChildren().addAll(aboutROGUE,backButton_evaluation, meanRecallLabel,evaluationTitle, meanPrecisionLabel, detailsButton_evaluation);
+
 
 
         Button backButton_details = new Button("Back");
@@ -774,6 +786,73 @@ public class Tst_FX_Main extends Application {
             public void handle(ActionEvent actionEvent) {
                 window.setScene(evaluationScene);
 
+            }
+        });
+        aboutROGUE.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Pane aboutROGUE_pane = new Pane();
+
+                Label ROGUE = new Label("Recall-Oriented Understudy for Gisting Evaluation");
+                ROGUE.setUnderline(true);
+                Text introText = new Text("Compares an automatically produced summary against a reference summary (typically human-produced)\n\n"+
+                        "Computation of PRECISION and RECALL is done.");
+
+
+                Label line1 = new Label("__________________________");
+                line1.setFont(Font.font("Arial",FontWeight.EXTRA_BOLD,20));
+
+                Label line2 = new Label("__________________________");
+                line2.setFont(Font.font("Arial",FontWeight.EXTRA_BOLD,20));
+
+
+                Label precision = new Label("Precision   =");
+                Label precisionEquals = new Label("  Total overlapped words\n"+
+//                                                      "__________________________\n" +
+                                                      "  Total words in Ref summary");
+                precision.setFont(Font.font("Arial",FontWeight.BOLD,20));
+                precisionEquals.setFont(Font.font("Arial",FontWeight.LIGHT,20));
+
+
+                Label recall = new Label("Recall        =");
+                recall.setFont(Font.font("Arial",FontWeight.BOLD,20));
+                Label recallEquals = new Label("  Total overlapped words\n"+
+//                        "_____________________________\n" +
+                        "Total words in Machine summary");
+
+
+                recallEquals.setFont(Font.font("Arial",FontWeight.LIGHT,20));
+
+                ROGUE.setFont(Font.font("Arial",FontWeight.BOLD,24));
+                introText.setFont(Font.font("Arial",FontWeight.LIGHT,20));
+
+                ROGUE.setTranslateX(30);
+                ROGUE.setTranslateY(30);
+                introText.setTranslateX(30);
+                introText.setTranslateY(100);
+
+
+                precision.setTranslateX(200);
+                precision.setTranslateY(237);
+                line1.setTranslateX(330);
+                line1.setTranslateY(227);
+                precisionEquals.setTranslateX(330);
+                precisionEquals.setTranslateY(224);
+
+                recall.setTranslateX(200);
+                recall.setTranslateY(330);
+                line2.setTranslateX(330);
+                line2.setTranslateY(322);
+                recallEquals.setTranslateX(330);
+                recallEquals.setTranslateY(320);
+
+
+
+                aboutROGUE_pane.getChildren().addAll(ROGUE,introText,recall,line1,line2,recallEquals,precision,precisionEquals);
+                aboutROGUE_pane.setBackground(allBackground);
+                Scene aboutROGUE_scene = new Scene(aboutROGUE_pane,1000,500);
+
+                window.setScene(aboutROGUE_scene);
             }
         });
         detailsButton_evaluation.setOnAction(new EventHandler<ActionEvent>() {
