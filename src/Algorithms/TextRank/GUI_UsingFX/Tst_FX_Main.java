@@ -416,24 +416,47 @@ public class Tst_FX_Main extends Application {
 
 
 
+        Image textRankImage_evaluation = new Image(new FileInputStream("Images/textRank.png"));
+        ImageView textRankImageView_evaluation = new ImageView(textRankImage_evaluation);
+        textRankImageView_evaluation.setFitHeight(10);
+        textRankImageView_evaluation.setPreserveRatio(true);
+
+        Image directImage_evaluation = new Image(new FileInputStream("Images/direct.png"));
+        ImageView directImageView_evaluation = new ImageView(directImage_evaluation);
+        directImageView_evaluation.setFitHeight(10);
+        directImageView_evaluation.setPreserveRatio(true);
+
+        Image wordFrequencyImage_evaluation = new Image(new FileInputStream("Images/wordFrequency.png"));
+        ImageView wordFrequencyImageView_evaluation= new ImageView(wordFrequencyImage_evaluation);
+        wordFrequencyImageView_evaluation.setFitHeight(10);
+        wordFrequencyImageView_evaluation.setPreserveRatio(true);
 
         Button detailsButton_textRank_evaluation = new Button("TextRank");
         detailsButton_textRank_evaluation.setStyle(buttonCSS);
-        detailsButton_textRank_evaluation.setTranslateX(550);
-        detailsButton_textRank_evaluation.setTranslateY(200);
-        detailsButton_textRank_evaluation.setPrefSize(100, 25);
+        detailsButton_textRank_evaluation.setTranslateX(650);
+        detailsButton_textRank_evaluation.setTranslateY(160);
+        detailsButton_textRank_evaluation.setPrefSize(120, 25);
+        detailsButton_textRank_evaluation.setScaleY(1.5);
+        detailsButton_textRank_evaluation.setScaleX(1.5);
+        detailsButton_textRank_evaluation.setGraphic(textRankImageView_evaluation);
 
         Button detailsButton_direct_evaluation = new Button("Direct");
         detailsButton_direct_evaluation.setStyle(buttonCSS);
-        detailsButton_direct_evaluation.setTranslateX(550);
-        detailsButton_direct_evaluation.setTranslateY(240);
-        detailsButton_direct_evaluation.setPrefSize(100, 25);
+        detailsButton_direct_evaluation.setTranslateX(650);
+        detailsButton_direct_evaluation.setTranslateY(220);
+        detailsButton_direct_evaluation.setPrefSize(120, 25);
+        detailsButton_direct_evaluation.setScaleY(1.5);
+        detailsButton_direct_evaluation.setScaleX(1.5);
+        detailsButton_direct_evaluation.setGraphic(directImageView_evaluation);
 
         Button detailsButton_wordFrequency_evaluation = new Button("WordFrequncy");
         detailsButton_wordFrequency_evaluation.setStyle(buttonCSS);
-        detailsButton_wordFrequency_evaluation.setTranslateX(550);
+        detailsButton_wordFrequency_evaluation.setTranslateX(650);
         detailsButton_wordFrequency_evaluation.setTranslateY(280);
-        detailsButton_wordFrequency_evaluation.setPrefSize(100, 25);
+        detailsButton_wordFrequency_evaluation.setPrefSize(120, 25);
+        detailsButton_wordFrequency_evaluation.setScaleY(1.5);
+        detailsButton_wordFrequency_evaluation.setScaleX(1.5);
+        detailsButton_wordFrequency_evaluation.setGraphic(wordFrequencyImageView_evaluation);
 
 
 
