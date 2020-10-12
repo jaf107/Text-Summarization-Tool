@@ -244,14 +244,6 @@ public class Tst_FX_Main extends Application {
         aboutText.setTranslateY(100);
 
 
-
-
-
-
-
-
-
-
         aboutPane.getChildren().addAll(algorithmsButton,aboutTitle,backButton_about,aboutText);
         Scene aboutScene = new Scene(aboutPane,1000,500);
 
