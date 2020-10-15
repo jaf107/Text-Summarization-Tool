@@ -3,6 +3,7 @@ package Algorithms.TextRank.GUI_UsingFX;
 import ROGUE.CrossValidation;
 import ROGUE.RogueTextRank;
 import javafx.application.Application;
+
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;

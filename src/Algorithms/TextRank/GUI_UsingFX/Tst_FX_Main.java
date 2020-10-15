@@ -1,11 +1,13 @@
 package Algorithms.TextRank.GUI_UsingFX;
 
+import Algorithms.TextRank.FinalProject.SummaryStatistics;
+import Algorithms.TextRank.FinalProject.SummaryTool;
 import ROGUE.CrossValidation;
 import ROGUE.RogueDirect;
 import ROGUE.RogueTextRank;
-import Algorithms.TextRank.FinalProject.SummaryStatistics;
-import Algorithms.TextRank.FinalProject.SummaryTool;
 import ROGUE.RogueWordFrequency;
+
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
