@@ -1382,7 +1382,6 @@ public class Tst_FX_Main extends Application {
                     exception.printStackTrace();
                 }
 
-
                 context_tool.setText(context);
             }
         });
