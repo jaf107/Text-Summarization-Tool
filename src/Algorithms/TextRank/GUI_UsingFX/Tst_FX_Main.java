@@ -28,13 +28,12 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
+import java.io.*;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Tst_FX_Main extends Application {
 
@@ -1395,6 +1394,26 @@ public class Tst_FX_Main extends Application {
             }
         });
 
+
+        saveAsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String summary = summary_tool.getText();
+
+                FileChooser fileChooser = new FileChooser();
+
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+                fileChooser.getExtensionFilters().add(extFilter);
+
+                File selectedFileToWrite = fileChooser.showSaveDialog(window);
+
+                if(selectedFileToWrite != null)
+                {
+                    saveTextToFile(summary,selectedFileToWrite);
+                }
+            }
+        });
+
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -1516,6 +1535,19 @@ public class Tst_FX_Main extends Application {
         window.setScene(start);
         window.show();
 
+    }
+
+    private void saveTextToFile(String summary, File selectedFileToWrite) {
+
+
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(selectedFileToWrite);
+            writer.println(summary);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(TestFx.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void main(String[] args) {
