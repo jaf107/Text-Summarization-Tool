@@ -279,9 +279,15 @@ public class Tst_FX_Main extends Application {
 
         // Open Button
         Button openFileButton = new Button("Open");
-        Tooltip.install(backButton_about, new Tooltip("Open File Button"));
+        Tooltip.install(openFileButton, new Tooltip("Open File Button"));
         openFileButton.setStyle(buttonCSS);
         openFileButton.setPrefSize(80,25);
+
+        // Save as Button
+        Button saveAsButton = new Button("Save as");
+        Tooltip.install(saveAsButton, new Tooltip("Save as Button"));
+        saveAsButton.setStyle(buttonCSS);
+        saveAsButton.setPrefSize(80,25);
 
         // Delete Button
         Button deleteButton = new Button("Delete");
@@ -360,7 +366,7 @@ public class Tst_FX_Main extends Application {
         tool = new Scene(toolPane, 1000, 500);
 
 
-        toolPane.getChildren().addAll(openFileButton,summaryLabel, contextLabel, statsButton,
+        toolPane.getChildren().addAll(openFileButton,summaryLabel, contextLabel, statsButton,saveAsButton,
                 toolLabel, deleteButton, summarize, runSampleButton, context_tool
                 , summary_tool, textRankButton, directButton, wordFrequencyButton, backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
@@ -393,6 +399,9 @@ public class Tst_FX_Main extends Application {
         statsButton.setTranslateX(910);
         statsButton.setTranslateY(460);
         statsButton.setStyle(buttonCSS);
+
+        saveAsButton.setTranslateX(530);
+        saveAsButton.setTranslateY(460);
 
         openFileButton.setTranslateX(220);
         openFileButton.setTranslateY(460);
