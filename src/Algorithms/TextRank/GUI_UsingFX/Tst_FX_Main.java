@@ -6,8 +6,6 @@ import ROGUE.CrossValidation;
 import ROGUE.RogueDirect;
 import ROGUE.RogueTextRank;
 import ROGUE.RogueWordFrequency;
-
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,7 +14,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -24,9 +25,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -272,6 +277,12 @@ public class Tst_FX_Main extends Application {
         Button statsButton = new Button("Stats");
         Tooltip.install(statsButton, new Tooltip("Statistical Analysis of the above data"));
 
+        // Open Button
+        Button openFileButton = new Button("Open");
+        Tooltip.install(backButton_about, new Tooltip("Open File Button"));
+        openFileButton.setStyle(buttonCSS);
+        openFileButton.setPrefSize(80,25);
+
         // Delete Button
         Button deleteButton = new Button("Delete");
         Tooltip.install(deleteButton, new Tooltip("Delete all the texts in context"));
@@ -349,7 +360,7 @@ public class Tst_FX_Main extends Application {
         tool = new Scene(toolPane, 1000, 500);
 
 
-        toolPane.getChildren().addAll(summaryLabel, contextLabel, statsButton,
+        toolPane.getChildren().addAll(openFileButton,summaryLabel, contextLabel, statsButton,
                 toolLabel, deleteButton, summarize, runSampleButton, context_tool
                 , summary_tool, textRankButton, directButton, wordFrequencyButton, backButton_Tool);
 //        toolPane.getChildren().addAll(context,summary);
@@ -382,6 +393,9 @@ public class Tst_FX_Main extends Application {
         statsButton.setTranslateX(910);
         statsButton.setTranslateY(460);
         statsButton.setStyle(buttonCSS);
+
+        openFileButton.setTranslateX(220);
+        openFileButton.setTranslateY(460);
 
         deleteButton.setTranslateX(320);
         deleteButton.setTranslateY(460);
@@ -1343,6 +1357,33 @@ public class Tst_FX_Main extends Application {
 
                 summary_tool.setText(summary);
             }
+            }
+        });
+
+        openFileButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                File selectedFile = fileChooser.showOpenDialog(window);
+
+                String context = "";
+                try(FileReader fileReader = new FileReader(selectedFile))
+                {
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                    String line = null;
+                    while ((line = bufferedReader.readLine()) != null)
+                    {
+//                        System.out.println(line);
+                        context+=line;
+                    }
+
+                }catch (Exception exception){
+                    exception.printStackTrace();
+                }
+
+
+                context_tool.setText(context);
             }
         });
 
