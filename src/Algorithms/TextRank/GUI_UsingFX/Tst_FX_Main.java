@@ -759,8 +759,8 @@ public class Tst_FX_Main extends Application {
                             "        1. Context -> Sentences\n" +
                             "        2. Preprocessing of Sentences\n" +
                             "        3. Tokenize Words vectors from processed Sentences\n" +
-                            "        4. TF-IDF calculation\n" +
-                            "        5. Scoring tf idf value by implementing BOG(Bag of Words model)\n" +
+                            "        4. TF-IDF(Term Frequency - Inverse Document Frequency) calculation\n" +
+                            "        5. Scoring TF-IDF value by implementing BOW(Bag of Words model)\n" +
                             "        6. Cosine Similarity Matrix\n" +
                             "        7. Scoring Sentences\n" +
                             "        8. Extraction");
