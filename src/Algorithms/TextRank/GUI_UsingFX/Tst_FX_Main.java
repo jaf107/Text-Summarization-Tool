@@ -1533,6 +1533,7 @@ public class Tst_FX_Main extends Application {
         window.setTitle("Text Summarizer Tool");
 
         window.setScene(start);
+//        window.setFullScreen(true);
         window.show();
 
     }
