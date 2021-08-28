@@ -214,7 +214,7 @@ public class Tst_FX_Main extends Application {
 
 
         Button algorithmsButton = new Button("Algorithms");
-        Tooltip.install(algorithmsButton, new Tooltip("Algorithms used in Summarization\n1. Text Rank\n2. Direct\n3. Word Frequency"));
+        Tooltip.install(algorithmsButton, new Tooltip("Algorithms used in Summarization\n1. Text Rank\n2. Direct\n3. Term Frequency"));
         algorithmsButton.setStyle(buttonCSS);
         algorithmsButton.setScaleX(1.5);
         algorithmsButton.setScaleY(1.5);
@@ -268,8 +268,8 @@ public class Tst_FX_Main extends Application {
         Tooltip.install(textRankButton, new Tooltip("Text Rank Algorithm"));
         Button directButton = new Button("Direct");
         Tooltip.install(directButton, new Tooltip("Manual Method"));
-        Button wordFrequencyButton = new Button("WordFrequency");
-        Tooltip.install(wordFrequencyButton, new Tooltip("Word Frequency Algorithm"));
+        Button wordFrequencyButton = new Button("TermFrequency");
+        Tooltip.install(wordFrequencyButton, new Tooltip("Term Frequency Algorithm"));
         Button backButton_Tool = new Button("Back");
         Tooltip.install(backButton_Tool, new Tooltip("Get back to Menu"));
         backButton_Tool.setGraphic(backImageView);
@@ -427,7 +427,7 @@ public class Tst_FX_Main extends Application {
 
         //Evaluation Scene
 
-        Label evaluationTitle = new Label("Recall-Oriented Understudy for Gisting Evaluation (ROGUE)");
+        Label evaluationTitle = new Label("Recall-Oriented Understudy for Gisting Evaluation (ROUGE)");
         evaluationTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         evaluationTitle.setTextFill(Color.BLACK);
 
@@ -466,7 +466,7 @@ public class Tst_FX_Main extends Application {
         detailsButton_direct_evaluation.setScaleX(1.5);
         detailsButton_direct_evaluation.setGraphic(directImageView_evaluation);
 
-        Button detailsButton_wordFrequency_evaluation = new Button("WordFrequncy");
+        Button detailsButton_wordFrequency_evaluation = new Button("TermFrequency");
         detailsButton_wordFrequency_evaluation.setStyle(buttonCSS);
         detailsButton_wordFrequency_evaluation.setTranslateX(650);
         detailsButton_wordFrequency_evaluation.setTranslateY(280);
@@ -517,7 +517,7 @@ public class Tst_FX_Main extends Application {
 
         dataSeries1.getData().add(new XYChart.Data("TextRank", rogueTextRankTool.getAveragePrecision()));
         dataSeries1.getData().add(new XYChart.Data("Direct", rogueDirect.getAveragePrecision()));
-        dataSeries1.getData().add(new XYChart.Data("WordFrequency", rogueWordFrequency.getAveragePrecision()));
+        dataSeries1.getData().add(new XYChart.Data("TermFrequency", rogueWordFrequency.getAveragePrecision()));
 
         barChart.getData().add(dataSeries1);
 
@@ -527,7 +527,7 @@ public class Tst_FX_Main extends Application {
 
         dataSeries2.getData().add(new XYChart.Data("TextRank", rogueTextRankTool.getAverageRecall()));
         dataSeries2.getData().add(new XYChart.Data("Direct", rogueDirect.getAverageRecall()));
-        dataSeries2.getData().add(new XYChart.Data("WordFrequency", rogueWordFrequency.getAverageRecall()));
+        dataSeries2.getData().add(new XYChart.Data("TermFrequency", rogueWordFrequency.getAverageRecall()));
 
 
         barChart.getData().add(dataSeries2);
@@ -649,7 +649,7 @@ public class Tst_FX_Main extends Application {
                 algorithmTitle.setTranslateX(30);
                 algorithmTitle.setTranslateY(30);
 
-                Button textRank = new Button("Text Rank");
+                Button textRank = new Button("TextRank");
                 Tooltip.install(textRank, new Tooltip("Text Rank Algorithm"));
                 textRank.setGraphic(textRankImageView);
                 textRank.setTranslateX(400);
@@ -665,8 +665,8 @@ public class Tst_FX_Main extends Application {
                 direct.setStyle(buttonCSS);
                 direct.setPrefSize(120,25);
 
-                Button wordFrequency = new Button("Word Frequency");
-                Tooltip.install(wordFrequency, new Tooltip("Word Frequency Algorithm"));
+                Button wordFrequency = new Button("TermFrequency");
+                Tooltip.install(wordFrequency, new Tooltip("Term Frequency Algorithm"));
                 wordFrequency.setGraphic(wordFrequencyImageView);
                 wordFrequency.setTranslateX(400);
                 wordFrequency.setTranslateY(350);
@@ -694,7 +694,7 @@ public class Tst_FX_Main extends Application {
 
                 wordFrequency.setOnAction(e->{
 
-                    Label wordFrequencyTitle = new Label("Word Frequency Algorithm");
+                    Label wordFrequencyTitle = new Label("Term Frequency Algorithm");
                     wordFrequencyTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
                     wordFrequencyTitle.setTextFill(Color.BLACK);
                     wordFrequencyTitle.setUnderline(true);
@@ -702,18 +702,26 @@ public class Tst_FX_Main extends Application {
                     wordFrequencyTitle.setTranslateY(30);
 
                     Text wordFrequencyText = new Text();
-                    wordFrequencyText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
+                    wordFrequencyText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 24));
 
 
 
                     wordFrequencyText.setText("\t5 steps :\n\n\n" +
-                            "        1. Create Word Frequency Table\n\n" +
+                            "        1. Create Term Frequency Table\n\n" +
                             "        2. Tokenize Sentences\n\n" +
                             "        3. Score the sentences\n\n" +
                             "        4. Find Threshold\n\n" +
                             "        5. Generate Summary");
 
-
+                    /*wordFrequencyText.setText("\tThe context is taken as input.\n" +
+                            "\tContext is preprocessed by punctuation removal and stop-word removal.\n" +
+                            "\tEach sentence is scored based on its percentage of nonstop-terms.\n" +
+                            "Score of Sentence i=(no.of nonstop terms in i)/(total no.of exclusive words)\n" +
+                            "Here, ‘i’ is a sentence from the context.\n" +
+                            "\tThe Mean of the sentences scores is calculated and it is declared as the threshold.\n" +
+                            "\tEvery Sentence scoring more than the threshold is added to the summary.\n" +
+                            "\tExtraction of the summary from the article.\n");
+*/
                     wordFrequencyText.setTranslateX(30);
                     wordFrequencyText.setTranslateY(100);
 
@@ -750,8 +758,7 @@ public class Tst_FX_Main extends Application {
                     textRankTitle.setTranslateY(30);
 
                     Text textRankText = new Text();
-                    textRankText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 23));
-
+                    textRankText.setFont(Font.font("Arial", FontWeight.EXTRA_LIGHT, 22));
 
 
                     textRankText.setText("" +
@@ -765,7 +772,21 @@ public class Tst_FX_Main extends Application {
                             "        7. Scoring Sentences\n" +
                             "        8. Extraction");
 
-
+                    /*textRankText.setText("\tThe context is taken as input. \n" +
+                            "\tPreprocessing is done. Punctuation removal and stop-word removal is done on the text.\n" +
+                            "\tThe Pre-processed text is split into individual sentences.\t\n" +
+                            "\tThe list of all exclusive words in the preprocessed text is formed following Bag of Words model (Size of the list is n). \n" +
+                            "\tThe vector representation (word embeddings) for each and all sentences are found out.\n" +
+                            "In each sentence, for each matching word from the list we increment the value, and if there is no match then the respective word is 0. Initially the value is zero.\n" +
+                            "\tNow, for the non-zero values in the vector form of sentence, we calculate the TF-IDF value in order to gain more accuracy. TF-IDF value is measured based on the term frequency and the whole document is considered for IDF calculation.\n" +
+                            "\tSimilarities between sentence vectors are then calculated and stored in a matrix.\n" +
+                            "\tThis is done by Cosine Similarity Matrix. We calculate the Dot Product of Two \tsimultaneous Sentence vectors and then divide it by the product of their Modulus values.\t\n" +
+                            "Mat[A][B]=(∑_(i=1)^n▒〖A_i B_i 〗)/(√(∑_(i=1)^n▒〖A_i〗^2 )  √(∑_(i=1)^n▒〖B_i〗^2 )  )\n" +
+                            "\tHere ‘A’ and ‘B’ represents two sentences from the context. And n = size of the vector.\n" +
+                            "\tSentences are scored by adding all the values of its respective row in the matrix.\n" +
+                            "Score of Sentence i=Summation of values of row i in Mat\n" +
+                            "\tFinally, extraction of the sentences is done based on the higher scores of sentences.\n");
+*/
                     textRankText.setTranslateX(30);
                     textRankText.setTranslateY(100);
 
@@ -815,7 +836,18 @@ public class Tst_FX_Main extends Application {
                             "    5. Order of sentences are maintained and half of the sentences are marked\n\n" +
                             "    6. Extraction of most scored sentences by maintaining Order");
 
-
+     /*               directText.setText("\tThe context is taken as input\n" +
+                            "\tThe sentences are tokenized from the context.\n" +
+                            "\tIn all the sentences, the number of words is measured.\n" +
+                            "\tNow a 2D intersection matrix(‘Mat’) of size [no. of sentences] [no. of sentences] is declared. \n" +
+                            "\tEach cell in the Intersection Matrix is calculated based on the following formula, \n" +
+                            "Mat[i][j]=(no.  of words in sentence i+no.of words in sentence j)/2\n" +
+                            "Here ‘i’ and ‘j’ are two sentences from the context.\n" +
+                            "\tScore of a Sentence is calculated by adding all the values of the row.\n" +
+                            "Score of Sentence i=Summation of values of row i in Mat\n" +
+                            "\tThe order of the sentences is marked and half of the sentences are flagged based on their scores\n" +
+                            "\tExtraction of the flagged sentences to form summary.\n");
+*/
                     directText.setTranslateX(30);
                     directText.setTranslateY(100);
 
@@ -921,7 +953,7 @@ public class Tst_FX_Main extends Application {
                 barChart.getData().add(dataSeries1);
 
 
-                XYChart.Series dataSeries2 = new XYChart.Series();
+                 XYChart.Series dataSeries2 = new XYChart.Series();
                 dataSeries2.setName("Recall");
 
                 counter=1;
@@ -961,7 +993,7 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                Label detailsTitle = new Label("Details : WordFrequency");
+                Label detailsTitle = new Label("Details : TermFrequency");
                 detailsTitle.setFont(Font.font("Arial", FontWeight.BOLD, 24));
                 detailsTitle.setTextFill(Color.BLACK);
 //                algorithmTitle.setUnderline(true);
@@ -1503,25 +1535,14 @@ public class Tst_FX_Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                String context = "‘The Good Morrow’ is a typical Donnian love poem, divided into three stanzas. It’s one of those love poems in which he praises the spiritual relationship between men and women and hails it so ardently.\n" +
-                        "\n" +
-                        "In the opening stanza, the poet expresses his wonder as to what he and his beloved did before they fell in love with each other. He becomes surprised remembering their past love experiences. He compares the love experiences of himself and his beloved with `weaning’, falsely sucking country pleasures’ and `snorting.’ The reference to these three physical activities indicates that they spent a life of worldly enjoyment. But now the poet using the conjunction ‘But’ makes a contrast and say’s that all these past physical activities seem to be utterly meaningless. The closing two lines of the first stanza imply that though the poet indulged himself in ‘country pleasures’, he has never been unmindful to perfect beauty of ideal spiritual love, which he always desired and has finally ‘got’ in his present beloved.\n" +
-                        "\n" +
-                        "Obviously there is a shift from physical to spiritual love, sleeping to waking period, sensuous appearances to ideal reality and as if from platonic cave to the world of light in the poet and his beloved. Here the poet seems to have touched the metaphysics of Plato. In his metaphysics, Plato at first takes something concrete such as man, but soon he leaps into abstract namely the Form of man. Similarly Donne also begins with physical love and soon he turns to Platonic or metaphysical love.\n" +
-                        "\n" +
-                        "The first stanza contains several Donnian elements. It opens abruptly with an explosive question. This abrupt colloquial beginning, which is so characteristic of Donne startles us and captures our attention. Another noticeable thing is that Donne swears his true relation – ‘I wonder by my troth’. Here he is unconventional. Any of his contemporary of Elizabethan poets might swear to God, but Donne has not done it. Then there are the references of physical union and the use of imageries in the following three lines. The fourth line contains a legendary conceit,a legend that tells of seven young men of Ephesus who took refuge in a cave during the persecution of Diocletian and were entombed there. They were found alive two centuries later. Here Donne compares himself and his beloved with the seven sleepers. Here he is cynical when he utters the word ‘did’. Surely the word ‘did’ includes the connotations of sexual doing – what did we ever do with the time?\n" +
-                        "\n" +
-                        "The second stanza begins with hail and celebration. The unconscious past of flesh is over and a new conscious spiritual relationship begins. So the speaker cerebrates the present. “Now good morrow to our waking souls”. He also makes declaration that their souls have also learnt not to spy one another. That the married women or men involve in extra-marital affair was a dominant theme in the Elizabethan and Jacobean literature. So, fear only works in sensual lovers as motivation for watching over each other, least the other should become unfaithful to his or her mate. But the speaker and his beloved have overcome this fear and a peaceful satisfaction prevails their love. And for their faithful love they will control the temptations of other things. They love so faithfully and ardently that their love has the force to be merged into the universal love and to move out to become “an every where”.\n" +
-                        "\n" +
-                        "As spiritual lovers, the poet and his beloved are indifferent to earthly pleasures and possessions – let the sea-lovers and map-lovers do what they like to do. The lovers want to be happy with their joint world though they have their individual worlds but their individual worlds are fused into a single world. Now they are the joint owners of a single world.\n" +
-                        "\n" +
-                        "Here in this stanza, we find the presence of imagery from the contemporary geographical world. That is to say the contemporary geographical interest of the explorers.\n" +
-                        "\n" +
-                        "The third stanza opens with endearing words from the speaker. The two lovers stand so closely that their respective faces are reflected in each others eyes. The simplicity of their heart is also reflected in their faces, which are conceived as two hemispheres of their world. But their world of love is so unearthly that its hemispheres are free from coldness and decay. They are not afraid of separation or break up of their “relation, because” ‘what ever dyes, was not mixt equality’. The ingredients of their love have been proportionately mixed and there is no ware and woof between them. They have love equally and proportionately.\n" +
-                        "\n" +
-                        "Thus the poem ends with the establishment of true friendship. After an abrupt beginning, there is calmness at last. The couple has rejected the country pleasures and entered into a true inter-dependent friendship. They have renounced the mundane world in order possess an unearthly world. Experience has thought them that the true happiness can be achieved through a mutual spiritual friendship.\n" +
-                        "\n" +
-                        "In the first stanza, there is the regret for past doings, in the second stanza the pleasure of discovering something in the last stanza, the prospect/hope of doing better/using the discovery. The abrupt beginning of the poem, the use of conceits form everyday life and myth in the first stanza, the geographical reference of stanza two, the use of scholastic philosophy in stanza three, and ultimately the emphasis of spiritual love continue to make it one of those poems of Donne which combine intellect and emotion. These above motioned qualities have made the poem get a certain place in honored, treasured lyrics written by John Donne.";
+                String context = "Walk-in vaccination at centres in unions and wards starts from August 7\n" +
+                        "The Bangladesh government’s plan to inoculate 10 million people in a week mainly focuses on the people who are living at union and ward levels.\n" +
+                        "In an inter-ministerial meeting last week, the government decided to launch walk-in vaccinations for the people in rural areas from August 7. \n" +
+                        "However, vaccination centres in state-run hospitals in upazila towns as well as those in the city corporation areas will not allow anyone to take the jab without registering online.\n" +
+                        "According to the Directorate General of Health Services (DGHS), the health service unit which is implementing the extended vaccination program would administer vaccines only three days a week. \n" +
+                        "They would extend it by a day depending.\n" +
+                        "For inoculating 10 million people in a week, authorities will have to administer 2.5 million doses a day, given that the drive is conducted four days a week.\n" +
+                        "\n";
                 context_tool.setText(context);
             }
         });
@@ -1529,11 +1550,12 @@ public class Tst_FX_Main extends Application {
 
 
         window = stage;
+        window.setResizable(true);
 
         window.setTitle("Text Summarizer Tool");
 
         window.setScene(start);
-//        window.setFullScreen(true);
+//      window.setFullScreen(true);
         window.show();
 
     }

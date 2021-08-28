@@ -194,8 +194,8 @@ public class SummaryTool {
             noOfTotalWords = spaceCounter(sentences[i]) + 1;
 
 
-            sentenceScore = noOfNonStopWords(sentences[i]);
-//            sentenceScore = ( noOfNonStopWords(sentences[i])  / (double)noOfTotalWords); // Percentage of Non Stop Words
+//            sentenceScore = noOfNonStopWords(sentences[i]);
+            sentenceScore = ( noOfNonStopWords(sentences[i])  / (double)noOfTotalWords); // Percentage of Non Stop Words
 
 //            System.out.println(sentenceScore + " = " + sentences[i]);
             sentencesScore.put(sentences[i],sentenceScore);
