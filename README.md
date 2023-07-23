@@ -8,7 +8,7 @@ Text summarization is the process of generating a concise and coherent summary o
 
 ## R&D Project for SPL 1 Course
 
-This project was undertaken by @jaf107 as a part of the Software Product Development (SPL 1) course. The primary objective of this research and development endeavor was to explore the field of text summarization, implement three different algorithms, and compare their performance.
+The primary objective of this research and development endeavor was to explore the field of text summarization, implement three different algorithms, and compare their performance.
 
 ## Summarization Approaches
 
