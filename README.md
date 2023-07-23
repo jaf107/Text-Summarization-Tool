@@ -28,7 +28,7 @@ To use the Text Summarization Tool, you can follow these steps:
 1. Clone the repository to your local machine.
 
 ```
-git clone https://github.com/your-username/text-summarization-tool.git
+git clone https://github.com/jaf107/text-summarization-tool.git
 ```
 
 2. Open the Java project in your preferred IDE.
