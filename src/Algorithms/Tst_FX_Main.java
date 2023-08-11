@@ -1,7 +1,8 @@
-package Algorithms.TextRank.GUI_UsingFX;
+package Algorithms;
 
 import Algorithms.TextRank.FinalProject.SummaryStatistics;
 import Algorithms.TextRank.FinalProject.SummaryTool;
+import Algorithms.TextRank.GUI_UsingFX.TestFx;
 import ROGUE.CrossValidation;
 import ROGUE.RogueDirect;
 import ROGUE.RogueTextRank;
@@ -30,6 +31,9 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.math.RoundingMode;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -60,7 +64,7 @@ public class Tst_FX_Main extends Application {
                 "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );";
 
         // BackButtons Image
-        FileInputStream backImageInputStream = new FileInputStream("Images/back2.png");
+        FileInputStream backImageInputStream = new FileInputStream("src/resources/Images/back2.png");
         Image backImage = new Image(backImageInputStream);
         ImageView backImageView = new ImageView(backImage);
         backImageView.setFitHeight(10);
@@ -68,7 +72,7 @@ public class Tst_FX_Main extends Application {
 
 
         // Background
-        Image startImage = new Image(new FileInputStream("Images/Background/ts.jpg"));
+        Image startImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/Background/ts.jpg")));
         ImageView startBackgroundImageView = new ImageView(startImage);
         BackgroundImage startBackgroundImage = new BackgroundImage(startImage, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -98,7 +102,7 @@ public class Tst_FX_Main extends Application {
         startPane.getChildren().addAll( startButton);
 
         // Image
-        Image image = new Image(new FileInputStream("Images/icons8-start-48.png"));
+        Image image = new Image(Files.newInputStream(Paths.get("src/resources/Images/icons8-start-48.png")));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(10);
         imageView.setPreserveRatio(true);
@@ -134,19 +138,19 @@ public class Tst_FX_Main extends Application {
 
         // Images - tool
 
-        Image toolImage = new Image(new FileInputStream("Images/tool1.png"));
+        Image toolImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/tool1.png")));
         ImageView toolImageView = new ImageView(toolImage);
         toolImageView.setFitHeight(15);
         toolImageView.setPreserveRatio(true);
         toolButton.setGraphic(toolImageView);
 
-        Image aboutImage = new Image(new FileInputStream("Images/about.png"));
+        Image aboutImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/about.png")));
         ImageView aboutImageView = new ImageView(aboutImage);
         aboutImageView.setFitHeight(15);
         aboutImageView.setPreserveRatio(true);
         aboutButton.setGraphic(aboutImageView);
 
-        Image evaluationImage = new Image(new FileInputStream("Images/evaluation.png"));
+        Image evaluationImage = new Image(new FileInputStream("src/resources/Images/evaluation.png"));
         ImageView evaluationImageView = new ImageView(evaluationImage);
         evaluationImageView.setFitHeight(15);
         evaluationImageView.setPreserveRatio(true);
@@ -154,13 +158,13 @@ public class Tst_FX_Main extends Application {
 
         Pane menuPane = new Pane();
 
-        Image allImage = new Image(new FileInputStream("Images/Background/ts_light_2.png"));
+        Image allImage = new Image(new FileInputStream("src/resources/Images/Background/ts_light_2.png"));
         BackgroundImage allBackgroundImage = new BackgroundImage(allImage, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background allBackground = new Background(allBackgroundImage);
 
 
-        Image allaboutImage = new Image(new FileInputStream("Images/Background/ts_light_2.png"));
+        Image allaboutImage = new Image(new FileInputStream("src/resources/Images/Background/ts_light_2.png"));
         BackgroundImage allBgroundImage = new BackgroundImage(allaboutImage, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background allAboutBg = new Background(allBgroundImage);
@@ -232,7 +236,7 @@ public class Tst_FX_Main extends Application {
         backButton_about.setPrefSize(backButtonWidth,backButtonHeight);
 
 
-        Image algorithmsImage = new Image(new FileInputStream("Images/algorithms.png"));
+        Image algorithmsImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/algorithms.png")));
         ImageView algorithmsImageView = new ImageView(algorithmsImage);
         algorithmsImageView.setFitHeight(10);
         algorithmsImageView.setPreserveRatio(true);
@@ -318,25 +322,26 @@ public class Tst_FX_Main extends Application {
 
         //Images - tool
 
-        Image summarizeImage = new Image(new FileInputStream("Images/summarizeButton.png"));
+        Image summarizeImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/summarizeButton.png")));
         ImageView summarizeImageView = new ImageView(summarizeImage);
         summarizeImageView.setFitHeight(10);
         summarizeImageView.setPreserveRatio(true);
         summarize.setGraphic(summarizeImageView);
 
-        Image textRankImage = new Image(new FileInputStream("Images/textRank.png"));
+        Image textRankImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/textRank.png")));
         ImageView textRankImageView = new ImageView(textRankImage);
         textRankImageView.setFitHeight(10);
         textRankImageView.setPreserveRatio(true);
         textRankButton.setGraphic(textRankImageView);
 
-        Image directImage = new Image(new FileInputStream("Images/direct.png"));
+        Path path = Paths.get("src/resources/Images/direct.png");
+        Image directImage = new Image(Files.newInputStream(path));
         ImageView directImageView = new ImageView(directImage);
         directImageView.setFitHeight(10);
         directImageView.setPreserveRatio(true);
         directButton.setGraphic(directImageView);
 
-        Image wordFrequencyImage = new Image(new FileInputStream("Images/wordFrequency.png"));
+        Image wordFrequencyImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/wordFrequency.png")));
         ImageView wordFrequencyImageView= new ImageView(wordFrequencyImage);
         wordFrequencyImageView.setFitHeight(10);
         wordFrequencyImageView.setPreserveRatio(true);
@@ -344,19 +349,19 @@ public class Tst_FX_Main extends Application {
 
 
 
-        Image statsImage = new Image(new FileInputStream("Images/stats.png"));
+        Image statsImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/stats.png")));
         ImageView statsImageView = new ImageView(statsImage);
         statsImageView.setFitHeight(10);
         statsImageView.setPreserveRatio(true);
         statsButton.setGraphic(statsImageView);
 
-        Image sampleImage = new Image(new FileInputStream("Images/sample.png"));
+        Image sampleImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/sample.png")));
         ImageView sampleImageView = new ImageView(sampleImage);
         sampleImageView.setFitHeight(10);
         sampleImageView.setPreserveRatio(true);
         runSampleButton.setGraphic(sampleImageView);
 
-        Image deleteImage = new Image(new FileInputStream("Images/delete.png"));
+        Image deleteImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/delete.png")));
         ImageView deleteImageView = new ImageView(deleteImage);
         deleteImageView.setFitHeight(10);
         deleteImageView.setPreserveRatio(true);
@@ -433,17 +438,17 @@ public class Tst_FX_Main extends Application {
 
 
 
-        Image textRankImage_evaluation = new Image(new FileInputStream("Images/textRank.png"));
+        Image textRankImage_evaluation = new Image(Files.newInputStream(Paths.get("src/resources/Images/textRank.png")));
         ImageView textRankImageView_evaluation = new ImageView(textRankImage_evaluation);
         textRankImageView_evaluation.setFitHeight(10);
         textRankImageView_evaluation.setPreserveRatio(true);
 
-        Image directImage_evaluation = new Image(new FileInputStream("Images/direct.png"));
+        Image directImage_evaluation = new Image(Files.newInputStream(path));
         ImageView directImageView_evaluation = new ImageView(directImage_evaluation);
         directImageView_evaluation.setFitHeight(10);
         directImageView_evaluation.setPreserveRatio(true);
 
-        Image wordFrequencyImage_evaluation = new Image(new FileInputStream("Images/wordFrequency.png"));
+        Image wordFrequencyImage_evaluation = new Image(Files.newInputStream(Paths.get("src/resources/Images/wordFrequency.png")));
         ImageView wordFrequencyImageView_evaluation= new ImageView(wordFrequencyImage_evaluation);
         wordFrequencyImageView_evaluation.setFitHeight(10);
         wordFrequencyImageView_evaluation.setPreserveRatio(true);
@@ -480,7 +485,7 @@ public class Tst_FX_Main extends Application {
 
         // Image - evaluation
 
-        Image detailsImage = new Image(new FileInputStream("Images/details.png"));
+        Image detailsImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/details.png")));
         ImageView detailsImageView = new ImageView(detailsImage);
         detailsImageView.setFitHeight(15);
         detailsImageView.setPreserveRatio(true);
@@ -551,7 +556,7 @@ public class Tst_FX_Main extends Application {
         Button aboutROGUE = new Button("About");
 
 
-        Image aboutROGUEImage = new Image(new FileInputStream("Images/about.png"));
+        Image aboutROGUEImage = new Image(Files.newInputStream(Paths.get("src/resources/Images/about.png")));
         ImageView aboutROGUEImageView = new ImageView(aboutROGUEImage);
         aboutROGUEImageView.setFitHeight(15);
         aboutROGUEImageView.setPreserveRatio(true);

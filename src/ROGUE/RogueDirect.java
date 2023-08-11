@@ -73,7 +73,7 @@ public class RogueDirect {
 
             String referanceSummary = "";
             String machineSummary = "";
-            File file = new File("Evaluation/DirectSummary/" + article);
+            File file = new File("src/resources/Evaluation/DirectSummary/" + article);
             try (FileReader fileReader = new FileReader(file)) {
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -86,7 +86,7 @@ public class RogueDirect {
                 e.printStackTrace();
             }
 
-            file = new File("Evaluation/ReferanceSummary/" + article);
+            file = new File("src/resources/Evaluation/ReferanceSummary/" + article);
             try (FileReader fileReader = new FileReader(file)) {
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
